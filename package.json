@@ -1,0 +1,47 @@
+{
+  "name": "capacitor-youtube-player",
+  "version": "0.0.1",
+  "description": "Youtube Player",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Adrián Brito Pacheco & José Antonio Pérez Florencia",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "CapacitorYoutubePlayer.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abritopach/capacitor-youtube-player"
+  },
+  "bugs": {
+    "url": "https://github.com/abritopach/capacitor-youtube-player/issues"
+  }
+}
