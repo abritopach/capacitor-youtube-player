@@ -7,7 +7,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { WebPlugin } from '@capacitor/core';
-import 'youtube';
 export class YoutubePlayerPluginWeb extends WebPlugin {
     constructor() {
         super({
@@ -35,7 +34,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // after the API code downloads.
     onYouTubeIframeAPIReady() {
         console.log('[Youtube Player Plugin Web]: onYouTubeIframeAPIReady');
-        this.player = new YT.Player('player', {
+        this.player = window.YT.Player('player', {
             height: 360,
             width: 640,
             videoId: 'M7lc1UVf-VE',

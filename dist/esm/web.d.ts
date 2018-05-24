@@ -1,5 +1,4 @@
 import { WebPlugin } from '@capacitor/core';
-import 'youtube';
 export declare class YoutubePlayerPluginWeb extends WebPlugin {
     player: any;
     constructor();

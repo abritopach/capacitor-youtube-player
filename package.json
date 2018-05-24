@@ -13,9 +13,7 @@
   "author": "Adrián Brito Pacheco & José Antonio Pérez Florencia",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "latest",
-    "@types/youtube": "0.0.32",
-    "youtube": "^0.1.0"
+    "@capacitor/core": "latest"
   },
   "devDependencies": {
     "typescript": "^2.6.2"
