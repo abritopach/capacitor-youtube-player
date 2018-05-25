@@ -13,40 +13,75 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             name: 'YoutubePlayerPluginWeb',
             platforms: ['web']
         });
-        // This code loads the IFrame Player API code asynchronously.
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        this.defaultSizes = {
+            height: 270,
+            width: 367
+        };
+        this.ytApiLoaded = false;
+    }
+    loadPlayerApi() {
+        if (!this.ytApiLoaded) {
+            this.ytApiLoaded = true;
+            // This code loads the IFrame Player API code asynchronously.
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+    }
+    createPlayer(options) {
+        const playerSize = {
+            height: options.height || this.defaultSizes.height,
+            width: options.width || this.defaultSizes.width
+        };
+        // This function creates an <iframe> (and YouTube player)
+        // after the API code downloads.
+        window.onYouTubeIframeAPIReady = () => {
+            console.log(window.YT);
+            this.player = new window.YT.Player(options.playerId, Object.assign({}, playerSize, { videoId: options.videoId, events: {
+                    'onReady': () => {
+                        console.log('[Youtube Player Plugin Web]: onPlayerReady');
+                        return Promise.resolve({ playerReady: true });
+                    },
+                    'onStateChange': () => {
+                        console.log('[Youtube Player Plugin Web]: onPlayerStateChange');
+                    },
+                    'onPlaybackQualityChange': () => {
+                        console.log('[Youtube Player Plugin Web]: onPlayerPlaybackQualityChange');
+                    },
+                    'onError': () => {
+                        console.log('[Youtube Player Plugin Web]: onPlayerError');
+                    }
+                } }));
+        };
+    }
+    initialize(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log('[Youtube Player Plugin Web]: initialize');
+            this.loadPlayerApi();
+            this.createPlayer(options);
+        });
+    }
+    stopVideo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.player.stopVideo();
+            return Promise.resolve({ stopVideo: true });
+        });
+    }
+    playVideo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.player.playVideo();
+        });
+    }
+    pause() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.player.pauseVideo();
+        });
     }
     echo(options) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('ECHO', options);
             return Promise.resolve(options);
-        });
-    }
-    /*
-    async initialize(options: { key: string, value: string }): Promise<{result: boolean}> {
-      return Promise.resolve({result: true});
-    }
-    */
-    // This function creates an <iframe> (and YouTube player)
-    // after the API code downloads.
-    onYouTubeIframeAPIReady() {
-        console.log('[Youtube Player Plugin Web]: onYouTubeIframeAPIReady');
-        this.player = window.YT.Player('player', {
-            height: 360,
-            width: 640,
-            videoId: 'M7lc1UVf-VE',
-            events: {
-                'onReady': this.onPlayerReady,
-            }
-        });
-    }
-    onPlayerReady() {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log('[Youtube Player Plugin Web]: onPlayerReady');
-            return Promise.resolve({ playerReady: true });
         });
     }
 }

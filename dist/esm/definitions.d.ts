@@ -9,7 +9,15 @@ export interface YoutubePlayerPlugin {
     }): Promise<{
         value: string;
     }>;
-    onPlayerReady(): Promise<{
+    initialize(options: {
+        playerId: string;
+        width: number;
+        height: number;
+        videoId: string;
+    }): Promise<{
         playerReady: boolean;
+    }>;
+    stopVideo(): Promise<{
+        stopVideo: boolean;
     }>;
 }
