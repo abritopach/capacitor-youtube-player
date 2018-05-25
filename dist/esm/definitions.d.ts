@@ -20,4 +20,10 @@ export interface YoutubePlayerPlugin {
     stopVideo(): Promise<{
         stopVideo: boolean;
     }>;
+    playVideo(): Promise<{
+        playVideo: boolean;
+    }>;
+    pauseVideo(): Promise<{
+        pauseVideo: boolean;
+    }>;
 }

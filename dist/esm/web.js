@@ -7,6 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { WebPlugin } from '@capacitor/core';
+export function YT() {
+    return window['YT'];
+}
+export function Player() {
+    return YT().Player;
+}
 export class YoutubePlayerPluginWeb extends WebPlugin {
     constructor() {
         super({
@@ -20,6 +26,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
         this.ytApiLoaded = false;
     }
     loadPlayerApi() {
+        console.log('[Youtube Player Plugin Web]: loadPlayerApi');
         if (!this.ytApiLoaded) {
             this.ytApiLoaded = true;
             // This code loads the IFrame Player API code asynchronously.
@@ -29,22 +36,44 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         }
     }
-    createPlayer(options) {
+    checkSize(options) {
         const playerSize = {
             height: options.height || this.defaultSizes.height,
             width: options.width || this.defaultSizes.width
         };
+        if (playerSize.height > window.innerHeight)
+            playerSize.height = window.innerHeight;
+        if (playerSize.width > window.innerWidth)
+            playerSize.width = window.innerWidth;
+        return playerSize;
+    }
+    createPlayer(options) {
+        console.log('[Youtube Player Plugin Web]: createPlayer');
+        const playerSize = this.checkSize(options);
+        console.log('playerSize', playerSize);
         // This function creates an <iframe> (and YouTube player)
         // after the API code downloads.
         window.onYouTubeIframeAPIReady = () => {
             console.log(window.YT);
-            this.player = new window.YT.Player(options.playerId, Object.assign({}, playerSize, { videoId: options.videoId, events: {
+            this.player = new window.YT.Player(options.playerId, Object.assign({ playerVars: {} }, playerSize, { videoId: options.videoId, events: {
+                    // The API will call this function when the video player is ready.
                     'onReady': () => {
                         console.log('[Youtube Player Plugin Web]: onPlayerReady');
                         return Promise.resolve({ playerReady: true });
                     },
-                    'onStateChange': () => {
-                        console.log('[Youtube Player Plugin Web]: onPlayerStateChange');
+                    'onStateChange': (event) => {
+                        console.log('[Youtube Player Plugin Web]: onPlayerStateChange', event.data);
+                        switch (event.data) {
+                            case window.YT.PlayerState.PLAYING:
+                                console.log('[Youtube Player Plugin Web]: Playing');
+                                break;
+                            case window.YT.PlayerState.PAUSED:
+                                console.log('[Youtube Player Plugin Web]: Paused');
+                                break;
+                            case window.YT.PlayerState.ENDED:
+                                console.log('[Youtube Player Plugin Web]: Ended');
+                                break;
+                        }
                     },
                     'onPlaybackQualityChange': () => {
                         console.log('[Youtube Player Plugin Web]: onPlayerPlaybackQualityChange');
@@ -59,23 +88,29 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('[Youtube Player Plugin Web]: initialize');
             this.loadPlayerApi();
-            this.createPlayer(options);
+            if (Player)
+                this.createPlayer(options);
         });
     }
     stopVideo() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('[Youtube Player Plugin Web]: stopVideo');
             this.player.stopVideo();
             return Promise.resolve({ stopVideo: true });
         });
     }
     playVideo() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('[Youtube Player Plugin Web]: playVideo');
             this.player.playVideo();
+            return Promise.resolve({ playVideo: true });
         });
     }
-    pause() {
+    pauseVideo() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('[Youtube Player Plugin Web]: pauseVideo');
             this.player.pauseVideo();
+            return Promise.resolve({ pauseVideo: true });
         });
     }
     echo(options) {
