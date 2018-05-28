@@ -17,13 +17,37 @@ export interface YoutubePlayerPlugin {
     }): Promise<{
         playerReady: boolean;
     }>;
+    /***********/
     stopVideo(): Promise<{
-        stopVideo: boolean;
+        result: {
+            method: string;
+            value: boolean;
+        };
     }>;
     playVideo(): Promise<{
-        playVideo: boolean;
+        result: {
+            method: string;
+            value: boolean;
+        };
     }>;
     pauseVideo(): Promise<{
-        pauseVideo: boolean;
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
+    seekTo(): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+            seconds: number;
+            allowSeekAhead: boolean;
+        };
+    }>;
+    clearVideo(): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
     }>;
 }

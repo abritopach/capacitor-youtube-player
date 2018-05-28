@@ -1,16 +1,16 @@
 import { WebPlugin } from '@capacitor/core';
+import { IPlayerSize, IPlayerVars } from './web/models/models';
 export declare function YT(): any;
 export declare function Player(): any;
 export declare class YoutubePlayerPluginWeb extends WebPlugin {
     player: any;
     private readonly defaultSizes;
-    private ytApiLoaded;
     constructor();
-    loadPlayerApi(): void;
+    loadPlayerApi(): Promise<{}>;
     checkSize(options: {
         playerId: string;
-        width: number;
-        height: number;
+        playerSize: IPlayerSize;
+        playerVars?: IPlayerVars;
         videoId: string;
     }): {
         height: number;
@@ -18,25 +18,52 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
     };
     createPlayer(options: {
         playerId: string;
-        width: number;
-        height: number;
+        playerSize: IPlayerSize;
+        playerVars?: IPlayerVars;
         videoId: string;
-    }): void;
+    }): Promise<{}>;
     initialize(options: {
         playerId: string;
-        width: number;
-        height: number;
+        playerSize: IPlayerSize;
+        playerVars?: IPlayerVars;
         videoId: string;
-    }): Promise<void>;
+    }): Promise<{}>;
+    /*********/
     stopVideo(): Promise<{
-        stopVideo: boolean;
+        result: {
+            method: string;
+            value: boolean;
+        };
     }>;
     playVideo(): Promise<{
-        playVideo: boolean;
+        result: {
+            method: string;
+            value: boolean;
+        };
     }>;
     pauseVideo(): Promise<{
-        pauseVideo: boolean;
+        result: {
+            method: string;
+            value: boolean;
+        };
     }>;
+    seekTo(seconds: number, allowSeekAhead: boolean): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+            seconds: number;
+            allowSeekAhead: boolean;
+        };
+    }>;
+    clearVideo(): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
+    /*********/
+    /*********/
+    /*********/
     echo(options: {
         value: string;
     }): Promise<{

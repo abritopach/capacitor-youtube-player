@@ -7,7 +7,14 @@ declare global {
 export interface YoutubePlayerPlugin {
   echo(options: { value: string }): Promise<{value: string}>;
   initialize(options: {playerId: string, width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;
-  stopVideo(): Promise<{stopVideo: boolean}>;
-  playVideo(): Promise<{playVideo: boolean}>;
-  pauseVideo(): Promise<{pauseVideo: boolean}>;
+  // Methods playing video.
+  /***********/
+  stopVideo(): Promise<{result: { method: string, value: boolean }}>;
+  playVideo(): Promise<{result: { method: string, value: boolean }}>;
+  pauseVideo(): Promise<{result: { method: string, value: boolean }}>;
+  seekTo(): Promise<{result: { method: string, value: boolean, seconds: number, allowSeekAhead: boolean }}>;
+  clearVideo(): Promise<{result: { method: string, value: boolean }}>;
+  /***********/
+
+  // Methods modifying the player volume.
 }
