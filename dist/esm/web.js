@@ -149,13 +149,13 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     loadVideoById(options) {
         return __awaiter(this, void 0, void 0, function* () {
             this.player.loadVideoById(options);
-            return Promise.resolve({ result: { method: 'loadVideoById', value: true } });
+            return Promise.resolve({ result: { method: 'loadVideoById', value: true, options: options } });
         });
     }
     cueVideoById(options) {
         return __awaiter(this, void 0, void 0, function* () {
             this.player.cueVideoById(options);
-            return Promise.resolve({ result: { method: 'cueVideoById', value: true } });
+            return Promise.resolve({ result: { method: 'cueVideoById', value: true, options: options } });
         });
     }
     /*********/

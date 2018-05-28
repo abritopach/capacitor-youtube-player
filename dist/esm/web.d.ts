@@ -70,6 +70,12 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
         result: {
             method: string;
             value: boolean;
+            options: {
+                videoId: string;
+                startSeconds?: number;
+                endSeconds?: number;
+                suggestedQuality?: string;
+            };
         };
     }>;
     cueVideoById(options: {
@@ -81,6 +87,12 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
         result: {
             method: string;
             value: boolean;
+            options: {
+                videoId: string;
+                startSeconds?: number;
+                endSeconds?: number;
+                suggestedQuality?: string;
+            };
         };
     }>;
     /*********/

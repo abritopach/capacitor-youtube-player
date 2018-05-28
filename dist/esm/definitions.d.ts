@@ -59,6 +59,7 @@ export interface YoutubePlayerPlugin {
         result: {
             method: string;
             value: boolean;
+            options: {};
         };
     }>;
     cueVideoById(options: {
@@ -70,6 +71,7 @@ export interface YoutubePlayerPlugin {
         result: {
             method: string;
             value: boolean;
+            options: {};
         };
     }>;
 }
