@@ -61,6 +61,28 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
             value: boolean;
         };
     }>;
+    loadVideoById(options: {
+        videoId: string;
+        startSeconds?: number;
+        endSeconds?: number;
+        suggestedQuality?: string;
+    }): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
+    cueVideoById(options: {
+        videoId: string;
+        startSeconds?: number;
+        endSeconds?: number;
+        suggestedQuality?: string;
+    }): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
     /*********/
     /*********/
     /*********/

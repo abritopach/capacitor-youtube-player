@@ -14,6 +14,8 @@ export interface YoutubePlayerPlugin {
   pauseVideo(): Promise<{result: { method: string, value: boolean }}>;
   seekTo(): Promise<{result: { method: string, value: boolean, seconds: number, allowSeekAhead: boolean }}>;
   clearVideo(): Promise<{result: { method: string, value: boolean }}>;
+  loadVideoById(options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {} }}>;
+  cueVideoById(options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {} }}>;
   /***********/
 
   // Methods modifying the player volume.

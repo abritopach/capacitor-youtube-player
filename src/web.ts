@@ -151,6 +151,16 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     return Promise.resolve({result: { method: 'clearVideo', value: true }});
   }
 
+  async loadVideoById(options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}) {
+    this.player.loadVideoById(options);
+    return Promise.resolve({result: { method: 'loadVideoById', value: true, options: options }});
+  }
+
+  async cueVideoById(options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}) {
+    this.player.cueVideoById(options);
+    return Promise.resolve({result: { method: 'cueVideoById', value: true, options: options }});
+  }
+
   /*********/
 
   // Methods modifying the player volume.

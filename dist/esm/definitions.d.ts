@@ -50,4 +50,26 @@ export interface YoutubePlayerPlugin {
             value: boolean;
         };
     }>;
+    loadVideoById(options: {
+        videoId: string;
+        startSeconds?: number;
+        endSeconds?: number;
+        suggestedQuality?: string;
+    }): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
+    cueVideoById(options: {
+        videoId: string;
+        startSeconds?: number;
+        endSeconds?: number;
+        suggestedQuality?: string;
+    }): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
 }
