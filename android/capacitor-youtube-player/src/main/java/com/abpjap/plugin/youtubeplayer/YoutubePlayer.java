@@ -7,7 +7,7 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 
 @NativePlugin()
-public class YoutubePlayerPlugin extends Plugin {
+public class YoutubePlayer extends Plugin {
 
     @PluginMethod()
     public void echo(PluginCall call) {
