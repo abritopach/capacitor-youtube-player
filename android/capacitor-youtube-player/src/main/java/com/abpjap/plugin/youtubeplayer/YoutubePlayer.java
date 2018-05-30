@@ -1,6 +1,7 @@
 package com.abpjap.plugin.youtubeplayer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -29,7 +30,7 @@ public class YoutubePlayer extends Plugin {
 
 
     public void load() {
-        Log.e(TAG, "Youtube Player View load.");
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: load");
         context = getContext();
     }
 
@@ -45,6 +46,18 @@ public class YoutubePlayer extends Plugin {
     @PluginMethod()
     public void initialize(final PluginCall call) {
 
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize");
+
+        Intent intent= new Intent();
+        intent.setClass(context, YoutubePlayerFragment.class);
+        getActivity().startActivity(intent);
+
+        String value = call.getString("Youtube Player View Loaded");
+        JSObject ret = new JSObject();
+        ret.put("value", value);
+        call.success(ret);
+
+        /*
         getActivity().setContentView(R.layout.activity_player);
 
         youTubePlayerFragment = (YouTubePlayerSupportFragment) getActivity().getSupportFragmentManager()
@@ -58,12 +71,17 @@ public class YoutubePlayer extends Plugin {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
                                                 boolean wasRestored) {
+
+                Log.e(TAG, "[Youtube Player Plugin Native Android]: onInitializationSuccess");
                 if (!wasRestored) {
                     youTubePlayer = player;
 
                     // Set the player style default.
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
                     youTubePlayer.cueVideo("CqhpNxI8qYw");
+
+                    Log.e(TAG, "[Youtube Player Plugin Native Android]: loaded");
+
                     String value = call.getString("Youtube Player View Loaded");
                     JSObject ret = new JSObject();
                     ret.put("value", value);
@@ -75,9 +93,10 @@ public class YoutubePlayer extends Plugin {
             public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
 
                 // Print or show error if initialization failed.
-                Log.e(TAG, "Youtube Player View initialize failed");
+                Log.e(TAG, "[Youtube Player Plugin Native Android]: onInitializationFailure");
             }
         });
+        */
 
     }
 }
