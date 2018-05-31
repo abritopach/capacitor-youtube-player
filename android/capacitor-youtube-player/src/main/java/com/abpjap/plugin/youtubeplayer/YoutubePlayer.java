@@ -11,6 +11,9 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.google.android.youtube.player.YouTubePlayer;
 
+import java.util.Observable;
+import java.util.Observer;
+
 @NativePlugin()
 public class YoutubePlayer extends Plugin {
 
@@ -18,10 +21,22 @@ public class YoutubePlayer extends Plugin {
 
     private Context context;
 
+    private ObservableResult oResult;
+    private Observer oResultChanged = new Observer() {
+        @Override
+        public void update(Observable o, Object newValue) {
+            // NewValue is the observable string value.
+            Log.e(TAG, "Result has changed, new value:"+ (String) newValue);
+        }
+    };
+
 
     public void load() {
         Log.e(TAG, "[Youtube Player Plugin Native Android]: load");
         context = getContext();
+
+        // Add listener for value change.
+        oResult.addObserver(oResultChanged);
     }
 
     @PluginMethod()
@@ -39,7 +54,7 @@ public class YoutubePlayer extends Plugin {
         Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize");
 
         String videoId = call.getString("videoId");
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId" + videoId);
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId);
 
         Intent intent= new Intent();
         intent.setClass(context, YoutubePlayerFragment.class);
