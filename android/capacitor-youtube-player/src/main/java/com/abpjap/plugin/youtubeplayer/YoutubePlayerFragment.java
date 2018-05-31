@@ -22,15 +22,25 @@ public class YoutubePlayerFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "[Youtube Player Fragment]: onCreate");
         setContentView(R.layout.activity_player);
-        initializeYoutubePlayer();
+
+        String videoId = "";
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                videoId = extras.getString("videoId");
+                initializeYoutubePlayer(videoId);
+            }
+        }
     }
 
     /**
      * Initialize youtube player via Fragment and get instance of YoutubePlayer.
      */
-    private void initializeYoutubePlayer() {
+    private void initializeYoutubePlayer(final String videoId) {
 
+        Log.e(TAG, "[Youtube Player Fragment]: initializeYoutubePlayer");
         youTubePlayerFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.youtube_player_fragment);
 
@@ -49,7 +59,8 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
                     //cue the 1st video by default
-                    youTubePlayer.cueVideo("CqhpNxI8qYw");
+                    youTubePlayer.cueVideo(videoId);
+
                 }
             }
 

@@ -2,7 +2,6 @@ package com.abpjap.plugin.youtubeplayer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.getcapacitor.JSObject;
@@ -10,21 +9,12 @@ import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
-import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
-
-import com.abpjap.plugin.youtubeplayer.capacitoryoutubeplayer.R;
 
 @NativePlugin()
 public class YoutubePlayer extends Plugin {
 
     private static final String TAG = YouTubePlayer.class.getSimpleName();
-    // Youtube player fragment.
-    private YouTubePlayerSupportFragment youTubePlayerFragment;
-
-    // Youtube player to play video.
-    private YouTubePlayer youTubePlayer;
 
     private Context context;
 
@@ -44,59 +34,17 @@ public class YoutubePlayer extends Plugin {
     }
 
     @PluginMethod()
-    public void initialize(final PluginCall call) {
+    public void initialize(PluginCall call) {
 
         Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize");
 
+        String videoId = call.getString("videoId");
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId" + videoId);
+
         Intent intent= new Intent();
         intent.setClass(context, YoutubePlayerFragment.class);
+        intent.putExtra("videoId", videoId);
         getActivity().startActivity(intent);
-
-        String value = call.getString("Youtube Player View Loaded");
-        JSObject ret = new JSObject();
-        ret.put("value", value);
-        call.success(ret);
-
-        /*
-        getActivity().setContentView(R.layout.activity_player);
-
-        youTubePlayerFragment = (YouTubePlayerSupportFragment) getActivity().getSupportFragmentManager()
-                .findFragmentById(R.id.youtube_player_fragment);
-
-        if (youTubePlayerFragment == null)
-            return;
-
-        youTubePlayerFragment.initialize(Config.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
-
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
-                                                boolean wasRestored) {
-
-                Log.e(TAG, "[Youtube Player Plugin Native Android]: onInitializationSuccess");
-                if (!wasRestored) {
-                    youTubePlayer = player;
-
-                    // Set the player style default.
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-                    youTubePlayer.cueVideo("CqhpNxI8qYw");
-
-                    Log.e(TAG, "[Youtube Player Plugin Native Android]: loaded");
-
-                    String value = call.getString("Youtube Player View Loaded");
-                    JSObject ret = new JSObject();
-                    ret.put("value", value);
-                    call.success(ret);
-                }
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
-
-                // Print or show error if initialization failed.
-                Log.e(TAG, "[Youtube Player Plugin Native Android]: onInitializationFailure");
-            }
-        });
-        */
 
     }
 }
