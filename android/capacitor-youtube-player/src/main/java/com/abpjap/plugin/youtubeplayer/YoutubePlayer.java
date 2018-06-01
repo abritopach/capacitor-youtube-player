@@ -11,8 +11,8 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.google.android.youtube.player.YouTubePlayer;
 
-import java.util.Observable;
-import java.util.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 @NativePlugin()
 public class YoutubePlayer extends Plugin {
@@ -21,22 +21,10 @@ public class YoutubePlayer extends Plugin {
 
     private Context context;
 
-    private ObservableResult oResult;
-    private Observer oResultChanged = new Observer() {
-        @Override
-        public void update(Observable o, Object newValue) {
-            // NewValue is the observable string value.
-            Log.e(TAG, "Result has changed, new value:"+ (String) newValue);
-        }
-    };
-
 
     public void load() {
         Log.e(TAG, "[Youtube Player Plugin Native Android]: load");
         context = getContext();
-
-        // Add listener for value change.
-        oResult.addObserver(oResultChanged);
     }
 
     @PluginMethod()
@@ -49,7 +37,7 @@ public class YoutubePlayer extends Plugin {
     }
 
     @PluginMethod()
-    public void initialize(PluginCall call) {
+    public void initialize(final PluginCall call) {
 
         Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize");
 
@@ -60,6 +48,19 @@ public class YoutubePlayer extends Plugin {
         intent.setClass(context, YoutubePlayerFragment.class);
         intent.putExtra("videoId", videoId);
         getActivity().startActivity(intent);
+
+        Disposable disposable = RxBus.subscribe(new Consumer<Object>() {
+            @Override
+            public void accept(Object o) throws Exception {
+                if (o instanceof String) {
+                    Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize subscribe " + o);
+
+                    JSObject ret = new JSObject();
+                    ret.put("value", o);
+                    call.success(ret);
+                }
+            }
+        });
 
     }
 }

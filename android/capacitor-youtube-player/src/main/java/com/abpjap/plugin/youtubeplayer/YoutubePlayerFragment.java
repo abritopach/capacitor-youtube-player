@@ -21,16 +21,11 @@ public class YoutubePlayerFragment extends AppCompatActivity {
 
     private MyPlayerStateChangeListener playerStateChangeListener;
 
-    private ObservableResult result;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "[Youtube Player Fragment]: onCreate");
         setContentView(R.layout.activity_player);
-
-        // Create observable string;
-        result = new ObservableResult();
 
         String videoId = "";
         if (savedInstanceState == null) {
@@ -65,7 +60,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                     // Set the player style default.
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
-                    result.setValue("Youtube Player View initialized.");
+                    RxBus.publish("Youtube Player View initialized.");
 
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);
@@ -78,6 +73,8 @@ public class YoutubePlayerFragment extends AppCompatActivity {
 
                 // Print or show error if initialization failed.
                 Log.e(TAG, "Youtube Player View initialization failed");
+
+                RxBus.publish("Youtube Player View initialization failed");
             }
         });
 
