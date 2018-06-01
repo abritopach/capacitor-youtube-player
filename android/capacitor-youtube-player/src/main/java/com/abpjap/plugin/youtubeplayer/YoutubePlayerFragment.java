@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.getcapacitor.JSObject;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
@@ -60,7 +61,10 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                     // Set the player style default.
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
-                    RxBus.publish("Youtube Player View initialized.");
+                    JSObject result = new JSObject();
+                    result.put("message", "Youtube Player View initialized.");
+                    result.put("value", youTubePlayer);
+                    RxBus.publish(result);
 
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);

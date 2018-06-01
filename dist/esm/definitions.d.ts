@@ -10,7 +10,6 @@ export interface YoutubePlayerPlugin {
         value: string;
     }>;
     initialize(options: {
-        playerId: string;
         width: number;
         height: number;
         videoId: string;

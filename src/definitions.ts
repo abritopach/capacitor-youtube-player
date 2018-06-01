@@ -6,7 +6,7 @@ declare global {
 
 export interface YoutubePlayerPlugin {
   echo(options: { value: string }): Promise<{value: string}>;
-  initialize(options: {playerId: string, width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;
+  initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;
   // Methods playing video.
   /***********/
   stopVideo(): Promise<{result: { method: string, value: boolean }}>;

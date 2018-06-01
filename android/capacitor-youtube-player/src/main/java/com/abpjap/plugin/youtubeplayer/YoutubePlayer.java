@@ -20,11 +20,14 @@ public class YoutubePlayer extends Plugin {
     private static final String TAG = YouTubePlayer.class.getSimpleName();
 
     private Context context;
+    private YouTubePlayer youTubePlayer = null;
+    private YoutubePlayerHandler youtubePlayerHandler = null;
 
 
     public void load() {
         Log.e(TAG, "[Youtube Player Plugin Native Android]: load");
         context = getContext();
+        youtubePlayerHandler = new YoutubePlayerHandler();
     }
 
     @PluginMethod()
@@ -52,15 +55,26 @@ public class YoutubePlayer extends Plugin {
         Disposable disposable = RxBus.subscribe(new Consumer<Object>() {
             @Override
             public void accept(Object o) throws Exception {
-                if (o instanceof String) {
-                    Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize subscribe " + o);
+                if (o instanceof JSObject) {
+                    String message = ((JSObject) o).getString("message");
+                    Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize subscribe " + message);
 
                     JSObject ret = new JSObject();
-                    ret.put("value", o);
+                    ret.put("value", message);
                     call.success(ret);
                 }
             }
         });
+
+    }
+
+    @PluginMethod()
+    public void pauseVideo(final PluginCall call) {
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: pauseVideo");
+
+        if (youTubePlayer != null) {
+            youtubePlayerHandler.pauseVideo(youTubePlayer);
+        }
 
     }
 }
