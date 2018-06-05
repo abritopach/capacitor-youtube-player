@@ -56,6 +56,8 @@ public class YoutubePlayer extends Plugin {
             @Override
             public void accept(Object o) throws Exception {
                 if (o instanceof JSObject) {
+
+                    // youTubePlayer = ((JSObject) o).get("value");
                     String message = ((JSObject) o).getString("message");
                     Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize subscribe " + message);
 

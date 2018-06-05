@@ -3,7 +3,9 @@ import { IPlayerSize, IPlayerVars } from './web/models/models';
 export declare function YT(): any;
 export declare function Player(): any;
 export declare class YoutubePlayerPluginWeb extends WebPlugin {
+    players: any;
     player: any;
+    playerApiLoaded: Boolean;
     private readonly defaultSizes;
     constructor();
     loadPlayerApi(): Promise<{}>;
