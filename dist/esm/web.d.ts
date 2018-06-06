@@ -2,6 +2,7 @@ import { WebPlugin } from '@capacitor/core';
 import { IPlayerSize, IPlayerVars } from './web/models/models';
 export declare function YT(): any;
 export declare function Player(): any;
+export declare function PlayerState(): any;
 export declare class YoutubePlayerPluginWeb extends WebPlugin {
     players: any;
     player: any;
@@ -30,26 +31,32 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
         playerVars?: IPlayerVars;
         videoId: string;
     }): Promise<{}>;
+    destroy(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
     /*********/
-    stopVideo(): Promise<{
+    stopVideo(playerId: string): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    playVideo(): Promise<{
+    playVideo(playerId: string): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    pauseVideo(): Promise<{
+    pauseVideo(playerId: string): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    seekTo(seconds: number, allowSeekAhead: boolean): Promise<{
+    seekTo(playerId: string, seconds: number, allowSeekAhead: boolean): Promise<{
         result: {
             method: string;
             value: boolean;
@@ -57,13 +64,13 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
             allowSeekAhead: boolean;
         };
     }>;
-    clearVideo(): Promise<{
+    clearVideo(playerId: string): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    loadVideoById(options: {
+    loadVideoById(playerId: string, options: {
         videoId: string;
         startSeconds?: number;
         endSeconds?: number;
@@ -80,7 +87,7 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
             };
         };
     }>;
-    cueVideoById(options: {
+    cueVideoById(playerId: string, options: {
         videoId: string;
         startSeconds?: number;
         endSeconds?: number;
