@@ -16,32 +16,32 @@ export interface YoutubePlayerPlugin {
     }): Promise<{
         playerReady: boolean;
     }>;
-    destroy(playerId: string): Promise<{
+    destroy(): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
     /***********/
-    stopVideo(playerId: string): Promise<{
+    stopVideo(): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    playVideo(playerId: string): Promise<{
+    playVideo(): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    pauseVideo(playerId: string): Promise<{
+    pauseVideo(): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    seekTo(playerId: string): Promise<{
+    seekTo(): Promise<{
         result: {
             method: string;
             value: boolean;
@@ -49,13 +49,13 @@ export interface YoutubePlayerPlugin {
             allowSeekAhead: boolean;
         };
     }>;
-    clearVideo(playerId: string): Promise<{
+    clearVideo(): Promise<{
         result: {
             method: string;
             value: boolean;
         };
     }>;
-    loadVideoById(playerId: string, options: {
+    loadVideoById(options: {
         videoId: string;
         startSeconds?: number;
         endSeconds?: number;
@@ -67,7 +67,7 @@ export interface YoutubePlayerPlugin {
             options: {};
         };
     }>;
-    cueVideoById(playerId: string, options: {
+    cueVideoById(options: {
         videoId: string;
         startSeconds?: number;
         endSeconds?: number;

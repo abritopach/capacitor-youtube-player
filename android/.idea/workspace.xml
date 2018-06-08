@@ -12,9 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ac85a33c-2662-4799-b0f7-c0c187355cdd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/web.js" afterPath="$PROJECT_DIR$/../dist/esm/web.js" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/web.js.map" afterPath="$PROJECT_DIR$/../dist/esm/web.js.map" />
+      <change beforePath="$PROJECT_DIR$/../dist/esm/definitions.d.ts" afterPath="$PROJECT_DIR$/../dist/esm/definitions.d.ts" />
       <change beforePath="$PROJECT_DIR$/../package.json" afterPath="$PROJECT_DIR$/../package.json" />
+      <change beforePath="$PROJECT_DIR$/../src/definitions.ts" afterPath="$PROJECT_DIR$/../src/definitions.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -2183,8 +2183,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2257,6 +2256,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2268,7 +2269,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
