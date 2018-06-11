@@ -1,5 +1,6 @@
 import Foundation
 import Capacitor
+import ViewController
 
 /**
  * Please read the Capacitor iOS Plugin Development Guide
@@ -18,5 +19,7 @@ public class YoutubePlayer: CAPPlugin {
     
     @objc func initialize(_ call: CAPPluginCall) {
         print("[Youtube Player Plugin Native iOS]: initialize");
+
+        self.bridge.viewController.present(ViewController, animated: true, completion: nil);
     }
 }

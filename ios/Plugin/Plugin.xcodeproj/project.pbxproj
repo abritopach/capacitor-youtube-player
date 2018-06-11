@@ -12,6 +12,7 @@
 		3A1265BE20CA821D0027A3D6 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1265BC20CA821C0027A3D6 /* YTPlayerView.m */; };
 		3A1265BF20CA821D0027A3D6 /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A1265BD20CA821C0027A3D6 /* YTPlayerView.h */; };
 		3A1265C120CA82790027A3D6 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1265C020CA82790027A3D6 /* Assets */; };
+		3A1265C420CA88E40027A3D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1265C320CA88E40027A3D6 /* ViewController.swift */; };
 		50ADFF92201F53D600D50D53 /* Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFF88201F53D600D50D53 /* Plugin.framework */; };
 		50ADFF97201F53D600D50D53 /* PluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFF96201F53D600D50D53 /* PluginTests.swift */; };
 		50ADFF99201F53D600D50D53 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +35,7 @@
 		3A1265BC20CA821C0027A3D6 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		3A1265BD20CA821C0027A3D6 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		3A1265C020CA82790027A3D6 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		3A1265C320CA88E40027A3D6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF88201F53D600D50D53 /* Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF8B201F53D600D50D53 /* Plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		3A1265C220CA84DB0027A3D6 /* YoutubePlayerView */ = {
 			isa = PBXGroup;
 			children = (
+				3A1265C320CA88E40027A3D6 /* ViewController.swift */,
 			);
 			path = YoutubePlayerView;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				50E1A94820377CB70090CE1A /* Plugin.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */,
+				3A1265C420CA88E40027A3D6 /* ViewController.swift in Sources */,
 				3A1265BE20CA821D0027A3D6 /* YTPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

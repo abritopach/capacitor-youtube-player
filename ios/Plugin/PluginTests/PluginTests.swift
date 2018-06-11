@@ -32,4 +32,7 @@ class PluginTests: XCTestCase {
         
         plugin.echo(call!)
     }
+    
+    func testInitialize() {
+    }
 }

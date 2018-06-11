@@ -1,6 +1,6 @@
 {
   "name": "capacitor-youtube-player",
-  "version": "0.0.1-alpha51",
+  "version": "0.0.1-alpha55",
   "description": "Youtube Player",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
