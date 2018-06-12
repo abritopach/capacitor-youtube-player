@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		03FC29A292ACC40490383A1F /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		20C0B05DCFC8E3958A738AF2 /* Pods_PluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */; };
-		3A1265BE20CA821D0027A3D6 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1265BC20CA821C0027A3D6 /* YTPlayerView.m */; };
-		3A1265BF20CA821D0027A3D6 /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A1265BD20CA821C0027A3D6 /* YTPlayerView.h */; };
 		3A1265C120CA82790027A3D6 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1265C020CA82790027A3D6 /* Assets */; };
-		3A1265C420CA88E40027A3D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1265C320CA88E40027A3D6 /* ViewController.swift */; };
+		3A942B7F20CFDBA600D83954 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A942B7B20CFDBA300D83954 /* Info.plist */; };
+		3A942B8020CFDBA600D83954 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3A942B7C20CFDBA300D83954 /* Base.lproj */; };
+		3A942B8120CFDBA600D83954 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A942B7D20CFDBA400D83954 /* AppDelegate.swift */; };
+		3A942B8220CFDBA600D83954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A942B7E20CFDBA500D83954 /* Assets.xcassets */; };
+		3AFA811B20D017F000F477B0 /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFA811920D017F000F477B0 /* YTPlayerView.h */; };
+		3AFA811C20D017F000F477B0 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA811A20D017F000F477B0 /* YTPlayerView.m */; };
+		3AFC340920CFE3A90096D890 /* YPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC340820CFE3A80096D890 /* YPViewController.swift */; };
 		50ADFF92201F53D600D50D53 /* Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFF88201F53D600D50D53 /* Plugin.framework */; };
 		50ADFF97201F53D600D50D53 /* PluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFF96201F53D600D50D53 /* PluginTests.swift */; };
 		50ADFF99201F53D600D50D53 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,11 +36,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A1265BC20CA821C0027A3D6 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
-		3A1265BD20CA821C0027A3D6 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		3A1265C020CA82790027A3D6 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
-		3A1265C320CA88E40027A3D6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3AC5886720CFC66C00295D4D /* Plugin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Plugin-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A942B7B20CFDBA300D83954 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A942B7C20CFDBA300D83954 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
+		3A942B7D20CFDBA400D83954 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3A942B7E20CFDBA500D83954 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AFA811920D017F000F477B0 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = "../../../../../ios/youtube-player-ios-example/YTPlayerView.h"; sourceTree = "<group>"; };
+		3AFA811A20D017F000F477B0 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = "../../../../../ios/youtube-player-ios-example/YTPlayerView.m"; sourceTree = "<group>"; };
+		3AFA812120D01A3500F477B0 /* Plugin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Plugin-Bridging-Header.h"; sourceTree = "<group>"; };
+		3AFC340820CFE3A80096D890 /* YPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPViewController.swift; sourceTree = "<group>"; };
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF88201F53D600D50D53 /* Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF8B201F53D600D50D53 /* Plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
@@ -79,7 +87,11 @@
 		3A1265C220CA84DB0027A3D6 /* YoutubePlayerView */ = {
 			isa = PBXGroup;
 			children = (
-				3A1265C320CA88E40027A3D6 /* ViewController.swift */,
+				3A942B7D20CFDBA400D83954 /* AppDelegate.swift */,
+				3A942B7E20CFDBA500D83954 /* Assets.xcassets */,
+				3A942B7C20CFDBA300D83954 /* Base.lproj */,
+				3A942B7B20CFDBA300D83954 /* Info.plist */,
+				3AFC340820CFE3A80096D890 /* YPViewController.swift */,
 			);
 			path = YoutubePlayerView;
 			sourceTree = "<group>";
@@ -87,11 +99,6 @@
 		50ADFF7E201F53D600D50D53 = {
 			isa = PBXGroup;
 			children = (
-				3A1265C220CA84DB0027A3D6 /* YoutubePlayerView */,
-				3A1265C020CA82790027A3D6 /* Assets */,
-				3A1265BD20CA821C0027A3D6 /* YTPlayerView.h */,
-				3AC5886720CFC66C00295D4D /* Plugin-Bridging-Header.h */,
-				3A1265BC20CA821C0027A3D6 /* YTPlayerView.m */,
 				50ADFF8A201F53D600D50D53 /* Plugin */,
 				50ADFF95201F53D600D50D53 /* PluginTests */,
 				50ADFF89201F53D600D50D53 /* Products */,
@@ -112,10 +119,15 @@
 		50ADFF8A201F53D600D50D53 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA811920D017F000F477B0 /* YTPlayerView.h */,
+				3AFA811A20D017F000F477B0 /* YTPlayerView.m */,
+				3A1265C020CA82790027A3D6 /* Assets */,
+				3A1265C220CA84DB0027A3D6 /* YoutubePlayerView */,
 				50E1A94720377CB70090CE1A /* Plugin.swift */,
 				50ADFF8B201F53D600D50D53 /* Plugin.h */,
 				50ADFFA72020EE4F00D50D53 /* Plugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
+				3AFA812120D01A3500F477B0 /* Plugin-Bridging-Header.h */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -158,7 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50ADFF99201F53D600D50D53 /* Plugin.h in Headers */,
-				3A1265BF20CA821D0027A3D6 /* YTPlayerView.h in Headers */,
+				3AFA811B20D017F000F477B0 /* YTPlayerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +260,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A942B7F20CFDBA600D83954 /* Info.plist in Resources */,
+				3A942B8020CFDBA600D83954 /* Base.lproj in Resources */,
+				3A942B8220CFDBA600D83954 /* Assets.xcassets in Resources */,
 				3A1265C120CA82790027A3D6 /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,8 +344,9 @@
 			files = (
 				50E1A94820377CB70090CE1A /* Plugin.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */,
-				3A1265C420CA88E40027A3D6 /* ViewController.swift in Sources */,
-				3A1265BE20CA821D0027A3D6 /* YTPlayerView.m in Sources */,
+				3A942B8120CFDBA600D83954 /* AppDelegate.swift in Sources */,
+				3AFA811C20D017F000F477B0 /* YTPlayerView.m in Sources */,
+				3AFC340920CFE3A90096D890 /* YPViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +501,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Plugin-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,6 +528,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Plugin-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
