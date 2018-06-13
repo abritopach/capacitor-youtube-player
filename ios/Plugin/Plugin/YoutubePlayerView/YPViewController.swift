@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import YouTubePlayer
 
 public class YPViewController: UIViewController {
 
-    @IBOutlet var youtubePlayer: YTPlayerView!
+    @IBOutlet weak var youtubePlayer: YouTubePlayerView!
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         let videoId = "WAAZJm6H9Ms";
-        youtubePlayer.load(withVideoId: videoId);
+        
+        youtubePlayer.loadVideoID(videoId);
+        
+        // youtubePlayer.load(withVideoId: videoId);
     }
 
     public override func didReceiveMemoryWarning() {
