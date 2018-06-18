@@ -9,11 +9,7 @@
 /* Begin PBXBuildFile section */
 		03FC29A292ACC40490383A1F /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		20C0B05DCFC8E3958A738AF2 /* Pods_PluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */; };
-		3A942B7F20CFDBA600D83954 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A942B7B20CFDBA300D83954 /* Info.plist */; };
-		3A942B8020CFDBA600D83954 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3A942B7C20CFDBA300D83954 /* Base.lproj */; };
-		3A942B8120CFDBA600D83954 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A942B7D20CFDBA400D83954 /* AppDelegate.swift */; };
-		3A942B8220CFDBA600D83954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A942B7E20CFDBA500D83954 /* Assets.xcassets */; };
-		3AFC340920CFE3A90096D890 /* YPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC340820CFE3A80096D890 /* YPViewController.swift */; };
+		3A86005A20D7CE9800257EB7 /* YPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86005920D7CE9800257EB7 /* YPViewController.swift */; };
 		50ADFF92201F53D600D50D53 /* Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFF88201F53D600D50D53 /* Plugin.framework */; };
 		50ADFF97201F53D600D50D53 /* PluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFF96201F53D600D50D53 /* PluginTests.swift */; };
 		50ADFF99201F53D600D50D53 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,11 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A942B7B20CFDBA300D83954 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A942B7C20CFDBA300D83954 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
-		3A942B7D20CFDBA400D83954 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A942B7E20CFDBA500D83954 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3AFC340820CFE3A80096D890 /* YPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPViewController.swift; sourceTree = "<group>"; };
+		3A86005920D7CE9800257EB7 /* YPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPViewController.swift; sourceTree = "<group>"; };
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF88201F53D600D50D53 /* Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF8B201F53D600D50D53 /* Plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
@@ -77,18 +69,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A1265C220CA84DB0027A3D6 /* YoutubePlayerView */ = {
-			isa = PBXGroup;
-			children = (
-				3A942B7D20CFDBA400D83954 /* AppDelegate.swift */,
-				3A942B7E20CFDBA500D83954 /* Assets.xcassets */,
-				3A942B7C20CFDBA300D83954 /* Base.lproj */,
-				3A942B7B20CFDBA300D83954 /* Info.plist */,
-				3AFC340820CFE3A80096D890 /* YPViewController.swift */,
-			);
-			path = YoutubePlayerView;
-			sourceTree = "<group>";
-		};
 		50ADFF7E201F53D600D50D53 = {
 			isa = PBXGroup;
 			children = (
@@ -112,11 +92,11 @@
 		50ADFF8A201F53D600D50D53 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
-				3A1265C220CA84DB0027A3D6 /* YoutubePlayerView */,
 				50E1A94720377CB70090CE1A /* Plugin.swift */,
 				50ADFF8B201F53D600D50D53 /* Plugin.h */,
 				50ADFFA72020EE4F00D50D53 /* Plugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
+				3A86005920D7CE9800257EB7 /* YPViewController.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -248,9 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A942B7F20CFDBA600D83954 /* Info.plist in Resources */,
-				3A942B8020CFDBA600D83954 /* Base.lproj in Resources */,
-				3A942B8220CFDBA600D83954 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,8 +310,7 @@
 			files = (
 				50E1A94820377CB70090CE1A /* Plugin.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */,
-				3A942B8120CFDBA600D83954 /* AppDelegate.swift in Sources */,
-				3AFC340920CFE3A90096D890 /* YPViewController.swift in Sources */,
+				3A86005A20D7CE9800257EB7 /* YPViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

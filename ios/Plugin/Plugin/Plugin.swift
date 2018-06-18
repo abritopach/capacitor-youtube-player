@@ -7,7 +7,7 @@ import Capacitor
  */
 @objc(YoutubePlayer)
 public class YoutubePlayer: CAPPlugin {
-
+    
     var vc: YPViewController!
     
     @objc func echo(_ call: CAPPluginCall) {
@@ -24,11 +24,11 @@ public class YoutubePlayer: CAPPlugin {
         /*
         let alert = UIAlertController(title: "[Youtube Player Plugin Native iOS]: initialize", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-         */
         
+        self.bridge.viewController.present(alert, animated: true, completion: nil)
+         */
+
         self.vc = YPViewController();
-
-
         self.bridge.viewController.present(self.vc!, animated: true, completion: {
             call.success([
                 "value": "[Youtube Player Plugin Native iOS]: initialize"
