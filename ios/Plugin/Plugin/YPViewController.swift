@@ -9,23 +9,35 @@
 import UIKit
 import YouTubePlayer
 
-public class YPViewController: UIViewController, YouTubePlayerDelegate {
+public class YPViewController: UIViewController {
     
-    @IBOutlet weak var youtubePlayer: YouTubePlayerView!
     
+    var youtubePlayer: YouTubePlayerView!
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         print("[Youtube Player Plugin Native iOS]: YPViewController::viewDidLoad");
         
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+
+        print("[Youtube Player Plugin Native iOS]: YPViewController::viewWillAppear");
+        
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated);
+        
+        print("[Youtube Player Plugin Native iOS]: YPViewController::viewDidAppear");
         // Do any additional setup after loading the view, typically from a nib.
         let videoId = "WAAZJm6H9Ms";
         
         youtubePlayer = YouTubePlayerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        youtubePlayer.delegate = self
         self.view.addSubview(youtubePlayer)
         
-        //youtubePlayer.loadVideoID(videoId);
+        youtubePlayer.loadVideoID(videoId);
     }
     
     public override func didReceiveMemoryWarning() {
