@@ -14,6 +14,10 @@ public class YPViewController: UIViewController {
     
     var youtubePlayer: YouTubePlayerView!
     var options: [String : Any]!
+    private var _defaultSizes: [String : Int] = [
+        "height": 270,
+        "width": 367
+    ];
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +46,12 @@ public class YPViewController: UIViewController {
             if let dictionary = self.options as? [String: Any] {
                 // treat it as a string key dictionary.
                 let videoId = dictionary["videoId"] as! String
-                print("videoId: \(videoId)")
                 let width = dictionary["width"] as! Int
                 let height = dictionary["height"] as! Int
                 
-                youtubePlayer = YouTubePlayerView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+                let playerSize: [String : Int] = checkSize(width: width, height: height)
+                
+                youtubePlayer = YouTubePlayerView(frame: CGRect(x: 0, y: 0, width: playerSize["width"]!, height: playerSize["height"]!))
                 self.view.addSubview(youtubePlayer)
                 
                 youtubePlayer.loadVideoID(videoId);
@@ -59,21 +64,19 @@ public class YPViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    func checkSize(options: [String : Any]!) {
+    func checkSize(width: Int, height: Int) -> [String : Int] {
         
-        let playerSize = [
-            "width" : options["width"] as! Int || self.defaultSizes["width"],
-            "height": options["height"] as! Int || self.defaultSizes["height"]
-            ] as [String : Any]
+        var playerSize = [
+            "width" : width ?? self._defaultSizes["width"]!,
+            "height": height ?? self._defaultSizes["height"]!
+        ] as [String : Int]
         
-        if (playerSize["height"] > UIScreen.main.bounds.height) {
-            playerSize["height"] = UIScreen.main.bounds.height;
+        if (playerSize["height"] as! Int > Int(UIScreen.main.bounds.height)) {
+            playerSize["height"] = Int(UIScreen.main.bounds.height);
         }
-        if (playerSize["width"] > UIScreen.main.bounds.width) {
-            playerSize["width"] = UIScreen.main.bounds.width;
+        if (playerSize["width"] as! Int > Int(UIScreen.main.bounds.width)) {
+            playerSize["width"] = Int(UIScreen.main.bounds.width);
         }
         return playerSize;
     }
- */
 }
