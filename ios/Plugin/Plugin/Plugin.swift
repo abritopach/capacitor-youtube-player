@@ -27,12 +27,35 @@ public class YoutubePlayer: CAPPlugin {
         
         self.bridge.viewController.present(alert, animated: true, completion: nil)
          */
+        
+        let videoId = call.getString("videoId") ?? "";
+        let width = call.getInt("width") ?? nil;
+        let height = call.getInt("height") ?? nil;
+        print("[Youtube Player Plugin Native iOS]: videoId " + videoId);
+        print("[Youtube Player Plugin Native iOS]: width \(width)");
+        print("[Youtube Player Plugin Native iOS]: height \(height)");
+        
+        if (videoId != "") {
+            self.vc = YPViewController();
+            
+            let options = [
+                "videoId" : videoId,
+                "width" : width,
+                "height": height,
+                ] as [String : Any]
+            
+            self.vc.options = options
+            self.bridge.viewController.present(self.vc!, animated: true, completion: {
+                call.success([
+                    "value": "[Youtube Player Plugin Native iOS]: initialize"
+                    ])
+            });
+        }
+        else {
+            call.reject("Must provide a videoId")
+            return
+        }
 
-        self.vc = YPViewController();
-        self.bridge.viewController.present(self.vc!, animated: true, completion: {
-            call.success([
-                "value": "[Youtube Player Plugin Native iOS]: initialize"
-                ])
-        });
+        
     }
 }
