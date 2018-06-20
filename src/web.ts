@@ -182,16 +182,13 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     return Promise.resolve({result: { method: 'seekTo', value: true, seconds: seconds, allowSeekAhead: allowSeekAhead }});
   }
 
-  async clearVideo(playerId: string) {
-    this.players[playerId].clearVideo();
-    return Promise.resolve({result: { method: 'clearVideo', value: true }});
-  }
-
+  // Loads and plays the specified video.
   async loadVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}) {
     this.players[playerId].loadVideoById(options);
     return Promise.resolve({result: { method: 'loadVideoById', value: true, options: options }});
   }
 
+  // Loads the specified video's thumbnail and prepares the player to play the video. The player does not request the FLV until playVideo() or seekTo() is called.
   async cueVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}) {
     this.players[playerId].cueVideoById(options);
     return Promise.resolve({result: { method: 'cueVideoById', value: true, options: options }});

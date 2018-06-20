@@ -8,16 +8,15 @@ export interface YoutubePlayerPlugin {
   echo(options: { value: string }): Promise<{value: string}>;
   initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;
   destroy(): Promise<{result: { method: string, value: boolean }}>;
-  // Methods playing video.
+  // Methods playback controls and player settings..
   /***********/
   stopVideo(): Promise<{result: { method: string, value: boolean }}>;
   playVideo(): Promise<{result: { method: string, value: boolean }}>;
   pauseVideo(): Promise<{result: { method: string, value: boolean }}>;
   seekTo(): Promise<{result: { method: string, value: boolean, seconds: number, allowSeekAhead: boolean }}>;
-  clearVideo(): Promise<{result: { method: string, value: boolean }}>;
   loadVideoById(options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {} }}>;
   cueVideoById(options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {} }}>;
   /***********/
 
-  // Methods modifying the player volume.
+  // Methods changing the player volume.
 }

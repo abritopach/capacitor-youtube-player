@@ -27,8 +27,11 @@ Capacitor Youtube Player is a custom Native Capacitor plugin to show Youtube Pla
 
     // Seeks to a specified time in the video. If the player is paused when the function is called, it will remain paused. If the function is //called from another state (playing, video cued, etc.), the player will play the video.
     seekTo(playerId: string, seconds: number, allowSeekAhead: boolean)
-    clearVideo(playerId: string)
+
+    // Loads and plays the specified video.
     loadVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string})
+
+    // Loads the specified video's thumbnail and prepares the player to play the video. The player does not request the FLV until playVideo() or // seekTo() is called.
     cueVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string})
 
     *** Methods changing the player volume. ***
