@@ -64,12 +64,6 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
             allowSeekAhead: boolean;
         };
     }>;
-    clearVideo(playerId: string): Promise<{
-        result: {
-            method: string;
-            value: boolean;
-        };
-    }>;
     loadVideoById(playerId: string, options: {
         videoId: string;
         startSeconds?: number;
@@ -106,7 +100,43 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
     }>;
     /*********/
     /*********/
+    mute(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
+    unMute(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
+    isMuted(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: any;
+        };
+    }>;
+    setVolume(playerId: string, volume: Number): Promise<{
+        result: {
+            method: string;
+            value: Number;
+        };
+    }>;
+    getVolume(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: any;
+        };
+    }>;
     /*********/
+    toggleFullScreen(playerId: string, isFullScreen: boolean | null | undefined): Promise<{
+        result: {
+            method: string;
+            value: boolean;
+        };
+    }>;
     echo(options: {
         value: string;
     }): Promise<{

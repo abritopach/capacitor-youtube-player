@@ -45,11 +45,37 @@ Capacitor Youtube Player is a custom Native Capacitor plugin to show Youtube Pla
     // Returns true if the player is muted, false if not.
     isMuted(playerId: string)
 
-    // // Sets the volume. Accepts an integer between 0 and 100.
+    // Sets the volume. Accepts an integer between 0 and 100.
     setVolume(playerId: string, volume: Number)
 
     // Returns the player's current volume, an integer between 0 and 100. Note that getVolume() will return the volume even if the player is muted.
     getVolume(playerId: string)
+
+    ***  Methods setting the player size.  ***
+
+    // Sets the size in pixels of the <iframe> that contains the player.
+    setSize(playerId: string, width:Number, height:Number)
+
+    *** Methods playback status. ***
+
+    // Returns a number between 0 and 1 that specifies the percentage of the video that the player shows as buffered.
+    // This method returns a more reliable number than the now-deprecated getVideoBytesLoaded and getVideoBytesTotal methods.
+    getVideoLoadedFraction(playerId: string)
+
+    // Returns the state of the player. Possible values are: -1 unstarted / 0 ended / 1 playing / 2 paused / 3 buffering / 5 video cued
+    getPlayerState(playerId: string) 
+
+    // Returns the elapsed time in seconds since the video started playing.
+    getCurrentTime(playerId: string)
+
+    --> ANDROID
+
+    initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;
+
+
+    --> IOS
+
+    initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;
     
 
 ## Install Plugin

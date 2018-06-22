@@ -135,8 +135,11 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             return Promise.resolve({ result: { method: 'destroy', value: true } });
         });
     }
-    // Methods playing video.
+    // Methods playback controls and player settings.
     /*********/
+    // Stops and cancels loading of the current video. This function should be reserved for rare situations when you know that the user will not be watching
+    // additional video in the player. If your intent is to pause the video, you should just call the pauseVideo function. If you want to change the video
+    // that the player is playing, you can call one of the queueing functions without calling stopVideo first.
     stopVideo(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('[Youtube Player Plugin Web]: stopVideo');
@@ -144,6 +147,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             return Promise.resolve({ result: { method: 'stopVideo', value: true } });
         });
     }
+    // Plays the currently cued/loaded video. The final player state after this function executes will be playing (1).
     playVideo(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('[Youtube Player Plugin Web]: playVideo');
@@ -151,6 +155,8 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             return Promise.resolve({ result: { method: 'playVideo', value: true } });
         });
     }
+    // Pauses the currently playing video. The final player state after this function executes will be paused (2) unless the player is in the ended (0) 
+    // state when the function is called, in which case the player state will not change.
     pauseVideo(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('[Youtube Player Plugin Web]: pauseVideo');
@@ -158,6 +164,8 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             return Promise.resolve({ result: { method: 'pauseVideo', value: true } });
         });
     }
+    // Seeks to a specified time in the video. If the player is paused when the function is called, it will remain paused. If the function is called from
+    // another state (playing, video cued, etc.), the player will play the video.
     seekTo(playerId, seconds, allowSeekAhead) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('[Youtube Player Plugin Web]: seekTo');
@@ -165,18 +173,14 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             return Promise.resolve({ result: { method: 'seekTo', value: true, seconds: seconds, allowSeekAhead: allowSeekAhead } });
         });
     }
-    clearVideo(playerId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.players[playerId].clearVideo();
-            return Promise.resolve({ result: { method: 'clearVideo', value: true } });
-        });
-    }
+    // Loads and plays the specified video.
     loadVideoById(playerId, options) {
         return __awaiter(this, void 0, void 0, function* () {
             this.players[playerId].loadVideoById(options);
             return Promise.resolve({ result: { method: 'loadVideoById', value: true, options: options } });
         });
     }
+    // Loads the specified video's thumbnail and prepares the player to play the video. The player does not request the FLV until playVideo() or seekTo() is called.
     cueVideoById(playerId, options) {
         return __awaiter(this, void 0, void 0, function* () {
             this.players[playerId].cueVideoById(options);
@@ -184,9 +188,53 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
         });
     }
     /*********/
-    // Methods modifying the player volume.
+    // Methods changing the player volume.
     /*********/
+    // Mutes the player.
+    mute(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.players[playerId].mute();
+            return Promise.resolve({ result: { method: 'mute', value: true } });
+        });
+    }
+    // Unmutes the player.
+    unMute(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.players[playerId].unMute();
+            return Promise.resolve({ result: { method: 'unMute', value: true } });
+        });
+    }
+    // Returns true if the player is muted, false if not.
+    isMuted(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return Promise.resolve({ result: { method: 'isMuted', value: this.players[playerId].isMuted() } });
+        });
+    }
+    // Sets the volume. Accepts an integer between 0 and 100.
+    setVolume(playerId, volume) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.players[playerId].setVolume(volume);
+            return Promise.resolve({ result: { method: 'setVolume', value: volume } });
+        });
+    }
+    // Returns the player's current volume, an integer between 0 and 100. Note that getVolume() will return the volume even if the player is muted.
+    getVolume(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return Promise.resolve({ result: { method: 'getVolume', value: this.players[playerId].getVolume() } });
+        });
+    }
     /*********/
+    toggleFullScreen(playerId, isFullScreen) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let { height, width } = this.defaultSizes;
+            if (!isFullScreen) {
+                height = window.innerHeight;
+                width = window.innerWidth;
+            }
+            this.players[playerId].setSize(width, height);
+            return Promise.resolve({ result: { method: 'toggleFullScreen', value: isFullScreen } });
+        });
+    }
     echo(options) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('ECHO', options);

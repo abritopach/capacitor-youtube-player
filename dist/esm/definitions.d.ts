@@ -49,12 +49,6 @@ export interface YoutubePlayerPlugin {
             allowSeekAhead: boolean;
         };
     }>;
-    clearVideo(): Promise<{
-        result: {
-            method: string;
-            value: boolean;
-        };
-    }>;
     loadVideoById(options: {
         videoId: string;
         startSeconds?: number;
