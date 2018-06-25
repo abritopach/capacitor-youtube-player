@@ -9,7 +9,7 @@
 import UIKit
 import YouTubePlayer
 
-public class YPViewController: UIViewController {
+public class YPViewController: UIViewController, YouTubePlayerDelegate {
     
     
     var youtubePlayer: YouTubePlayerView!
@@ -54,6 +54,8 @@ public class YPViewController: UIViewController {
                 
                 youtubePlayer = YouTubePlayerView(frame: CGRect(x: 0, y: 0, width: playerSize["width"]!, height: playerSize["height"]!))
 
+                youtubePlayer.delegate = self
+
                 self.view.addSubview(youtubePlayer)
 
                 // let playerVars = ["controls": "1", "color": "red", "showinfo": "1", "autoplay": "0", "fs": "0", "loop": "0", "start": "60"]
@@ -84,5 +86,11 @@ public class YPViewController: UIViewController {
             playerSize["width"] = Int(UIScreen.main.bounds.width);
         }
         return playerSize;
+    }
+
+    public func playerReady(_ youtubePlayer: YouTubePlayerView){
+        print("[Youtube Player Plugin Native iOS]: playerReady")
+        // SVProgressHUD.dismiss()
+        
     }
 }
