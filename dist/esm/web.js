@@ -224,6 +224,43 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
         });
     }
     /*********/
+    // Methods setting the player size.
+    /*********/
+    // Sets the size in pixels of the <iframe> that contains the player.
+    setSize(playerId, width, height) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.players[playerId].setSize(width, height);
+            return Promise.resolve({ result: { method: 'setSize', value: { width: width, height: height } } });
+        });
+    }
+    /*********/
+    // Methods playback status.
+    /*********/
+    // Returns a number between 0 and 1 that specifies the percentage of the video that the player shows as buffered.
+    // This method returns a more reliable number than the now-deprecated getVideoBytesLoaded and getVideoBytesTotal methods.
+    getVideoLoadedFraction(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return Promise.resolve({ result: { method: 'getVideoLoadedFraction', value: this.players[playerId].getVideoLoadedFraction() } });
+        });
+    }
+    // Returns the state of the player. Possible values are:
+    // -1 – unstarted
+    // 0 – ended
+    // 1 – playing
+    // 2 – paused
+    // 3 – buffering
+    // 5 – video cued
+    getPlayerState(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return Promise.resolve({ result: { method: 'getPlayerState', value: this.players[playerId].getPlayerState() } });
+        });
+    }
+    // Returns the elapsed time in seconds since the video started playing.
+    getCurrentTime(playerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return Promise.resolve({ result: { method: 'getCurrentTime', value: this.players[playerId].getCurrentTime() } });
+        });
+    }
     toggleFullScreen(playerId, isFullScreen) {
         return __awaiter(this, void 0, void 0, function* () {
             let { height, width } = this.defaultSizes;

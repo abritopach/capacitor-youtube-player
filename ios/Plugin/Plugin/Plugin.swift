@@ -35,6 +35,7 @@ public class YoutubePlayer: CAPPlugin {
                 "videoId" : call.getString("videoId") ?? nil,
                 "width" : call.getInt("width") ?? nil,
                 "height": call.getInt("height") ?? nil,
+                "playerVars": call.getObject("playerVars") ?? nil
                 ] as [String : Any]
             
             self.vc.options = options

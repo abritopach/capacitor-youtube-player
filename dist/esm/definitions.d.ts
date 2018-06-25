@@ -1,3 +1,4 @@
+import { IPlayerVars } from './web/models/models';
 declare global  {
     interface PluginRegistry {
         YoutubePlayer?: YoutubePlayerPlugin;
@@ -13,6 +14,7 @@ export interface YoutubePlayerPlugin {
         width: number;
         height: number;
         videoId: string;
+        playerVars?: IPlayerVars;
     }): Promise<{
         playerReady: boolean;
     }>;

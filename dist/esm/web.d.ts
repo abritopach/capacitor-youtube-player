@@ -131,6 +131,36 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
         };
     }>;
     /*********/
+    /*********/
+    setSize(playerId: string, width: Number, height: Number): Promise<{
+        result: {
+            method: string;
+            value: {
+                width: Number;
+                height: Number;
+            };
+        };
+    }>;
+    /*********/
+    /*********/
+    getVideoLoadedFraction(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: any;
+        };
+    }>;
+    getPlayerState(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: any;
+        };
+    }>;
+    getCurrentTime(playerId: string): Promise<{
+        result: {
+            method: string;
+            value: any;
+        };
+    }>;
     toggleFullScreen(playerId: string, isFullScreen: boolean | null | undefined): Promise<{
         result: {
             method: string;

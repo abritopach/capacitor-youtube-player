@@ -48,13 +48,19 @@ public class YPViewController: UIViewController {
                 let videoId = dictionary["videoId"] as! String
                 let width = dictionary["width"] as! Int
                 let height = dictionary["height"] as! Int
+                let playerVars = dictionary["playerVars"] as! [String: Any]
                 
                 let playerSize: [String : Int] = checkSize(width: width, height: height)
                 
                 youtubePlayer = YouTubePlayerView(frame: CGRect(x: 0, y: 0, width: playerSize["width"]!, height: playerSize["height"]!))
+
                 self.view.addSubview(youtubePlayer)
+
+                // let playerVars = ["controls": "1", "color": "red", "showinfo": "1", "autoplay": "0", "fs": "0", "loop": "0", "start": "60"]
+                youtubePlayer.playerVars = playerVars as YouTubePlayerView.YouTubePlayerParameters
                 
                 youtubePlayer.loadVideoID(videoId);
+                
             }
         }
     }
