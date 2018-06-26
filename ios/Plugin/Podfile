@@ -8,6 +8,7 @@ target 'Plugin' do
   # Pods for IonicRunner
   pod 'Capacitor'
   pod 'YouTubePlayer'
+  pod 'SVProgressHUD'
 end
 
 target 'PluginTests' do
@@ -15,4 +16,5 @@ target 'PluginTests' do
 
   pod 'Capacitor'
   pod 'YouTubePlayer'
+  pod 'SVProgressHUD'
 end

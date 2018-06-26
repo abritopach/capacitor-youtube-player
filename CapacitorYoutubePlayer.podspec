@@ -11,4 +11,5 @@
     s.ios.deployment_target  = '10.0'
     s.dependency 'Capacitor'
     s.dependency 'YouTubePlayer'
+    s.dependency 'SVProgressHUD'
   end

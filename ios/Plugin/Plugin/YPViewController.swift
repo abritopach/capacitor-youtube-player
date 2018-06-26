@@ -8,6 +8,7 @@
 
 import UIKit
 import YouTubePlayer
+import SVProgressHUD
 
 public class YPViewController: UIViewController, YouTubePlayerDelegate {
     
@@ -44,6 +45,9 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
             print("[Youtube Player Plugin Native iOS]: JSONSerialization.isValidJSONObject");
             
             if let dictionary = self.options as? [String: Any] {
+                
+                SVProgressHUD.show()
+                
                 // treat it as a string key dictionary.
                 let videoId = dictionary["videoId"] as! String
                 let width = dictionary["width"] as! Int
@@ -90,7 +94,7 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
 
     public func playerReady(_ youtubePlayer: YouTubePlayerView){
         print("[Youtube Player Plugin Native iOS]: playerReady")
-        // SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
         
     }
 }
