@@ -1,8 +1,10 @@
 package com.abpjap.plugin.youtubeplayer;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.RelativeLayout;
 
 import com.getcapacitor.JSObject;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -22,11 +24,17 @@ public class YoutubePlayerFragment extends AppCompatActivity {
 
     private MyPlayerStateChangeListener playerStateChangeListener;
 
+    private boolean fullscreen = false;
+
+    private RelativeLayout baseLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "[Youtube Player Fragment]: onCreate");
         setContentView(R.layout.activity_player);
+
+        baseLayout = (RelativeLayout) findViewById(R.id.layout);
 
         String videoId = "";
         if (savedInstanceState == null) {
@@ -55,6 +63,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
                                                 boolean wasRestored) {
+
                 if (!wasRestored) {
                     youTubePlayer = player;
 
@@ -66,6 +75,16 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                     result.put("value", youTubePlayer);
                     RxBus.publish(result);
 
+                    // Specify that we want to handle fullscreen behavior ourselves.
+                    youTubePlayer.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
+                    youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
+                        @Override
+                        public void onFullscreen(boolean b) {
+                            Log.e(TAG, "Youtube Player View onFullscreen " + b);
+                            fullscreen = b;
+                        }
+                    });
+                    // youTubePlayer.setFullscreen(!fullscreen);
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);
 
@@ -83,6 +102,21 @@ public class YoutubePlayerFragment extends AppCompatActivity {
         });
 
         playerStateChangeListener = new MyPlayerStateChangeListener();
+    }
+
+    private void doLayout() {
+        // LinearLayout.LayoutParams playerParams =
+        //        (LinearLayout.LayoutParams) playerView.getLayoutParams();
+        if (fullscreen) {
+            // When in fullscreen, the visibility of all other views than the player should be set to
+            // GONE and the player should be laid out across the whole screen.
+            // playerParams.width = LayoutParams.MATCH_PARENT;
+            // playerParams.height = LayoutParams.MATCH_PARENT;
+
+        } else {
+            // This layout is up to you - this is just a simple example (vertically stacked boxes in
+            // portrait, horizontally stacked in landscape).
+        }
     }
 
 
