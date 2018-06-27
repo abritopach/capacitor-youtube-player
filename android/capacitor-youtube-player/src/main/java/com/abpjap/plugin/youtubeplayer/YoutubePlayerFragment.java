@@ -1,6 +1,5 @@
 package com.abpjap.plugin.youtubeplayer;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,24 +25,20 @@ public class YoutubePlayerFragment extends AppCompatActivity {
 
     private boolean fullscreen = false;
 
-    private RelativeLayout baseLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "[Youtube Player Fragment]: onCreate");
         setContentView(R.layout.activity_player);
 
-        baseLayout = (RelativeLayout) findViewById(R.id.layout);
-
         String videoId = "";
-        if (savedInstanceState == null) {
+        // if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
                 videoId = extras.getString("videoId");
                 initializeYoutubePlayer(videoId);
             }
-        }
+        // }
     }
 
     /**
@@ -84,7 +79,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                             fullscreen = b;
                         }
                     });
-                    // youTubePlayer.setFullscreen(!fullscreen);
+                    youTubePlayer.setFullscreen(!fullscreen);
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);
 
@@ -103,22 +98,6 @@ public class YoutubePlayerFragment extends AppCompatActivity {
 
         playerStateChangeListener = new MyPlayerStateChangeListener();
     }
-
-    private void doLayout() {
-        // LinearLayout.LayoutParams playerParams =
-        //        (LinearLayout.LayoutParams) playerView.getLayoutParams();
-        if (fullscreen) {
-            // When in fullscreen, the visibility of all other views than the player should be set to
-            // GONE and the player should be laid out across the whole screen.
-            // playerParams.width = LayoutParams.MATCH_PARENT;
-            // playerParams.height = LayoutParams.MATCH_PARENT;
-
-        } else {
-            // This layout is up to you - this is just a simple example (vertically stacked boxes in
-            // portrait, horizontally stacked in landscape).
-        }
-    }
-
 
     private final class MyPlayerStateChangeListener implements YouTubePlayer.PlayerStateChangeListener {
         String playerState = "UNINITIALIZED";
