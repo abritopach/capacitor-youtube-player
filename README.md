@@ -4,6 +4,10 @@ Capacitor Youtube Player is a custom Native Capacitor plugin to show Youtube Pla
 
 ![Technologies](readme_resources/technologies.jpg "Technologies")
 
+## Example WEB
+
+![App](readme_resources/app.gif "App")
+
 ## Methods available
 
     -> WEB
