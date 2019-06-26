@@ -10,7 +10,7 @@ Capacitor Youtube Player is a custom Native Capacitor plugin to show Youtube Pla
 
 ## Methods available
 
--> WEB
+## WEB
 
 Functionality | Methods | Description | Expects | Returns
 ----------------|----------------|-------------|--------|--------
@@ -32,19 +32,19 @@ Playback status | `getVideoLoadedFraction(playerId: string)` | Promise - Returns
 Playback status | `getPlayerState(playerId: string)` | Promise - Returns the state of the player. Possible values are: -1 unstarted / 0 ended / 1 playing / 2 paused / 3 buffering / 5 video cued | string | data
 Playback status | `getCurrentTime(playerId: string)` | Promise - Returns the elapsed time in seconds since the video started playing. | string | data
 
---> ANDROID
+## ANDROID
 
 Functionality | Methods | Description | Expects | Returns
 ----------------|----------------|-------------|--------|--------
 Load player API & Create Player | `initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;` | Promise - Load player API & create player.  | JSON Object  | data
 
 
---> IOS
+## IOS
 
 Functionality | Methods | Description | Expects | Returns
 ----------------|----------------|-------------|--------|--------
 Load player API & Create Player | `initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;` | Promise - Load player API & create player.  | JSON Object  | data
-    
+
 
 ## Install Plugin
 
@@ -52,3 +52,45 @@ Load player API & Create Player | `initialize(options: {width: number, height: n
     npm install --save capacitor-youtube-player@latest
 ```
 
+## Using this plugin
+
+
+### Ionic / Angular project
+
+1) Install the plugin.
+
+```bash
+npm install --save capacitor-youtube-player@latest
+```
+
+2) Import plugin in your page.
+
+```bash
+
+import { Plugins, Capacitor } from '@capacitor/core';
+import { YoutubePlayerWeb } from 'capacitor-youtube-player';
+
+...
+
+async testNativeYoutubePlayerPlugin() {
+
+    const { YoutubePlayer } = Plugins;
+
+    const options = {width: 640, height: 360, videoId: yourVideoID};
+    const playerReady = await YoutubePlayer.initialize(options);
+}
+
+async testWebYoutubePlayerPlugin() {
+    const options = {playerId: playerId, playerSize: {width: 640, height: 360}, videoId: yourVideoID};
+    const result = await YoutubePlayerWeb.initialize(options);
+}
+
+```
+
+### Ionic project
+
+- Plugin in Ionic project: TODO
+
+### Angular project
+
+- Plugin in Angular project: https://github.com/abritopach/angular-ionic-ngxs-movies
