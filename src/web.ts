@@ -43,7 +43,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
 
       // This code loads the IFrame Player API code asynchronously.
       const tag = document.createElement('script');
-      
+
       /*
       const callback = () => {
         console.log('[Youtube Player Plugin Web]: script loaded.');
