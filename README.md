@@ -68,6 +68,12 @@ Load player API & Create Player | `initialize(options: {width: number, height: n
 
 ## Using this plugin
 
+IMPORTANT NOTE iOS:
+
+Currently there is a small error when you testing the plugin in iOS. The following line of code needs to be modified in xcode:
+
+YouTubePlayer.swift:339:102: 'UIWebViewNavigationType' has been renamed to 'UIWebView.NavigationType'
+
 
 ### Ionic / Angular project
 
@@ -80,30 +86,83 @@ npm install --save capacitor-youtube-player@latest
 2) Import plugin in your page.
 
 ```bash
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
-import { Plugins, Capacitor } from '@capacitor/core';
-import { YoutubePlayerWeb } from 'capacitor-youtube-player';
+import { YoutubePlayerWeb } from 'capacitor-youtube-player'; // Web version
 
-...
+import { Plugins, Capacitor } from '@capacitor/core'; // Native version
 
-async testNativeYoutubePlayerPlugin() {
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage implements OnInit, AfterViewInit {
+
+  currentYear = new Date().getFullYear();
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    if (Capacitor.platform === 'web') {
+      this.initializeYoutubePlayerPluginWeb();
+    } else { // Native
+      this.initializeYoutubePlayerPluginNative();
+    }
+  }
+
+  async initializeYoutubePlayerPluginWeb() {
+    const options = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M'};
+    const result = await YoutubePlayerWeb.initialize(options);
+    console.log('playerReady', result);
+  }
+
+  async destroyYoutubePlayerPluginWeb() {
+    const result = await YoutubePlayerWeb.destroy('youtube-player');
+    console.log('destroyYoutubePlayer', result);
+  }
+
+  async initializeYoutubePlayerPluginNative() {
 
     const { YoutubePlayer } = Plugins;
 
-    const options = {width: 640, height: 360, videoId: yourVideoID};
+    const options = {width: 640, height: 360, videoId: 'tDW2C6rcH6M'};
     const playerReady = await YoutubePlayer.initialize(options);
-}
+  }
 
-async testWebYoutubePlayerPlugin() {
-    const options = {playerId: playerId, playerSize: {width: 640, height: 360}, videoId: yourVideoID};
-    const result = await YoutubePlayerWeb.initialize(options);
 }
+```
 
+3) Build your app.
+
+You must build your Ionic / Angular project at least once before adding any native platforms.
+
+```bash
+    ionic build // Ionic
+    ng build // Angular
+```
+
+4) Add Platforms.
+
+```bash
+    npx cap add ios
+    npx cap add android
+```
+
+5) Open IDE to build, run, and deploy.
+
+```bash
+    npx cap open ios
+    npx cap open android
 ```
 
 ### Ionic project
 
-- Plugin in Ionic project: TODO
+- Plugin in Ionic project: https://github.com/abritopach/ionic-test-capacitor-youtube-player
 
 ### Angular project
 
