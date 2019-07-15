@@ -160,9 +160,17 @@ You must build your Ionic / Angular project at least once before adding any nati
     npx cap open android
 ```
 
-### Ionic project
+### Example Ionic project
 
 - Plugin in Ionic project: https://github.com/abritopach/ionic-test-capacitor-youtube-player
+
+--- WEB ---
+
+![Plugin](readme_resources/plugin_ionic_web.gif "Plugin")
+
+--- iOS ---
+
+![Plugin](readme_resources/plugin_ionic_ios.gif "Plugin")
 
 ### Angular project
 
