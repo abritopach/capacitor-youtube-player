@@ -164,13 +164,17 @@ You must build your Ionic / Angular project at least once before adding any nati
 
 - Plugin in Ionic project: https://github.com/abritopach/ionic-test-capacitor-youtube-player
 
---- WEB ---
+#### WEB
 
 ![Plugin](readme_resources/plugin_ionic_web.gif "Plugin")
 
---- iOS ---
+#### iOS
 
 ![Plugin](readme_resources/plugin_ionic_ios.gif "Plugin")
+
+#### Android
+
+![Plugin](readme_resources/plugin_ionic_android.gif "Plugin")
 
 ### Angular project
 
