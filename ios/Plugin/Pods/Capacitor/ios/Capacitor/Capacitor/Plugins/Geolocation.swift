@@ -23,7 +23,11 @@ class GetLocationHandler: NSObject, CLLocationManagerDelegate {
     // TODO: Allow user to configure accuracy, request/authorization mode
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    if call.getBool("enableHighAccuracy", false)! {
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+    } else {
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
     
     if let shouldWatch = options["watch"], shouldWatch as? Bool == true {
       self.locationManager.startUpdatingLocation()
@@ -60,8 +64,10 @@ class GetLocationHandler: NSObject, CLLocationManagerDelegate {
     coords["longitude"] = location.coordinate.longitude
     coords["accuracy"] = location.horizontalAccuracy
     coords["altitude"] = location.altitude
+    coords["altitudeAccuracy"] = location.verticalAccuracy
     coords["speed"] = location.speed
     coords["heading"] = location.course
+    ret["timestamp"] = NSNumber(value: Int((location.timestamp.timeIntervalSince1970 * 1000)))
     ret["coords"] = coords
     return ret
   }
@@ -92,7 +98,7 @@ public class CAPGeolocationPlugin : CAPPlugin {
   
   @objc func clearWatch(_ call: CAPPluginCall) {
     guard let callbackId = call.getString("id") else {
-      print("Must supply id")
+      CAPLog.print("Must supply id")
       return
     }
     let savedCall = bridge.getSavedCall(callbackId)

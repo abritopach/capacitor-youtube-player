@@ -21,6 +21,9 @@
 
 @interface CDVViewController : UIViewController
 
+@property (nonatomic, readonly, strong) NSMutableDictionary* pluginObjects;
 @property (nonatomic, readonly, strong) NSMutableDictionary* settings;
+
+- (id) getCommandInstance:(NSString*)className;
 
 @end

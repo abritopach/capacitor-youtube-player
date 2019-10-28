@@ -39,6 +39,7 @@
 
 NSString* const CDVPageDidLoadNotification = @"CDVPageDidLoadNotification";
 NSString* const CDVPluginHandleOpenURLNotification = @"CDVPluginHandleOpenURLNotification";
+NSString* const CDVPluginHandleOpenURLWithAppSourceAndAnnotationNotification = @"CDVPluginHandleOpenURLWithAppSourceAndAnnotationNotification";
 NSString* const CDVPluginResetNotification = @"CDVPluginResetNotification";
 NSString* const CDVLocalNotification = @"CDVLocalNotification";
 NSString* const CDVRemoteNotification = @"CDVRemoteNotification";
@@ -61,7 +62,7 @@ NSString* const CDVViewWillTransitionToSizeNotification = @"CDVViewWillTransitio
 @synthesize webViewEngine, viewController, commandDelegate, hasPendingOperation, webView;
 
 // Do not override these methods. Use pluginInitialize instead.
-- (instancetype)initWithWebViewEngine:(id)theWebViewEngine
+- (instancetype)initWithWebViewEngine:(WKWebView *)theWebViewEngine
 {
     self = [super init];
     if (self) {

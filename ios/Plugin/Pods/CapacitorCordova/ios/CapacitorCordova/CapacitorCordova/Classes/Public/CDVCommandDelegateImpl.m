@@ -51,9 +51,14 @@
     [directoryParts removeLastObject];
 
     NSString* directoryPartsJoined = [directoryParts componentsJoinedByString:@"/"];
+    NSString* baseFolder = @"public";
+    NSString* directoryStr = baseFolder;
 
+    if ([directoryPartsJoined length] > 0) {
+        directoryStr = [NSString stringWithFormat:@"%@/%@", baseFolder, [directoryParts componentsJoinedByString:@"/"]];
+    }
 
-    return [mainBundle pathForResource:filename ofType:@"" inDirectory:@"www"];
+    return [mainBundle pathForResource:filename ofType:@"" inDirectory:directoryStr];
 }
 
 - (void)flushCommandQueueWithDelayedJs
@@ -143,7 +148,7 @@
 
 - (NSDictionary*)settings
 {
-    return nil;
+    return _manager.settings;
 }
 
 @end

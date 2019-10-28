@@ -10,23 +10,36 @@ public class CAPBrowserPlugin : CAPPlugin, SFSafariViewControllerDelegate {
       call.error("Must provide a URL to open")
       return
     }
-    
+
+    if urlString.isEmpty {
+      call.error("URL must not be empty")
+      return
+    }
+
     let toolbarColor = call.getString("toolbarColor")
     let url = URL(string: urlString)
-    
-    DispatchQueue.main.async {
-      self.vc = SFSafariViewController.init(url: url!)
-      self.vc!.delegate = self
-      self.vc!.modalPresentationStyle = .popover
-      
-      if toolbarColor != nil {
-        self.vc!.preferredBarTintColor = UIColor(fromHex: toolbarColor!)
+    if let scheme = url?.scheme, ["http", "https"].contains(scheme.lowercased()) {
+      DispatchQueue.main.async {
+        self.vc = SFSafariViewController.init(url: url!)
+        self.vc!.delegate = self
+        let presentationStyle = call.getString("presentationStyle")
+        if presentationStyle != nil && presentationStyle == "popover" {
+          self.vc!.modalPresentationStyle = .popover
+          self.setCenteredPopover(self.vc)
+        } else {
+          self.vc!.modalPresentationStyle = .fullScreen
+        }
+
+        if toolbarColor != nil {
+          self.vc!.preferredBarTintColor = UIColor(fromHex: toolbarColor!)
+        }
+
+        self.bridge.viewController.present(self.vc!, animated: true, completion: {
+          call.success()
+        })
       }
-      
-      self.setCenteredPopover(self.vc)
-      self.bridge.viewController.present(self.vc!, animated: true, completion: {
-        call.success()
-      })
+    } else {
+      call.error("Invalid URL")
     }
   }
   
@@ -42,12 +55,12 @@ public class CAPBrowserPlugin : CAPPlugin, SFSafariViewControllerDelegate {
   }
   
   @objc func prefetch(_ call: CAPPluginCall) {
-    // no-op
-    call.success()
+    call.unimplemented()
   }
   
   public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
     self.notifyListeners("browserFinished", data: [:])
+    vc = nil
   }
   
   public func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {

@@ -7,6 +7,7 @@
 
 -(instancetype) initWithBridge:(CAPBridge *)bridge pluginId:(NSString *)pluginId pluginName:(NSString *)pluginName {
   self.bridge = bridge;
+  self.webView = bridge.getWebView;
   self.pluginId = pluginId;
   self.pluginName = pluginName;
   self.eventListeners = [[NSMutableDictionary alloc] init];
@@ -33,6 +34,23 @@
     return FALSE;
   }
   return TRUE;
+}
+
+-(NSString *) getString:(CAPPluginCall *)call field:(NSString *)field defaultValue:(NSString *)defaultValue
+{
+  id idVal = [call.options objectForKey:field];
+  if(![idVal isKindOfClass:[NSString class]]) {
+    return defaultValue;
+  }
+  NSString *value = (NSString *)idVal;
+  if(value == nil) {
+    return defaultValue;
+  }
+  return value;
+}
+
+-(id)getConfigValue:(NSString *)key {
+  return [self.bridge.config getPluginConfigValue:self.pluginName :key];
 }
 
 -(void)load {}
@@ -75,7 +93,7 @@
 
 - (void)notifyListeners:(NSString *)eventName data:(NSDictionary<NSString *,id> *)data retainUntilConsumed:(BOOL)retain {
   NSArray<CAPPluginCall *> *listenersForEvent = [self.eventListeners objectForKey:eventName];
-  if(listenersForEvent == nil) {
+  if(listenersForEvent == nil || [listenersForEvent count] == 0) {
     if (retain == YES) {
       [self.retainedEventArguments setObject:data forKey:eventName];
     }
@@ -90,8 +108,8 @@
 
 - (void)addListener:(CAPPluginCall *)call {
   NSString *eventName = [call.options objectForKey:@"eventName"];
-  [self addEventListener:eventName listener:call];
   [call setIsSaved:TRUE];
+  [self addEventListener:eventName listener:call];
 }
 
 - (void)removeListener:(CAPPluginCall *)call {

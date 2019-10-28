@@ -25,6 +25,7 @@ public class CAPDevicePlugin: CAPPlugin {
       "model": UIDevice.current.model,
       "osVersion": UIDevice.current.systemVersion,
       "appVersion": Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "",
+      "appBuild": Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "",
       "platform": "ios",
       "manufacturer": "Apple",
       "uuid": UIDevice.current.identifierForVendor!.uuidString,
@@ -36,9 +37,14 @@ public class CAPDevicePlugin: CAPPlugin {
     UIDevice.current.isBatteryMonitoringEnabled = false
   }
   
+  @objc func getLanguageCode(_ call: CAPPluginCall) {
+    let code = String(Locale.preferredLanguages[0].prefix(2))
+    call.success([
+      "value": code
+    ])
+  }
   
   @objc func getAdvertisingIdentifier(_ call: CAPPluginCall) {
-
   }
   
   @objc func getMemoryUsage(_ call: CAPPluginCall) {
