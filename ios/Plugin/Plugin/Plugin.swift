@@ -39,11 +39,14 @@ public class YoutubePlayer: CAPPlugin {
                 ] as [String : Any]
             
             self.vc.options = options
-            self.bridge.viewController.present(self.vc!, animated: true, completion: {
-                call.success([
-                    "value": "[Youtube Player Plugin Native iOS]: initialize"
-                    ])
-            });
+            
+            DispatchQueue.main.async {
+                self.bridge.viewController.present(self.vc!, animated: true, completion: {
+                    call.success([
+                        "value": "[Youtube Player Plugin Native iOS]: initialize"
+                        ])
+                });
+            }
         }
         else {
             call.reject("Must provide a videoId")
