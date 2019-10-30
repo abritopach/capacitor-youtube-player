@@ -68,11 +68,43 @@ Load player API & Create Player | `initialize(options: {width: number, height: n
 
 ## Using this plugin
 
-IMPORTANT NOTE iOS:
+### IMPORTANT NOTE iOS:
 
 Currently there is a small error when you testing the plugin in iOS. The following line of code needs to be modified in xcode:
 
 YouTubePlayer.swift:339:102: 'UIWebViewNavigationType' has been renamed to 'UIWebView.NavigationType'
+
+### IMPORTANT NOTE ANDROID
+
+You have to register Youtube Player plugin's class in your Acitivity so Capacitor is aware of it.
+
+```bash
+package com.example.app;
+
+import android.os.Bundle;
+
+import com.abpjap.plugin.youtubeplayer.YoutubePlayer;
+import com.getcapacitor.BridgeActivity;
+import com.getcapacitor.Plugin;
+
+import java.util.ArrayList;
+
+public class MainActivity extends BridgeActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // Initializes the Bridge
+    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+      // Additional plugins you've installed go here
+      // Ex: add(TotallyAwesomePlugin.class);
+      add(YoutubePlayer.class); <= ADD THIS LINE
+    }});
+  }
+}
+```
+
+In the official [Capacitor documentation](https://capacitor.ionicframework.com/docs/plugins/android#export-to-capacitor) appears how to register the plugin.
 
 
 ### Ionic / Angular project
