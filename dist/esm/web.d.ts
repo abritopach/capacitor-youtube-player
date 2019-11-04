@@ -1,10 +1,11 @@
 import { WebPlugin } from '@capacitor/core';
-import { IPlayerSize, IPlayerVars } from './web/models/models';
+import { IPlayerSize, IPlayerVars, IPlayerState } from './web/models/models';
 export declare function YT(): any;
 export declare function Player(): any;
 export declare function PlayerState(): any;
 export declare class YoutubePlayerPluginWeb extends WebPlugin {
     players: any;
+    playersState: Map<string, IPlayerState>;
     player: any;
     playerApiLoaded: Boolean;
     private readonly defaultSizes;
@@ -153,6 +154,12 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
         result: {
             method: string;
             value: any;
+        };
+    }>;
+    getAllPlayersState(): Promise<{
+        result: {
+            method: string;
+            value: Map<string, IPlayerState>;
         };
     }>;
     getCurrentTime(playerId: string): Promise<{

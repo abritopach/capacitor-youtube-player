@@ -26,3 +26,12 @@ export interface IPlayerVars {
     showinfo?: number;
     start?: number;
 }
+
+export interface IPlayerState {
+    events: {
+        onReady?: Object,
+        onStateChange?: Object,
+        onPlaybackQualityChange?: Object,
+        onError?: Object
+    }
+}
