@@ -5,7 +5,7 @@ export declare function Player(): any;
 export declare function PlayerState(): any;
 export declare class YoutubePlayerPluginWeb extends WebPlugin {
     players: any;
-    playersState: Map<string, IPlayerState>;
+    playersEventsState: Map<string, IPlayerState>;
     player: any;
     playerApiLoaded: Boolean;
     private readonly defaultSizes;
@@ -156,7 +156,7 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
             value: any;
         };
     }>;
-    getAllPlayersState(): Promise<{
+    getAllPlayersEventsState(): Promise<{
         result: {
             method: string;
             value: Map<string, IPlayerState>;
