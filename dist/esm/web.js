@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { WebPlugin } from '@capacitor/core';
+import { Log } from './log';
 export function YT() {
     return window['YT'];
 }
@@ -32,10 +33,10 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     }
     loadPlayerApi() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('[Youtube Player Plugin Web]: loadPlayerApi');
+            this.playerLogger.log("loadPlayerApi");
             return yield new Promise(resolve => {
                 window.onYouTubeIframeAPIReady = () => {
-                    console.log('[Youtube Player Plugin Web]: onYouTubeIframeAPIReady');
+                    this.playerLogger.log("onYouTubeIframeAPIReady");
                     this.playerApiLoaded = true;
                     resolve(true);
                 };
@@ -70,78 +71,79 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // after the API code downloads.
     createPlayer(options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('[Youtube Player Plugin Web]: createPlayer');
+            this.playerLogger.log("createPlayer");
             // console.log('options', options);
             const playerSize = this.checkSize(options);
             // console.log('playerSize', playerSize);
             return yield new Promise(resolve => {
-                console.log(YT());
+                // console.log(YT());
                 const player = Player();
                 this.players[options.playerId] = new player(options.playerId, Object.assign({}, options.playerVars, playerSize, { videoId: options.videoId, events: {
                         // The API will call this function when the video player is ready.
                         'onReady': () => {
-                            console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> onPlayerReady`);
+                            this.playerLogger.log(`player "${options.playerId}" -> onPlayerReady`);
                             const state = { events: { onReady: { text: 'onReady', value: true } } };
                             this.playersEventsState.set(options.playerId, state);
                             return resolve({ playerReady: true, player: this.players[options.playerId] });
                         },
                         'onStateChange': (event) => {
-                            console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> onPlayerStateChange`);
+                            this.playerLogger.log(`player "${options.playerId}" -> onPlayerStateChange`);
                             switch (event.data) {
                                 case PlayerState().PLAYING:
-                                    console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> playing`);
+                                    this.playerLogger.log(`player "${options.playerId}" -> playing`);
                                     this.playersEventsState.get(options.playerId).events.onStateChange = { text: 'playing', value: PlayerState().PLAYING };
                                     break;
                                 case PlayerState().PAUSED:
-                                    console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> paused`);
+                                    this.playerLogger.log(`player "${options.playerId}" -> paused`);
                                     this.playersEventsState.get(options.playerId).events.onStateChange = { text: 'paused', value: PlayerState().PAUSED };
                                     break;
                                 case PlayerState().ENDED:
-                                    console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> ended`);
+                                    this.playerLogger.log(`player "${options.playerId}" -> ended`);
                                     this.playersEventsState.get(options.playerId).events.onStateChange = { text: 'ended', value: PlayerState().ENDED };
                                     break;
                                 case PlayerState().BUFFERING:
-                                    console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> buffering`);
+                                    this.playerLogger.log(`player "${options.playerId}" -> buffering`);
                                     this.playersEventsState.get(options.playerId).events.onStateChange = { text: 'buffering', value: PlayerState().BUFFERING };
                                     break;
                                 case PlayerState().CUED:
-                                    console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> cued`);
+                                    this.playerLogger.log(`player "${options.playerId}" -> cued`);
                                     this.playersEventsState.get(options.playerId).events.onStateChange = { text: 'cued', value: PlayerState().CUED };
                                     break;
                             }
                         },
                         'onPlaybackQualityChange': (event) => {
-                            console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> onPlayerPlaybackQualityChange quality ${event.data}`);
+                            this.playerLogger.log(`player "${options.playerId}" -> onPlayerPlaybackQualityChange quality ${event.data}`);
                             this.playersEventsState.get(options.playerId).events.onPlaybackQualityChange = { text: 'onPlaybackQualityChange', value: event.data };
                         },
                         'onError': (error) => {
-                            console.log(`[Youtube Player Plugin Web]: player "${options.playerId}" -> onPlayerError ${error}`);
+                            this.playerLogger.error(`player "${options.playerId}" -> onPlayerError`, { error: error });
                             this.playersEventsState.get(options.playerId).events.onError = { text: 'onError', value: error };
                         }
                     } }));
                 // console.log('players', this.players);
                 // console.log('player', this.players[options.playerId]);
-                console.log('playersEventsState', this.playersEventsState);
+                // console.log('playersEventsState', this.playersEventsState);
             });
         });
     }
     initialize(options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('[Youtube Player Plugin Web]: initialize');
+            this.playerLogger = new Log(options.debug);
+            this.playerLogger.log("initialize");
             if (!this.playerApiLoaded) {
                 const result = yield this.loadPlayerApi();
-                console.log('[Youtube Player Plugin Web]: loadPlayerApi result', result);
+                this.playerLogger.log("loadPlayerApi result", { result: result });
             }
             if (Player && this.playerApiLoaded) {
                 const playerReady = yield this.createPlayer(options);
-                console.log('[Youtube Player Plugin Web]: initialize completed', playerReady);
+                this.playerLogger.log("loadPlayerApi initialize completed", { playerReady: playerReady });
                 return Promise.resolve(playerReady);
             }
         });
     }
     destroy(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> destroy`);
+            this.playerLogger.log(`player "${playerId}" -> destroy`);
             this.players[playerId].destroy();
             return Promise.resolve({ result: { method: 'destroy', value: true } });
         });
@@ -153,7 +155,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // that the player is playing, you can call one of the queueing functions without calling stopVideo first.
     stopVideo(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" ->  stopVideo`);
+            this.playerLogger.log(`player "${playerId}" ->  stopVideo`);
             this.players[playerId].stopVideo();
             return Promise.resolve({ result: { method: 'stopVideo', value: true } });
         });
@@ -161,7 +163,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Plays the currently cued/loaded video. The final player state after this function executes will be playing (1).
     playVideo(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> playVideo`);
+            this.playerLogger.log(`player "${playerId}" -> playVideo`);
             this.players[playerId].playVideo();
             return Promise.resolve({ result: { method: 'playVideo', value: true } });
         });
@@ -170,7 +172,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // state when the function is called, in which case the player state will not change.
     pauseVideo(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> pauseVideo`);
+            this.playerLogger.log(`player "${playerId}" -> pauseVideo`);
             this.players[playerId].pauseVideo();
             return Promise.resolve({ result: { method: 'pauseVideo', value: true } });
         });
@@ -179,7 +181,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // another state (playing, video cued, etc.), the player will play the video.
     seekTo(playerId, seconds, allowSeekAhead) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> seekTo ${seconds} seconds`);
+            this.playerLogger.log(`player "${playerId}" -> seekTo ${seconds} seconds`);
             this.players[playerId].seekTo(seconds, allowSeekAhead);
             return Promise.resolve({ result: { method: 'seekTo', value: true, seconds: seconds, allowSeekAhead: allowSeekAhead } });
         });
@@ -187,7 +189,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Loads and plays the specified video.
     loadVideoById(playerId, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> loadVideoById with options ${options}`);
+            this.playerLogger.log(`player "${playerId}" -> loadVideoById with options ${options}`);
             this.players[playerId].loadVideoById(options);
             return Promise.resolve({ result: { method: 'loadVideoById', value: true, options: options } });
         });
@@ -195,7 +197,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Loads the specified video's thumbnail and prepares the player to play the video. The player does not request the FLV until playVideo() or seekTo() is called.
     cueVideoById(playerId, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> cueVideoById with options ${options}`);
+            this.playerLogger.log(`player "${playerId}" -> cueVideoById with options ${options}`);
             this.players[playerId].cueVideoById(options);
             return Promise.resolve({ result: { method: 'cueVideoById', value: true, options: options } });
         });
@@ -206,7 +208,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Mutes the player.
     mute(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> mute`);
+            this.playerLogger.log(`player "${playerId}" -> mute`);
             this.players[playerId].mute();
             return Promise.resolve({ result: { method: 'mute', value: true } });
         });
@@ -214,7 +216,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Unmutes the player.
     unMute(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> unMute`);
+            this.playerLogger.log(`player "${playerId}" -> unMute`);
             this.players[playerId].unMute();
             return Promise.resolve({ result: { method: 'unMute', value: true } });
         });
@@ -222,14 +224,14 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Returns true if the player is muted, false if not.
     isMuted(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> isMuted`);
+            this.playerLogger.log(`player "${playerId}" -> isMuted`);
             return Promise.resolve({ result: { method: 'isMuted', value: this.players[playerId].isMuted() } });
         });
     }
     // Sets the volume. Accepts an integer between 0 and 100.
     setVolume(playerId, volume) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> setVolume ${volume}`);
+            this.playerLogger.log(`player "${playerId}" -> setVolume ${volume}`);
             this.players[playerId].setVolume(volume);
             return Promise.resolve({ result: { method: 'setVolume', value: volume } });
         });
@@ -237,7 +239,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Returns the player's current volume, an integer between 0 and 100. Note that getVolume() will return the volume even if the player is muted.
     getVolume(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> getVolume`);
+            this.playerLogger.log(`player "${playerId}" -> getVolume`);
             return Promise.resolve({ result: { method: 'getVolume', value: this.players[playerId].getVolume() } });
         });
     }
@@ -247,7 +249,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // Sets the size in pixels of the <iframe> that contains the player.
     setSize(playerId, width, height) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> setSize width: ${width} height: ${height}`);
+            this.playerLogger.log(`player "${playerId}" -> setSize width: ${width} height: ${height}`);
             this.players[playerId].setSize(width, height);
             return Promise.resolve({ result: { method: 'setSize', value: { width: width, height: height } } });
         });
@@ -259,7 +261,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // This method returns a more reliable number than the now-deprecated getVideoBytesLoaded and getVideoBytesTotal methods.
     getVideoLoadedFraction(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> getVideoLoadedFraction`);
+            this.playerLogger.log(`player "${playerId}" -> getVideoLoadedFraction`);
             return Promise.resolve({ result: { method: 'getVideoLoadedFraction', value: this.players[playerId].getVideoLoadedFraction() } });
         });
     }
@@ -272,26 +274,26 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     // 5 – video cued
     getPlayerState(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> getPlayerState`);
+            this.playerLogger.log(`player "${playerId}" -> getPlayerState`);
             return Promise.resolve({ result: { method: 'getPlayerState', value: this.players[playerId].getPlayerState() } });
         });
     }
     getAllPlayersEventsState() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: getAllPlayersEventsState`);
+            this.playerLogger.log("getAllPlayersEventsState");
             return Promise.resolve({ result: { method: 'getAllPlayersEventsState', value: this.playersEventsState } });
         });
     }
     // Returns the elapsed time in seconds since the video started playing.
     getCurrentTime(playerId) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> getCurrentTime`);
+            this.playerLogger.log(`player "${playerId}" -> getCurrentTime`);
             return Promise.resolve({ result: { method: 'getCurrentTime', value: this.players[playerId].getCurrentTime() } });
         });
     }
     toggleFullScreen(playerId, isFullScreen) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[Youtube Player Plugin Web]: player "${playerId}" -> toggleFullScreen`);
+            this.playerLogger.log(`player "${playerId}" -> toggleFullScreen`);
             let { height, width } = this.defaultSizes;
             if (!isFullScreen) {
                 height = window.innerHeight;
@@ -303,7 +305,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
     }
     echo(options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('ECHO', options);
+            // console.log('ECHO', options);
             return Promise.resolve(options);
         });
     }
