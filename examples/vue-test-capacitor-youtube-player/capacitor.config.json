@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.vuecapacitoryoutubeplayer",
+  "appName": "vue-test-capacitor-youtube-player",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "cordova": {}
+}

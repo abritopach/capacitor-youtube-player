@@ -193,6 +193,8 @@ You must build your Ionic / Angular project at least once before adding any nati
     npx cap open android
 ```
 
+## Examples
+
 ### Example Ionic project
 
 - Plugin in Ionic project: https://github.com/abritopach/ionic-test-capacitor-youtube-player
@@ -212,3 +214,7 @@ You must build your Ionic / Angular project at least once before adding any nati
 ### Angular project
 
 - Plugin in Angular project: https://github.com/abritopach/angular-ionic-ngxs-movies
+
+### Vue project
+
+- Check examples/vue-test-capacitor-youtube-player folder.
