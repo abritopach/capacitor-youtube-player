@@ -218,3 +218,7 @@ You must build your Ionic / Angular project at least once before adding any nati
 ### Vue project
 
 - Check examples/vue-test-capacitor-youtube-player folder.
+
+### React project
+
+- Check examples/react-test-capacitor-youtube-player folder.

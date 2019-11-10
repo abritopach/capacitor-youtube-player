@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.reactcapacitoryoutubeplayer",
+  "appName": "react-test-capacitor-youtube-player",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
