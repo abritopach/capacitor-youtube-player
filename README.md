@@ -4,7 +4,7 @@
 # CapacitorYoutubePlayer
 
 [![Ask me anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/abritopach) [![Version](https://img.shields.io/npm/v/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player)
-[![Downloads](https://img.shields.io/npm/dt/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player) [![License](https://badge.fury.io/js/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player)
+[![Downloads](https://img.shields.io/npm/dt/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player) [![License](https://img.shields.io/github/license/abritopach/capacitor-youtube-player.svg)](https://github.com/abritopach/capacitor-youtube-player/blob/master/LICENSE)
 
 Capacitor Youtube Player is a custom Native Capacitor plugin to show Youtube Player on Web, IOS and  Android platforms.
 
