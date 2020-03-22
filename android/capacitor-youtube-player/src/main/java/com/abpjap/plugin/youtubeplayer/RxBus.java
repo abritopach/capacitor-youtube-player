@@ -1,6 +1,6 @@
 package com.abpjap.plugin.youtubeplayer;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
