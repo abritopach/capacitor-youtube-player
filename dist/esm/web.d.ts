@@ -11,7 +11,7 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
     private readonly defaultSizes;
     playerLogger: any;
     constructor();
-    loadPlayerApi(): Promise<{}>;
+    loadPlayerApi(): Promise<unknown>;
     checkSize(options: {
         playerId: string;
         playerSize: IPlayerSize;
@@ -26,14 +26,14 @@ export declare class YoutubePlayerPluginWeb extends WebPlugin {
         playerSize: IPlayerSize;
         playerVars?: IPlayerVars;
         videoId: string;
-    }): Promise<{}>;
+    }): Promise<unknown>;
     initialize(options: {
         playerId: string;
         playerSize: IPlayerSize;
         playerVars?: IPlayerVars;
         videoId: string;
         debug?: boolean;
-    }): Promise<{}>;
+    }): Promise<unknown>;
     destroy(playerId: string): Promise<{
         result: {
             method: string;

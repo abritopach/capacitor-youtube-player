@@ -7,5 +7,5 @@ export declare class Log implements IPlayerLog {
     warn(msg: string, ...suportingDetails: any[]): void;
     error(msg: string, ...suportingDetails: any[]): void;
     info(msg: string, ...suportingDetails: any[]): void;
-    private emitLogMessage(msgType, msg, suportingDetails);
+    private emitLogMessage;
 }

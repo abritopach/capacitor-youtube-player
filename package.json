@@ -1,6 +1,6 @@
 {
   "name": "capacitor-youtube-player",
-  "version": "1.0.0-alpha.1-48",
+  "version": "1.0.0-alpha.1-50",
   "description": "Youtube Player",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -13,12 +13,12 @@
   "author": "Adrián Brito Pacheco & José Antonio Pérez Florencia",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/android": "^2.0.0-beta.0",
-    "@capacitor/cli": "^2.0.0-beta.0",
-    "@capacitor/core": "^2.0.0-beta.0"
+    "@capacitor/android": "^2.0.0",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
   },
   "devDependencies": {
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "files": [
     "dist/",

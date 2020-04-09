@@ -6,11 +6,13 @@
 [![Ask me anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/abritopach) [![Version](https://img.shields.io/npm/v/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player)
 [![Downloads](https://img.shields.io/npm/dt/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player) [![License](https://img.shields.io/github/license/abritopach/capacitor-youtube-player.svg)](https://github.com/abritopach/capacitor-youtube-player/blob/master/LICENSE)
 
+**If you want to help me to keep contributing to open source with projects, examples, plugins,... help me and buy me a coffee.**
+
+<a href="https://www.buymeacoffee.com/h6WVj4HcD" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
+
 Capacitor Youtube Player is a custom Native Capacitor plugin to show Youtube Player on Web, IOS and  Android platforms.
 
 ![Technologies](readme_resources/technologies.jpg "Technologies")
-
-<a href="https://www.buymeacoffee.com/h6WVj4HcD" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 
 # Capacitor
 
@@ -89,6 +91,16 @@ Currently there is a small error when you testing the plugin in iOS. The followi
 YouTubePlayer.swift:339:102: 'UIWebViewNavigationType' has been renamed to 'UIWebView.NavigationType'
 
 ### IMPORTANT NOTE ANDROID
+
+If you get this error in ANDROID STUDIO
+
+![Error](readme_resources/android-error.jpg "Error")
+
+To use the CAPACITOR YOUTUBE PLAYER plugin you need to add the YOUTUBE API KEY in the file gradle.properties.
+
+```bash
+YOUTUBE_API_KEY="YOUR_YOUTUBE_API_KEY"
+```
 
 You have to register Youtube Player plugin's class in your Acitivity so Capacitor is aware of it.
 

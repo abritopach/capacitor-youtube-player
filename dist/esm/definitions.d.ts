@@ -1,5 +1,5 @@
 import { IPlayerVars, IPlayerState } from './web/models/models';
-declare global  {
+declare global {
     interface PluginRegistry {
         YoutubePlayer?: YoutubePlayerPlugin;
     }

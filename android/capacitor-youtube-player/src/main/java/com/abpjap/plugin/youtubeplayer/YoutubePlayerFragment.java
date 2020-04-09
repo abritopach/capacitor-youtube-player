@@ -4,6 +4,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
+import com.abpjap.plugin.youtubeplayer.capacitoryoutubeplayer.BuildConfig;
 import com.getcapacitor.JSObject;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -46,13 +47,20 @@ public class YoutubePlayerFragment extends AppCompatActivity {
     private void initializeYoutubePlayer(final String videoId) {
 
         Log.e(TAG, "[Youtube Player Fragment]: initializeYoutubePlayer");
+
+        /*
         youTubePlayerFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.youtube_player_fragment);
+         */
+
+        Object obj = getSupportFragmentManager().findFragmentById(R.id.youtube_player_fragment);
+        if (obj instanceof YouTubePlayerSupportFragment)
+            youTubePlayerFragment = (YouTubePlayerSupportFragment) obj;
 
         if (youTubePlayerFragment == null)
             return;
 
-        youTubePlayerFragment.initialize(Config.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+        youTubePlayerFragment.initialize(BuildConfig.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
 
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,

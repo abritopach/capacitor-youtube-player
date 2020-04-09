@@ -15,4 +15,6 @@ public final class BuildConfig {
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
+  // Fields from build type: debug
+  public static final String YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY";
 }

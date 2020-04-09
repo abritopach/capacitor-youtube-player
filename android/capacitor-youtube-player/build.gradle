@@ -8,7 +8,6 @@ buildscript {
     }
 }
 
-
 apply plugin: 'com.android.library'
 
 android {
@@ -26,6 +25,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        it.buildConfigField "String", "YOUTUBE_API_KEY", YOUTUBE_API_KEY
+    }
+
     lintOptions {
         abortOnError false
     }
@@ -35,18 +38,16 @@ repositories {
     google()
     jcenter()
     mavenCentral()
-    maven {
-        url  "https://dl.bintray.com/ionic-team/capacitor"
-    }
 }
 
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':capacitor-android')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
-    implementation 'ionic-team:capacitor-android:1+'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
 }
+
