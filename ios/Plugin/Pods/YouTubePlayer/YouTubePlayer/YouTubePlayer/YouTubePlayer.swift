@@ -336,7 +336,7 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
     
     // MARK: UIWebViewDelegate
     
-    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         let url = request.url
         

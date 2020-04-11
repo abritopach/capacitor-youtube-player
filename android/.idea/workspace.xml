@@ -11,109 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac85a33c-2662-4799-b0f7-c0c187355cdd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_browser_browser_1_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager2_viewpager2_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_datatransport_transport_api_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_datatransport_transport_backend_cct_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_datatransport_transport_runtime_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_location_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_placereport_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_stats_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_1_0_rc02_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_auto_value_auto_value_annotations_1_6_5_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_dagger_dagger_2_24_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_datatransport_17_0_3_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_encoders_json_16_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_20_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_installations_16_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_installations_interop_16_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_18_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_1_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_cordova_framework_7_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__ionic_team_capacitor_android_1_5_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/generated/source/buildConfig/debug/com/abpjap/plugin/youtubeplayer/capacitoryoutubeplayer/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/generated/source/buildConfig/debug/com/abpjap/plugin/youtubeplayer/capacitoryoutubeplayer/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment$MyPlayerStateChangeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment$MyPlayerStateChangeListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment.class" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/capacitoryoutubeplayer/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/javac/debug/classes/com/abpjap/plugin/youtubeplayer/capacitoryoutubeplayer/BuildConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/packaged-classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/packaged-classes/debug/classes.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/build/outputs/aar/capacitor-youtube-player-debug.aar" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/build/outputs/aar/capacitor-youtube-player-debug.aar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/capacitor-youtube-player.iml" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/capacitor-youtube-player.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/src/main/java/com/abpjap/plugin/youtubeplayer/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capacitor-youtube-player/src/main/java/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-youtube-player/src/main/java/com/abpjap/plugin/youtubeplayer/YoutubePlayerFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/definitions.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/esm/definitions.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/log.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/esm/log.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/log.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/esm/log.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/web.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/esm/web.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/web.js" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/esm/web.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dist/esm/web.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/esm/web.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/capacitor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/capacitor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/capacitor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/capacitor.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/core-plugin-definitions.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/core-plugin-definitions.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/core-plugin-definitions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/core-plugin-definitions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/core-plugin-definitions.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/core-plugin-definitions.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/web/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/web/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/web/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/web/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/web/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/dist/esm/web/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@capacitor/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/@capacitor/core/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/tslib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/tslib/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/typescript/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/typescript/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +50,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
-    <property name="project.structure.last.edited" value="Suggestions" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />

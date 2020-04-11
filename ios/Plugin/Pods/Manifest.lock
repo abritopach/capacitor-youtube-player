@@ -1,28 +1,33 @@
 PODS:
-  - Capacitor (1.3.0):
-    - CapacitorCordova (= 1.3.0)
-  - CapacitorCordova (1.3.0)
+  - Capacitor (2.0.1):
+    - CapacitorCordova (= 2.0.1)
+  - CapacitorCordova (2.0.1)
   - SVProgressHUD (2.2.5)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
-  - Capacitor
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - SVProgressHUD
   - YouTubePlayer
 
 SPEC REPOS:
   trunk:
-    - Capacitor
-    - CapacitorCordova
     - SVProgressHUD
     - YouTubePlayer
 
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+
 SPEC CHECKSUMS:
-  Capacitor: 8be26c1099c8fb157a4eee9feaa6aa05e466d272
-  CapacitorCordova: 8aeaad82ad344af66b02f4660dcf544eec79face
+  Capacitor: 893baa42b33635ddf23d29d23d2a7f33f7c08bc7
+  CapacitorCordova: 9fee2eb6780331b6ff09710d6a7d1f2e4707f1b9
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: f091a9c113eb66eb9bfe5daae8c2516b9a44bd08
+PODFILE CHECKSUM: 2fbf45b834e20fe9b2bcd1249017f7c139c9d6fc
 
 COCOAPODS: 1.8.4

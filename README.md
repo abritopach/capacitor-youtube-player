@@ -6,7 +6,7 @@
 [![Ask me anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/abritopach) [![Version](https://img.shields.io/npm/v/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player)
 [![Downloads](https://img.shields.io/npm/dt/capacitor-youtube-player.svg)](https://www.npmjs.com/package/capacitor-youtube-player) [![License](https://img.shields.io/github/license/abritopach/capacitor-youtube-player.svg)](https://github.com/abritopach/capacitor-youtube-player/blob/master/LICENSE)
 
-**If you want to help me to keep contributing to open source with projects, examples, plugins,... help me and buy me a coffee.**
+**If this project has been useful to you and you want to help me to keep contributing to the open source with projects, examples, plugins,... collaborate and buy me a coffee.**
 
 <a href="https://www.buymeacoffee.com/h6WVj4HcD" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 
