@@ -246,4 +246,4 @@ You must build your Ionic / Angular project at least once before adding any nati
 
 ### React project
 
-- Check [examples/react-test-capacitor-youtube-player](https://github.com/abritopach/capacitor-youtube-player/tree/master/examples/vue-test-capacitor-youtube-player) folder.
+- Check [examples/react-test-capacitor-youtube-player](https://github.com/abritopach/capacitor-youtube-player/tree/master/examples/react-test-capacitor-youtube-player) folder.
