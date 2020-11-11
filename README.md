@@ -96,11 +96,14 @@ If you get this error in ANDROID STUDIO
 
 ![Error](readme_resources/android-error.jpg "Error")
 
-To use the CAPACITOR YOUTUBE PLAYER plugin you need to add the YOUTUBE API KEY in the file gradle.properties.
+To use the CAPACITOR YOUTUBE PLAYER plugin you need to add the YOUTUBE API KEY in the file local.properties.
 
 ```bash
 YOUTUBE_API_KEY="YOUR_YOUTUBE_API_KEY"
 ```
+
+If you don't have a local.properties file, create one.
+By default, this file is in the .gitignore. If not add it so that your keys are not visible to anyone.
 
 You have to register the Youtube Player plugin's class in your Activity so Capacitor is aware of it.
 
