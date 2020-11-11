@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: ./capacitor-youtube-player/libs/YouTubeAndroidPlayerApi.jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/capacitor-youtube-player/libs/YouTubeAndroidPlayerApi.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
