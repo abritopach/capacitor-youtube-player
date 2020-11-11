@@ -20,7 +20,7 @@ public class YoutubePlayer extends Plugin {
     private static final String TAG = YouTubePlayer.class.getSimpleName();
 
     private Context context;
-    private YouTubePlayer youTubePlayer = null;
+    private final YouTubePlayer youTubePlayer = null;
     private YoutubePlayerHandler youtubePlayerHandler = null;
 
 
