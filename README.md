@@ -102,7 +102,7 @@ To use the CAPACITOR YOUTUBE PLAYER plugin you need to add the YOUTUBE API KEY i
 YOUTUBE_API_KEY="YOUR_YOUTUBE_API_KEY"
 ```
 
-You have to register Youtube Player plugin's class in your Acitivity so Capacitor is aware of it.
+You have to register the Youtube Player plugin's class in your Activity so Capacitor is aware of it.
 
 ```bash
 package com.example.app;

@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: __local_aars__:./capacitor-youtube-player/libs/YouTubeAndroidPlayerApi.jar:unspecified@jar">
+  <library name="Gradle: ./capacitor-youtube-player/libs/YouTubeAndroidPlayerApi.jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/capacitor-youtube-player/libs/YouTubeAndroidPlayerApi.jar!/" />
     </CLASSES>

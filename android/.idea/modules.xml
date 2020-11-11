@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" group="android" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/@capacitor/android/capacitor/capacitor-android.iml" filepath="$PROJECT_DIR$/../node_modules/@capacitor/android/capacitor/capacitor-android.iml" group="android/capacitor-android" />
-      <module fileurl="file://$PROJECT_DIR$/capacitor-youtube-player/capacitor-youtube-player.iml" filepath="$PROJECT_DIR$/capacitor-youtube-player/capacitor-youtube-player.iml" group="android/capacitor-youtube-player" />
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-706010645/android.capacitor-android.iml" filepath="$PROJECT_DIR$/.idea/modules/-706010645/android.capacitor-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/capacitor-youtube-player/android.capacitor-youtube-player.iml" filepath="$PROJECT_DIR$/.idea/modules/capacitor-youtube-player/android.capacitor-youtube-player.iml" />
     </modules>
   </component>
 </project>
