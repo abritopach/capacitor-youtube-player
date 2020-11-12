@@ -36,6 +36,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
                 videoId = extras.getString("videoId");
+                fullscreen = extras.getBoolean("fullscreen");
                 initializeYoutubePlayer(videoId);
             }
         // }
@@ -86,7 +87,11 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                             fullscreen = b;
                         }
                     });
-                    youTubePlayer.setFullscreen(!fullscreen);
+
+                    if (fullscreen) {
+                        youTubePlayer.setFullscreen(fullscreen);
+                        // youTubePlayer.setFullscreen(!fullscreen);
+                    }
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);
 

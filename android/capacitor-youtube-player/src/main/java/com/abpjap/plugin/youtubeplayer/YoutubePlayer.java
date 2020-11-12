@@ -45,11 +45,13 @@ public class YoutubePlayer extends Plugin {
         Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize");
 
         String videoId = call.getString("videoId");
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId);
+        Boolean fullscreen = call.getBoolean("fullscreen");
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId + " | fullscreen: " + fullscreen);
 
         Intent intent= new Intent();
         intent.setClass(context, YoutubePlayerFragment.class);
         intent.putExtra("videoId", videoId);
+        intent.putExtra("fullscreen", fullscreen);
         getActivity().startActivity(intent);
 
         Disposable disposable = RxBus.subscribe(new Consumer<Object>() {
