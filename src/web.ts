@@ -147,7 +147,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
       const result = await this.loadPlayerApi();
       this.playerLogger.log("loadPlayerApi result", {result: result});
     }
-    if (Player && this.playerApiLoaded) { 
+    if (Player && this.playerApiLoaded) {
       const playerReady = await this.createPlayer(options);
       this.playerLogger.log("loadPlayerApi initialize completed", {playerReady: playerReady});
       return Promise.resolve(playerReady);
