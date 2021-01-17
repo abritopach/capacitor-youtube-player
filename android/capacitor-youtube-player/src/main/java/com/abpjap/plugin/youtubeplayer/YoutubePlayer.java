@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.getcapacitor.JSObject;
-import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.CapacitorPlugin;
 import com.google.android.youtube.player.YouTubePlayer;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-@NativePlugin()
+@CapacitorPlugin()
 public class YoutubePlayer extends Plugin {
 
     private static final String TAG = YouTubePlayer.class.getSimpleName();
@@ -36,7 +36,7 @@ public class YoutubePlayer extends Plugin {
 
         JSObject ret = new JSObject();
         ret.put("value", value);
-        call.success(ret);
+        call.resolve(ret);
     }
 
     @PluginMethod()
@@ -65,7 +65,7 @@ public class YoutubePlayer extends Plugin {
 
                     JSObject ret = new JSObject();
                     ret.put("value", message);
-                    call.success(ret);
+                    call.resolve(ret);
                 }
             }
         });
