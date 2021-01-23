@@ -46,8 +46,6 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
 
                 self.view.addSubview(youtubePlayer)
 
-                // let playerVars = ["controls": "1", "color": "red", "showinfo": "1", "autoplay": "0", "fs": "0", "loop": "0", "start": "60"]
-                // youtubePlayer.playerVars = playerVars as YouTubePlayerView.YouTubePlayerParameters
                 youtubePlayer.loadVideoID(videoId);
             }
         }

@@ -32,14 +32,12 @@ public class YoutubePlayerFragment extends AppCompatActivity {
         setContentView(R.layout.activity_player);
 
         String videoId = "";
-        // if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                videoId = extras.getString("videoId");
-                fullscreen = extras.getBoolean("fullscreen");
-                initializeYoutubePlayer(videoId);
-            }
-        // }
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            videoId = extras.getString("videoId");
+            fullscreen = extras.getBoolean("fullscreen");
+            initializeYoutubePlayer(videoId);
+        }
     }
 
     /**
@@ -48,11 +46,6 @@ public class YoutubePlayerFragment extends AppCompatActivity {
     private void initializeYoutubePlayer(final String videoId) {
 
         Log.e(TAG, "[Youtube Player Fragment]: initializeYoutubePlayer");
-
-        /*
-        youTubePlayerFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.youtube_player_fragment);
-         */
 
         Object obj = getSupportFragmentManager().findFragmentById(R.id.youtube_player_fragment);
         if (obj instanceof YouTubePlayerSupportFragment)
@@ -90,7 +83,6 @@ public class YoutubePlayerFragment extends AppCompatActivity {
 
                     if (fullscreen) {
                         youTubePlayer.setFullscreen(fullscreen);
-                        // youTubePlayer.setFullscreen(!fullscreen);
                     }
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);
