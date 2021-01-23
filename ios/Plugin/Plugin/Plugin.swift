@@ -13,7 +13,7 @@ public class YoutubePlayer: CAPPlugin {
     @objc func echo(_ call: CAPPluginCall) {
         print("[Youtube Player Plugin Native iOS]: echo");
         let value = call.getString("value") ?? ""
-        call.success([
+        call.resolve([
             "value": value
         ])
     }
@@ -41,8 +41,8 @@ public class YoutubePlayer: CAPPlugin {
             self.vc.options = options
             
             DispatchQueue.main.async {
-                self.bridge.viewController.present(self.vc!, animated: true, completion: {
-                    call.success([
+                self.bridge?.viewController?.present(self.vc!, animated: true, completion: {
+                    call.resolve([
                         "value": "[Youtube Player Plugin Native iOS]: initialize"
                         ])
                 });
