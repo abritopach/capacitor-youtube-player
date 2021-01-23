@@ -7,7 +7,6 @@ declare global {
 }
 
 export interface YoutubePlayerPlugin {
-  echo(options: { value: string }): Promise<{value: string}>;
   initialize(options: {width: number, height: number, videoId: string, playerVars?: IPlayerVars}): Promise<{playerReady: boolean}>;
   destroy(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   // Methods playback controls and player settings..

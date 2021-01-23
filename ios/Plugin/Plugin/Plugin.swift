@@ -20,13 +20,6 @@ public class YoutubePlayer: CAPPlugin {
     
     @objc func initialize(_ call: CAPPluginCall) {
         print("[Youtube Player Plugin Native iOS]: initialize");
-
-        /*
-        let alert = UIAlertController(title: "[Youtube Player Plugin Native iOS]: initialize", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        
-        self.bridge.viewController.present(alert, animated: true, completion: nil)
-         */
         
         if (call.getString("videoId") != nil) {
             self.vc = YPViewController();
