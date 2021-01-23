@@ -83,14 +83,7 @@ Load player API & Create Player | `initialize(options: {width: number, height: n
 ```
 
 ## Using this plugin
-
-### IMPORTANT NOTE iOS:
-
-Currently there is a small error when you testing the plugin in iOS. The following line of code needs to be modified in xcode:
-
-YouTubePlayer.swift:339:102: 'UIWebViewNavigationType' has been renamed to 'UIWebView.NavigationType'
-
-### IMPORTANT NOTE ANDROID
+### IMPORTANT NOTE ANDROID (CAPACITOR 3.0)
 
 If you get this error in ANDROID STUDIO
 
@@ -123,6 +116,31 @@ public class MainActivity extends BridgeActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    registerPlugin(YoutubePlayer.class); <= ADD THIS LINE
+  }
+}
+```
+
+In the official [Capacitor documentation](https://capacitorjs.com/docs/v3/updating/3-0#android) you have the instructions to migrate to version 3.0.
+
+### IMPORTANT NOTE ANDROID (CAPACITOR 2.0)
+
+```bash
+package com.example.app;
+
+import android.os.Bundle;
+
+import com.abpjap.plugin.youtubeplayer.YoutubePlayer;
+import com.getcapacitor.BridgeActivity;
+import com.getcapacitor.Plugin;
+
+import java.util.ArrayList;
+
+public class MainActivity extends BridgeActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
     // Initializes the Bridge
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
@@ -135,6 +153,15 @@ public class MainActivity extends BridgeActivity {
 
 In the official [Capacitor documentation](https://capacitor.ionicframework.com/docs/plugins/android#export-to-capacitor) appears how to register the plugin.
 
+### IMPORTANT NOTE iOS (CAPACITOR 3.0)
+
+In the official [Capacitor documentation](https://capacitorjs.com/docs/v3/updating/3-0#ios) you have the instructions to migrate to version 3.0.
+
+### IMPORTANT NOTE iOS (CAPACITOR 2.0)
+
+Currently there is a small error when you testing the plugin in iOS. The following line of code needs to be modified in xcode:
+
+YouTubePlayer.swift:339:102: 'UIWebViewNavigationType' has been renamed to 'UIWebView.NavigationType'
 
 ### Ionic / Angular project
 
@@ -226,6 +253,8 @@ You must build your Ionic / Angular project at least once before adding any nati
 ### Example Ionic project
 
 - Plugin in Ionic project: https://github.com/abritopach/ionic-test-capacitor-youtube-player
+
+NOTE: If you want to see the project with Capacitor version 2.0 use the capacitor_2.0 branch.
 
 #### WEB
 

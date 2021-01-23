@@ -47,14 +47,6 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
 
       // This code loads the IFrame Player API code asynchronously.
       const tag = document.createElement('script');
-
-      /*
-      const callback = () => {
-        console.log('[Youtube Player Plugin Web]: script loaded.');
-        resolve(true);
-      }
-      tag.onload = callback;
-      */
       tag.type = 'text/javascript';
       tag.src = "https://www.youtube.com/iframe_api";
       const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -77,12 +69,9 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
   // after the API code downloads.
   async createPlayer(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}) {
     this.playerLogger.log("createPlayer");
-    // console.log('options', options);
     const playerSize = this.checkSize(options);
-    // console.log('playerSize', playerSize);
 
     return await new Promise(resolve => {
-      // console.log(YT());
 
       const player = Player();
 
@@ -133,10 +122,6 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
           }
         }
       });
-
-      // console.log('players', this.players);
-      // console.log('player', this.players[options.playerId]);
-      // console.log('playersEventsState', this.playersEventsState);
     });
   }
 
@@ -147,7 +132,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
       const result = await this.loadPlayerApi();
       this.playerLogger.log("loadPlayerApi result", {result: result});
     }
-    if (Player && this.playerApiLoaded) { 
+    if (Player && this.playerApiLoaded) {
       const playerReady = await this.createPlayer(options);
       this.playerLogger.log("loadPlayerApi initialize completed", {playerReady: playerReady});
       return Promise.resolve(playerReady);
@@ -310,11 +295,6 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
 
     this.players[playerId].setSize(width, height);
     return Promise.resolve({result: { method: 'toggleFullScreen', value: isFullScreen }});
-  }
-
-  async echo(options: { value: string }) {
-    // console.log('ECHO', options);
-    return Promise.resolve(options);
   }
 
 }
