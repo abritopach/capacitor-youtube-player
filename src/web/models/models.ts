@@ -29,10 +29,10 @@ export interface IPlayerVars {
 
 export interface IPlayerState {
     events: {
-        onReady?: Object,
-        onStateChange?: Object,
-        onPlaybackQualityChange?: Object,
-        onError?: Object
+        onReady?: unknown,
+        onStateChange?: unknown,
+        onPlaybackQualityChange?: unknown,
+        onError?: unknown
     }
 }
 
