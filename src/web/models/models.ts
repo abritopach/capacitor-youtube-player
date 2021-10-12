@@ -1,6 +1,6 @@
 export interface IPlayerSize {
-    height?: number;
-    width?: number;
+    height: number;
+    width: number;
 }
 
 // https://developers.google.com/youtube/player_parameters?hl=es-419

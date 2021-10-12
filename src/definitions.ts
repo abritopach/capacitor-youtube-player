@@ -1,13 +1,7 @@
-import { IPlayerVars, IPlayerState } from './web/models/models';
-
-declare global {
-  interface PluginRegistry {
-    YoutubePlayer?: YoutubePlayerPlugin;
-  }
-}
-
+import { IPlayerVars, IPlayerState, IPlayerSize } from './web/models/models';
 export interface YoutubePlayerPlugin {
-  initialize(options: {width: number, height: number, videoId: string, playerVars?: IPlayerVars}): Promise<{playerReady: boolean}>;
+  initialize(options: {playerId: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars,
+    debug?: boolean}): Promise<{playerReady: boolean, player: string} | undefined>;
   destroy(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   // Methods playback controls and player settings..
   /***********/

@@ -1,5 +1,7 @@
 import { WebPlugin } from '@capacitor/core';
 
+import type { YoutubePlayerPlugin } from './definitions';
+
 import { IPlayerSize, IPlayerVars, IPlayerState } from './web/models/models';
 
 import { Log } from './log';
@@ -16,7 +18,7 @@ export function PlayerState() {
   return YT().PlayerState;
 }
 
-export class YoutubePlayerPluginWeb extends WebPlugin {
+export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPlugin{
 
   players: any = [];
   playersEventsState = new Map<string, IPlayerState>();
@@ -50,7 +52,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
       tag.type = 'text/javascript';
       tag.src = "https://www.youtube.com/iframe_api";
       const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
     });
   }
 
@@ -67,7 +69,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
 
   // This function creates an <iframe> (and YouTube player)
   // after the API code downloads.
-  async createPlayer(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}) {
+  async createPlayer(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}): Promise<{playerReady: boolean, player: string}> {
     this.playerLogger.log("createPlayer");
     const playerSize = this.checkSize(options);
 
@@ -92,48 +94,48 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
             switch (event.data) {
               case PlayerState().PLAYING:
                   this.playerLogger.log(`player "${options.playerId}" -> playing`);
-                  this.playersEventsState.get(options.playerId).events.onStateChange = {text: 'playing', value: PlayerState().PLAYING};
+                  this.playersEventsState.get(options.playerId)!.events.onStateChange = {text: 'playing', value: PlayerState().PLAYING};
                   break;
               case PlayerState().PAUSED:
                   this.playerLogger.log(`player "${options.playerId}" -> paused`);
-                  this.playersEventsState.get(options.playerId).events.onStateChange = {text: 'paused', value: PlayerState().PAUSED};
+                  this.playersEventsState.get(options.playerId)!.events.onStateChange = {text: 'paused', value: PlayerState().PAUSED};
                   break;
               case PlayerState().ENDED:
                   this.playerLogger.log(`player "${options.playerId}" -> ended`);
-                  this.playersEventsState.get(options.playerId).events.onStateChange = {text: 'ended', value: PlayerState().ENDED};
+                  this.playersEventsState.get(options.playerId)!.events.onStateChange = {text: 'ended', value: PlayerState().ENDED};
                   break;
               case PlayerState().BUFFERING:
                 this.playerLogger.log(`player "${options.playerId}" -> buffering`);
-                this.playersEventsState.get(options.playerId).events.onStateChange = {text: 'buffering', value: PlayerState().BUFFERING};
+                this.playersEventsState.get(options.playerId)!.events.onStateChange = {text: 'buffering', value: PlayerState().BUFFERING};
                 break;
               case PlayerState().CUED:
                 this.playerLogger.log(`player "${options.playerId}" -> cued`);
-                this.playersEventsState.get(options.playerId).events.onStateChange = {text: 'cued', value: PlayerState().CUED};
+                this.playersEventsState.get(options.playerId)!.events.onStateChange = {text: 'cued', value: PlayerState().CUED};
                 break;
             }
           },
           'onPlaybackQualityChange': (event: any) => {
             this.playerLogger.log(`player "${options.playerId}" -> onPlayerPlaybackQualityChange quality ${event.data}`);
-            this.playersEventsState.get(options.playerId).events.onPlaybackQualityChange = {text: 'onPlaybackQualityChange', value: event.data};
+            this.playersEventsState.get(options.playerId)!.events.onPlaybackQualityChange = {text: 'onPlaybackQualityChange', value: event.data};
           },
           'onError': (error: any) => {
             this.playerLogger.error(`player "${options.playerId}" -> onPlayerError`, {error: error});
-            this.playersEventsState.get(options.playerId).events.onError = {text: 'onError', value: error};
+            this.playersEventsState.get(options.playerId)!.events.onError = {text: 'onError', value: error};
           }
         }
       });
     });
   }
 
-  async initialize(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string, debug?: boolean}) {
+  async initialize(options: {playerId: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars, debug?: boolean}) {
     this.playerLogger = new Log(options.debug);
     this.playerLogger.log("initialize");
     if (!this.playerApiLoaded) {
       const result = await this.loadPlayerApi();
       this.playerLogger.log("loadPlayerApi result", {result: result});
     }
-    if (Player && this.playerApiLoaded) {
-      const playerReady = await this.createPlayer(options);
+    if (this.playerApiLoaded) {
+      const playerReady: {playerReady: boolean, player: string} = await this.createPlayer(options) as {playerReady: boolean, player: string};
       this.playerLogger.log("loadPlayerApi initialize completed", {playerReady: playerReady});
       return Promise.resolve(playerReady);
     }
@@ -223,7 +225,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
   }
 
   // Sets the volume. Accepts an integer between 0 and 100.
-  async setVolume(playerId: string, volume: Number) {
+  async setVolume(playerId: string, volume: number) {
     this.playerLogger.log(`player "${playerId}" -> setVolume ${volume}`);
     this.players[playerId].setVolume(volume);
     return Promise.resolve({result: { method: 'setVolume', value: volume }});
@@ -242,7 +244,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
   /*********/
 
   // Sets the size in pixels of the <iframe> that contains the player.
-  async setSize(playerId: string, width:Number, height:Number) {
+  async setSize(playerId: string, width: number, height: number) {
     this.playerLogger.log(`player "${playerId}" -> setSize width: ${width} height: ${height}`);
     this.players[playerId].setSize(width, height);
     return Promise.resolve({result: { method: 'setSize', value: {width: width, height: height} }});
@@ -298,7 +300,3 @@ export class YoutubePlayerPluginWeb extends WebPlugin {
   }
 
 }
-
-const YoutubePlayerWeb = new YoutubePlayerPluginWeb();
-
-export { YoutubePlayerWeb };
