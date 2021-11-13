@@ -1,13 +1,8 @@
-import { IPlayerVars, IPlayerState } from './web/models/models';
-
-declare global {
-  interface PluginRegistry {
-    YoutubePlayer?: YoutubePlayerPlugin;
-  }
-}
+import type { IPlayerVars, IPlayerState, IPlayerSize } from './web/models/models';
 
 export interface YoutubePlayerPlugin {
-  initialize(options: {width: number, height: number, videoId: string, playerVars?: IPlayerVars}): Promise<{playerReady: boolean}>;
+  initialize(options: {playerId: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars,
+    debug?: boolean}): Promise<{playerReady: boolean, player: string} | undefined>;
   destroy(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   // Methods playback controls and player settings..
   /***********/
@@ -15,8 +10,8 @@ export interface YoutubePlayerPlugin {
   playVideo(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   pauseVideo(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   seekTo(playerId: string, seconds: number, allowSeekAhead: boolean): Promise<{result: { method: string, value: boolean, seconds: number, allowSeekAhead: boolean }}>;
-  loadVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {} }}>;
-  cueVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {} }}>;
+  loadVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string} }}>;
+  cueVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string} }}>;
   /***********/
 
   // Methods changing the player volume.
@@ -24,13 +19,13 @@ export interface YoutubePlayerPlugin {
   mute(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   unMute(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   isMuted(playerId: string): Promise<{result: { method: string, value: boolean }}>;
-  setVolume(playerId: string, volume: Number): Promise<{result: { method: string, value: number }}>;
+  setVolume(playerId: string, volume: number): Promise<{result: { method: string, value: number }}>;
   getVolume(playerId: string): Promise<{result: { method: string, value: number }}>;
   /***********/
 
   // Methods setting the player size.
   /***********/
-  setSize(playerId: string, width:Number, height:Number): Promise<{result: { method: string, value: {width: number, height: number} }}>;
+  setSize(playerId: string, width: number, height: number): Promise<{result: { method: string, value: {width: number, height: number} }}>;
   /***********/
 
   // Methods playback status.

@@ -1,10 +1,10 @@
-import { IPlayerLog } from './web/models/models';
+import type { IPlayerLog } from './web/models/models';
 
 export class Log implements IPlayerLog {
 
-    logEnabled: boolean = false;
+    logEnabled = false;
 
-    constructor(logEnabled: boolean = false) {
+    constructor(logEnabled = false) {
         this.logEnabled = logEnabled;
     }
 
