@@ -4,14 +4,17 @@ import type { YoutubePlayerPlugin } from './definitions';
 import { Log } from './log';
 import type { IPlayerSize, IPlayerVars, IPlayerState } from './web/models/models';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function YT() {
   return (window as any)['YT'];
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function Player() {
   return YT().Player;
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function PlayerState() {
   return YT().PlayerState;
 }
