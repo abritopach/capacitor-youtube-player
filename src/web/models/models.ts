@@ -1,6 +1,6 @@
 export interface IPlayerSize {
-    height?: number;
-    width?: number;
+    height: number;
+    width: number;
 }
 
 // https://developers.google.com/youtube/player_parameters?hl=es-419
@@ -29,10 +29,10 @@ export interface IPlayerVars {
 
 export interface IPlayerState {
     events: {
-        onReady?: Object,
-        onStateChange?: Object,
-        onPlaybackQualityChange?: Object,
-        onError?: Object
+        onReady?: unknown,
+        onStateChange?: unknown,
+        onPlaybackQualityChange?: unknown,
+        onError?: unknown
     }
 }
 
