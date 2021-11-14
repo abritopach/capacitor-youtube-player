@@ -1,0 +1,33 @@
+PODS:
+  - Capacitor (3.3.1):
+    - CapacitorCordova
+  - CapacitorCordova (3.3.1)
+  - SVProgressHUD (2.2.5)
+  - YouTubePlayer (0.7.2)
+
+DEPENDENCIES:
+  - "Capacitor (from `../node_modules/@capacitor/ios`)"
+  - "CapacitorCordova (from `../node_modules/@capacitor/ios`)"
+  - SVProgressHUD
+  - YouTubePlayer
+
+SPEC REPOS:
+  trunk:
+    - SVProgressHUD
+    - YouTubePlayer
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../node_modules/@capacitor/ios"
+  CapacitorCordova:
+    :path: "../node_modules/@capacitor/ios"
+
+SPEC CHECKSUMS:
+  Capacitor: 03a45821c64411719140ba9fb39a895d026e597c
+  CapacitorCordova: 6c6127c6ee31a7a808705bf4ac17fb5f80ed63f6
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
+
+PODFILE CHECKSUM: 18dc9a5fcb4acdf01fee2170f218963031a916ff
+
+COCOAPODS: 1.10.1
