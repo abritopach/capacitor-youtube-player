@@ -36,10 +36,9 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
                 SVProgressHUD.show()
                 // treat it as a string key dictionary.
                 let videoId = dictionary["videoId"] as! String
-                let width = dictionary["width"] as! Int
-                let height = dictionary["height"] as! Int
                 // let playerVars = dictionary["playerVars"] as! [String: Any]
-                let playerSize: [String : Int] = checkSize(width: width, height: height)
+                var playerSize = dictionary["playerSize"] as! [String: Int]
+                playerSize = checkSize(size: playerSize)
                 youtubePlayer = YouTubePlayerView(frame: CGRect(x: 0, y: 0, width: playerSize["width"]!, height: playerSize["height"]!))
 
                 youtubePlayer.delegate = self
@@ -54,15 +53,15 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func checkSize(width: Int, height: Int) -> [String : Int] {
+    func checkSize(size: [String: Int]) -> [String : Int] {
         var playerSize = [
-            "width" : width ?? self._defaultSizes["width"]!,
-            "height": height ?? self._defaultSizes["height"]!
+            "width" : size["width"] ?? self._defaultSizes["width"]!,
+            "height": size["height"] ?? self._defaultSizes["height"]!
         ] as [String : Int]
-        if (playerSize["height"] as! Int > Int(UIScreen.main.bounds.height)) {
+        if (playerSize["height"]! > Int(UIScreen.main.bounds.height)) {
             playerSize["height"] = Int(UIScreen.main.bounds.height);
         }
-        if (playerSize["width"] as! Int > Int(UIScreen.main.bounds.width)) {
+        if (playerSize["width"]! > Int(UIScreen.main.bounds.width)) {
             playerSize["width"] = Int(UIScreen.main.bounds.width);
         }
         return playerSize;

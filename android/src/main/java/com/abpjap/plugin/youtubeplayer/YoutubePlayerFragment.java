@@ -51,8 +51,9 @@ public class YoutubePlayerFragment extends AppCompatActivity {
         if (obj instanceof YouTubePlayerSupportFragment)
             youTubePlayerFragment = (YouTubePlayerSupportFragment) obj;
 
-        if (youTubePlayerFragment == null)
+        if (youTubePlayerFragment == null) {
             return;
+        }
 
         youTubePlayerFragment.initialize(BuildConfig.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
 
@@ -61,6 +62,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                                                 boolean wasRestored) {
 
                 if (!wasRestored) {
+
                     youTubePlayer = player;
 
                     // Set the player style default.
@@ -72,6 +74,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                     RxBus.publish(result);
 
                     // Specify that we want to handle fullscreen behavior ourselves.
+
                     youTubePlayer.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
                     youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
                         @Override
@@ -84,6 +87,7 @@ public class YoutubePlayerFragment extends AppCompatActivity {
                     if (fullscreen) {
                         youTubePlayer.setFullscreen(fullscreen);
                     }
+
                     // Cue the video by videoId.
                     youTubePlayer.cueVideo(videoId);
 
@@ -91,10 +95,10 @@ public class YoutubePlayerFragment extends AppCompatActivity {
             }
 
             @Override
-            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult error) {
 
                 // Print or show error if initialization failed.
-                Log.e(TAG, "Youtube Player View initialization failed");
+                Log.e(TAG, "Youtube Player View initialization failed -> error:" + error.toString());
 
                 RxBus.publish("Youtube Player View initialization failed");
             }

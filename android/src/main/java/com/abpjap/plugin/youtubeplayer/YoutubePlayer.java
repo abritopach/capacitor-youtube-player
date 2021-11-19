@@ -46,7 +46,9 @@ public class YoutubePlayer extends Plugin {
 
         String videoId = call.getString("videoId");
         Boolean fullscreen = call.getBoolean("fullscreen");
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId + " | fullscreen: " + fullscreen);
+        JSObject playerSize = call.getObject("playerSize");
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId + " | fullscreen: " + fullscreen +
+        " | playerSize: " + playerSize.toString());
 
         Intent intent= new Intent();
         intent.setClass(context, YoutubePlayerFragment.class);

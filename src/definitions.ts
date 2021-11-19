@@ -1,7 +1,7 @@
 import type { IPlayerVars, IPlayerState, IPlayerSize } from './web/models/models';
 
 export interface YoutubePlayerPlugin {
-  initialize(options: {playerId: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars,
+  initialize(options: {playerId?: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars,
     debug?: boolean}): Promise<{playerReady: boolean, player: string} | undefined>;
   destroy(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   // Methods playback controls and player settings..
