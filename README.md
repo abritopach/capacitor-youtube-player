@@ -66,14 +66,14 @@ Playback status | `getCurrentTime(playerId: string)` | Promise - Returns the ela
 
 Functionality | Methods | Description | Expects | Returns
 ----------------|----------------|-------------|--------|--------
-Load player API & Create Player | `initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;` | Promise - Load player API & create player.  | JSON Object  | data
+Load player API & Create Player | `initialize(options: {playerSize: IPlayerSize, videoId: string}): Promise<{playerReady: boolean}>;` | Promise - Load player API & create player.  | JSON Object  | data
 
 
 ## IOS
 
 Functionality | Methods | Description | Expects | Returns
 ----------------|----------------|-------------|--------|--------
-Load player API & Create Player | `initialize(options: {width: number, height: number, videoId: string}): Promise<{playerReady: boolean}>;` | Promise - Load player API & create player.  | JSON Object  | data
+Load player API & Create Player | `initialize(options: {playerSize: IPlayerSize, videoId: string}): Promise<{playerReady: boolean}>;` | Promise - Load player API & create player.  | JSON Object  | data
 
 
 ## Install Plugin
@@ -83,9 +83,9 @@ Load player API & Create Player | `initialize(options: {width: number, height: n
 ```
 
 ## Using this plugin
-### IMPORTANT NOTE ANDROID (CAPACITOR 3.0)
+### IMPORTANT NOTES ANDROID
 
-If you get this error in ANDROID STUDIO
+-> If you get this error in ANDROID STUDIO
 
 ![Error](readme_resources/android-error.jpg "Error")
 
@@ -98,43 +98,25 @@ YOUTUBE_API_KEY="YOUR_YOUTUBE_API_KEY"
 If you don't have a local.properties file, create one.
 By default, this file is in the .gitignore. If not add it so that your keys are not visible to anyone.
 
-You have to register the Youtube Player plugin's class in your Activity so Capacitor is aware of it.
+In the official [Capacitor documentation](https://capacitorjs.com/docs/v3/updating/3-0#android) you have the instructions to migrate to version 3.0.
+
+-> If you get this error in ANDROID STUDIO and your device uses Android 11 (API 30)
+
+![Error](readme_resources/android-error-api30.png "Error API 30")
+
+Add the following to manifest tag in AndroidManifest to fix it:
 
 ```bash
-package com.example.app;
-
-import android.os.Bundle;
-
-import com.abpjap.plugin.youtubeplayer.YoutubePlayer;
-import com.getcapacitor.BridgeActivity;
-import com.getcapacitor.Plugin;
-
-import java.util.ArrayList;
-
-public class MainActivity extends BridgeActivity {
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    registerPlugin(YoutubePlayer.class); <= ADD THIS LINE
-  }
-}
+<queries>
+   <intent>
+     <action android:name="com.google.android.youtube.api.service.START" />
+   </intent>
+</queries>
 ```
-
-In the official [Capacitor documentation](https://capacitorjs.com/docs/v3/updating/3-0#android) you have the instructions to migrate to version 3.0.
 
 ### IMPORTANT NOTE ANDROID (CAPACITOR 2.0)
 
 ```bash
-package com.example.app;
-
-import android.os.Bundle;
-
-import com.abpjap.plugin.youtubeplayer.YoutubePlayer;
-import com.getcapacitor.BridgeActivity;
-import com.getcapacitor.Plugin;
-
-import java.util.ArrayList;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -152,10 +134,6 @@ public class MainActivity extends BridgeActivity {
 ```
 
 In the official [Capacitor documentation](https://capacitor.ionicframework.com/docs/plugins/android#export-to-capacitor) appears how to register the plugin.
-
-### IMPORTANT NOTE iOS (CAPACITOR 3.0)
-
-In the official [Capacitor documentation](https://capacitorjs.com/docs/v3/updating/3-0#ios) you have the instructions to migrate to version 3.0.
 
 ### IMPORTANT NOTE iOS (CAPACITOR 2.0)
 
