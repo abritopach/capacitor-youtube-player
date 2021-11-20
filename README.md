@@ -102,7 +102,7 @@ In the official [Capacitor documentation](https://capacitorjs.com/docs/v3/updati
 
 -> If you get this error in ANDROID STUDIO and your device uses Android 11 (API 30)
 
-![Error](readme_resources/android-error-api30.jpg "Error API 30")
+![Error](readme_resources/android-error-api30.png "Error API 30")
 
 Add the following to manifest tag in AndroidManifest to fix it:
 
