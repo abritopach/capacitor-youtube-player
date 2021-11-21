@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Test Capacitor Youtube Player Plugin
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="ion-padding">
+    Ionic example project to test Capacitor Youtube Player Plugin.
+    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://github.com/abritopach/capacitor-youtube-player">Capacitor Youtube Player Plugin docs</a> will be your guide.</p>
   </div>
+  <ion-item>
+    <!-- The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="youtube-player"></div>
+  </ion-item>
+  <br>
+  <ion-item>
+    <!-- The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="youtube-player1"></div>
+  </ion-item>
+  <ion-item>
+    <ion-button color="primary" (click)="getPlayersEventsStatePluginWeb()">Get all players state</ion-button>
+  </ion-item>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title>© {{ currentYear }} Adrián Brito Pacheco</ion-title>
+      <ion-buttons slot="end">
+        <ntkme-github-button user="abritopach" repo="capacitor-youtube-player" style="margin-right: 5px;"></ntkme-github-button>
+        <ntkme-github-button user="abritopach" type="follow"></ntkme-github-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
