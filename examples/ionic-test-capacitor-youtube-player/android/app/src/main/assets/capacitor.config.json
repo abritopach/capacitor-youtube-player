@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ionic-test-capacitor-youtube-player",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
