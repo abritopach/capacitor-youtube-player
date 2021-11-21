@@ -228,11 +228,9 @@ You must build your Ionic / Angular project at least once before adding any nati
 
 ## Examples
 
-### Example Ionic project
+### Ionic project (Angular)
 
-- Plugin in Ionic project: https://github.com/abritopach/ionic-test-capacitor-youtube-player
-
-NOTE: If you want to see the project with Capacitor version 2.0 use the capacitor_2.0 branch.
+- Check [examples/ionic-test-capacitor-youtube-player](https://github.com/abritopach/capacitor-youtube-player/tree/master/examples/ionic-test-capacitor-youtube-player) folder.
 
 #### WEB
 

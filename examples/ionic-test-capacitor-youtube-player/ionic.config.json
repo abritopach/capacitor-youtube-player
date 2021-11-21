@@ -1,0 +1,7 @@
+{
+  "name": "ionic-test-capacitor-youtube-player",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
