@@ -15,4 +15,4 @@ include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
 
 include ':capacitor-youtube-player'
-project(':capacitor-youtube-player').projectDir = new File('../../../android')
+project(':capacitor-youtube-player').projectDir = new File('../node_modules/capacitor-youtube-player/android')
