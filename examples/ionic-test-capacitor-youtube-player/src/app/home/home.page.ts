@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { YoutubePlayer } from 'capacitor-youtube-player';
 
 import { Capacitor } from '@capacitor/core';
+import { IPlayerOptions } from '../../../../../dist/esm/web/models/models';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,7 @@ export class HomePage implements OnInit, AfterViewInit {
 
   async initializeYoutubePlayerPluginWeb() {
     console.log('HomePage::initializeYoutubePlayerPluginWeb() | method called');
-    const options = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', debug: true};
+    const options: IPlayerOptions = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', fullscreen: true, debug: true};
     const result = await YoutubePlayer.initialize(options);
     console.log('playerReady', result);
 
@@ -43,7 +44,7 @@ export class HomePage implements OnInit, AfterViewInit {
       console.log('state is', event);
     });
 
-    const options1 = {playerId: 'youtube-player1', playerSize: {width: 640, height: 360}, videoId: 'M1F81V-NhP0'};
+    const options1: IPlayerOptions = {playerId: 'youtube-player1', playerSize: {width: 640, height: 360}, videoId: 'M1F81V-NhP0'};
     const result1 = await YoutubePlayer.initialize(options1);
     console.log('playerReady', result1);
   }
@@ -62,7 +63,7 @@ export class HomePage implements OnInit, AfterViewInit {
 
   async initializeYoutubePlayerPluginNative() {
 
-    const options = {playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M'};
+    const options: IPlayerOptions = {playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', fullscreen: true};
     const playerReady = await YoutubePlayer.initialize(options);
   }
 
