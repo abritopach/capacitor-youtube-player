@@ -1,3 +1,14 @@
+export type RequiredKeys<T, K extends keyof T> = Exclude<T, K> & { [key in K]-?: Required<T[key]> }
+
+export interface IPlayerOptions {
+    playerId?: string;
+    playerSize: IPlayerSize;
+    videoId: string;
+    fullscreen?: boolean;
+    playerVars?: IPlayerVars;
+    debug?: boolean;
+}
+
 export interface IPlayerSize {
     height: number;
     width: number;

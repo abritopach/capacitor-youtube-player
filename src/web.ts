@@ -2,7 +2,7 @@ import { WebPlugin } from '@capacitor/core';
 
 import type { YoutubePlayerPlugin } from './definitions';
 import { Log } from './log';
-import type { IPlayerSize, IPlayerVars, IPlayerState } from './web/models/models';
+import type { IPlayerSize, IPlayerState, IPlayerOptions, RequiredKeys } from './web/models/models';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function YT() {
@@ -57,7 +57,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
     });
   }
 
-  checkSize(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}): IPlayerSize {
+  checkSize(options: IPlayerOptions): IPlayerSize {
     const playerSize = {
       height: options.playerSize.height || this.defaultSizes.height,
       width: options.playerSize.width || this.defaultSizes.width
@@ -70,7 +70,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
 
   // This function creates an <iframe> (and YouTube player)
   // after the API code downloads.
-  async createPlayer(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}): Promise<{playerReady: boolean, player: string}> {
+  async createPlayer(options: RequiredKeys<IPlayerOptions, 'playerId'>): Promise<{playerReady: boolean, player: string}> {
     this.playerLogger.log("createPlayer");
     const playerSize = this.checkSize(options);
 
@@ -81,6 +81,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
       this.players[options.playerId] = new player(options.playerId, {
         ...options.playerVars,
         ...playerSize,
+        fullscreen: options.fullscreen,
         videoId: options.videoId,
         events: {
           // The API will call this function when the video player is ready.
@@ -96,6 +97,13 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
               case PlayerState().PLAYING:
                   this.playerLogger.log(`player "${options.playerId}" -> playing`);
                   this.playersEventsState.get(options.playerId)!.events.onStateChange = {text: 'playing', value: PlayerState().PLAYING};
+                  if (options.fullscreen) {
+                    const iframe = document.getElementById(options.playerId);
+                    const requestFullScreen = iframe?.requestFullscreen
+                    if (requestFullScreen) {
+                      requestFullScreen.bind(iframe)();
+                    }
+                  }
                   break;
               case PlayerState().PAUSED:
                   this.playerLogger.log(`player "${options.playerId}" -> paused`);
@@ -128,7 +136,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
     });
   }
 
-  async initialize(options: {playerId: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars, debug?: boolean}): Promise<{playerReady: boolean, player: string} | undefined> {
+  async initialize(options: RequiredKeys<IPlayerOptions, 'playerId'>): Promise<{playerReady: boolean, player: string} | undefined> {
     this.playerLogger = new Log(options.debug);
     this.playerLogger.log("initialize");
     if (!this.playerApiLoaded) {
