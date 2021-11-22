@@ -2,7 +2,7 @@ import { WebPlugin } from '@capacitor/core';
 
 import type { YoutubePlayerPlugin } from './definitions';
 import { Log } from './log';
-import type { IPlayerSize, IPlayerVars, IPlayerState } from './web/models/models';
+import type { IPlayerSize, IPlayerState, IPlayerOptions } from './web/models/models';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function YT() {
@@ -57,7 +57,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
     });
   }
 
-  checkSize(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}): IPlayerSize {
+  checkSize(options: IPlayerOptions): IPlayerSize {
     const playerSize = {
       height: options.playerSize.height || this.defaultSizes.height,
       width: options.playerSize.width || this.defaultSizes.width
@@ -70,7 +70,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
 
   // This function creates an <iframe> (and YouTube player)
   // after the API code downloads.
-  async createPlayer(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string}): Promise<{playerReady: boolean, player: string}> {
+  async createPlayer(options: IPlayerOptions): Promise<{playerReady: boolean, player: string}> {
     this.playerLogger.log("createPlayer");
     const playerSize = this.checkSize(options);
 
@@ -128,7 +128,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
     });
   }
 
-  async initialize(options: {playerId: string, playerSize: IPlayerSize, videoId: string, playerVars?: IPlayerVars, debug?: boolean}): Promise<{playerReady: boolean, player: string} | undefined> {
+  async initialize(options: IPlayerOptions): Promise<{playerReady: boolean, player: string} | undefined> {
     this.playerLogger = new Log(options.debug);
     this.playerLogger.log("initialize");
     if (!this.playerApiLoaded) {

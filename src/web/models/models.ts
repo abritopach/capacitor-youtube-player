@@ -1,3 +1,12 @@
+export interface IPlayerOptions {
+    playerId: string;
+    playerSize: IPlayerSize;
+    videoId: string;
+    fullscreen?: boolean;
+    playerVars?: IPlayerVars;
+    debug?: boolean;
+}
+
 export interface IPlayerSize {
     height: number;
     width: number;
