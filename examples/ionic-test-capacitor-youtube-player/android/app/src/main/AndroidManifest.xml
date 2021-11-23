@@ -35,6 +35,12 @@
         </provider>
     </application>
 
+  <queries>
+    <intent>
+      <action android:name="com.google.android.youtube.api.service.START" />
+    </intent>
+  </queries>
+
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
