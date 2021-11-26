@@ -26,6 +26,7 @@ public class YoutubePlayer: CAPPlugin {
 
             let options = [
                 "videoId" : call.getString("videoId") ?? nil,
+                "fullscreen" : call.getString("fullscreen") ?? nil,
                 "playerSize" : call.getObject("playerSize") ?? nil,
                 "playerVars": call.getObject("playerVars") ?? nil
                 ] as [String : Any]
