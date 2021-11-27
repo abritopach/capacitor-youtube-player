@@ -47,7 +47,7 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
 
                 self.view.addSubview(youtubePlayer)
 
-                youtubePlayer.loadVideoID(videoId)
+                youtubePlayer.loadVideoID(videoId, fullscreen: fullscreen)
             }
         }
     }
