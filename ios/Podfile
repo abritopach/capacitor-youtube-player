@@ -10,13 +10,13 @@ end
 
 target 'Plugin' do
   capacitor_pods
-  pod 'YouTubePlayer'
+  pod 'YouTubePlayer', :git => 'https://github.com/abritopach/Swift-YouTube-Player.git', :commit => '4f9e13d19c4a2a952d28abb2149839730d55466e'
   pod 'SVProgressHUD'
 end
 
 target 'PluginTests' do
   capacitor_pods
-  pod 'YouTubePlayer'
+  pod 'YouTubePlayer', :git => 'https://github.com/abritopach/Swift-YouTube-Player.git', :commit => '4f9e13d19c4a2a952d28abb2149839730d55466e'
   pod 'SVProgressHUD'
 end
 
