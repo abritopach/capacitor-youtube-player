@@ -36,8 +36,8 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
                 SVProgressHUD.show()
                 // treat it as a string key dictionary.
                 let videoId = dictionary["videoId"] as! String
-                let fullscreen = dictionary["fullscreen"] as! String
-                print("[Youtube Player Plugin Native iOS]: fullscreen", fullscreen);
+                let fullscreen = dictionary["fullscreen"] as! Bool
+                print("[Youtube Player Plugin Native iOS]: fullscreen", fullscreen)
                 // let playerVars = dictionary["playerVars"] as! [String: Any]
                 var playerSize = dictionary["playerSize"] as! [String: Int]
                 playerSize = checkSize(size: playerSize)
@@ -47,7 +47,7 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
 
                 self.view.addSubview(youtubePlayer)
 
-                youtubePlayer.loadVideoID(videoId);
+                youtubePlayer.loadVideoID(videoId)
             }
         }
     }
@@ -61,10 +61,10 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
             "height": size["height"] ?? self._defaultSizes["height"]!
         ] as [String : Int]
         if (playerSize["height"]! > Int(UIScreen.main.bounds.height)) {
-            playerSize["height"] = Int(UIScreen.main.bounds.height);
+            playerSize["height"] = Int(UIScreen.main.bounds.height)
         }
         if (playerSize["width"]! > Int(UIScreen.main.bounds.width)) {
-            playerSize["width"] = Int(UIScreen.main.bounds.width);
+            playerSize["width"] = Int(UIScreen.main.bounds.width)
         }
         return playerSize;
     }
