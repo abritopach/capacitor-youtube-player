@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Test Capacitor Youtube Player Plugin
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let video of videos">
+    <div [id]="video.id"></div>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title>© {{ currentYear }} Adrián Brito Pacheco</ion-title>
+      <ion-buttons slot="end">
+        <ntkme-github-button user="abritopach" repo="capacitor-youtube-player" style="margin-right: 5px;"></ntkme-github-button>
+        <ntkme-github-button user="abritopach" type="follow"></ntkme-github-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
