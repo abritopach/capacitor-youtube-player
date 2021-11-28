@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { YoutubePlayer } from 'capacitor-youtube-player';
 
 import { Capacitor } from '@capacitor/core';
-import { IPlayerOptions } from '../../../../../dist/esm/web/models/models';
+import { IPlayerOptions } from 'capacitor-youtube-player/dist/esm/web/models/models';
 
 @Component({
   selector: 'app-home',
