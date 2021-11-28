@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  public appPages = [
+    {
+      title: 'Simple example',
+      url: '/home',
+      icon: 'videocam'
+    },
+    {
+      title: 'Video List example',
+      url: '/video-list',
+      icon: 'list'
+    }
+  ];
+
   constructor() {}
 }
