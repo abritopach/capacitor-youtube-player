@@ -79,7 +79,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
       const player = Player();
 
       this.players[options.playerId] = new player(options.playerId, {
-        ...options.playerVars,
+        playerVars: options.playerVars,
         ...playerSize,
         fullscreen: options.fullscreen,
         videoId: options.videoId,
