@@ -32,7 +32,18 @@ export class HomePage implements OnInit, AfterViewInit {
 
   async initializeYoutubePlayerPluginWeb() {
     console.log('HomePage::initializeYoutubePlayerPluginWeb() | method called');
-    const options: IPlayerOptions = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', fullscreen: true, debug: true};
+    const options: IPlayerOptions = {
+      playerId: 'youtube-player',
+      playerSize: {width: 640, height: 360},
+      playerVars: {
+        autoplay: 1,
+        rel: 0,
+        showinfo: 1
+      },
+      videoId: 'tDW2C6rcH6M',
+      fullscreen: false,
+      debug: true
+    };
     const result = await YoutubePlayer.initialize(options);
     console.log('playerReady', result);
 
