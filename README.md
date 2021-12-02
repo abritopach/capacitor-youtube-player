@@ -24,6 +24,8 @@ Capacitor also comes with a Plugin API for building native plugins. On iOS, firs
 
 ## Plugin preview
 
+![Ionic App](readme_resources/ionic_app.gif "App")
+
 ![App](readme_resources/app.gif "App")
 
 ## Plugin log mode
