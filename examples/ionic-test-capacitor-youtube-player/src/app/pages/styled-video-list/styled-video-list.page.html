@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons buttons-start slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Test Capacitor Youtube Player Plugin
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header lines="inset">
+      <ion-label>
+        <h1>Ioniconf 2021 Videos</h1>
+      </ion-label>
+    </ion-list-header>
+    <ion-item  *ngFor="let video of videos">
+      <ion-thumbnail slot="start">
+        <div [id]="video.id"></div>
+      </ion-thumbnail>
+      <ion-label>
+        <h2 class="ion-text-wrap">{{ video.title }}</h2>
+        <p class="ion-text-wrap">{{ video.description }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title class="footer-title">© {{ currentYear }} Adrián Brito Pacheco</ion-title>
+      <ion-buttons slot="end">
+        <ntkme-github-button user="abritopach" repo="capacitor-youtube-player" style="margin-right: 5px;"></ntkme-github-button>
+        <ntkme-github-button user="abritopach" type="follow"></ntkme-github-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
