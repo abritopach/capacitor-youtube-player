@@ -17,6 +17,11 @@ export class AppComponent {
       title: 'Video List example',
       url: '/video-list',
       icon: 'list'
+    },
+    {
+      title: 'Styled Video List example',
+      url: '/styled-video-list',
+      icon: 'list-circle'
     }
   ];
 
