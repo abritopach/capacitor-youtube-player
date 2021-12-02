@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
-import { YoutubePlayer } from 'capacitor-youtube-player';
-
 import { Capacitor } from '@capacitor/core';
+import { YoutubePlayer } from 'capacitor-youtube-player';
 import { IPlayerOptions } from 'capacitor-youtube-player/dist/esm/web/models/models';
 
 @Component({
@@ -38,7 +37,8 @@ export class HomePage implements OnInit, AfterViewInit {
       playerVars: {
         autoplay: 1,
         rel: 0,
-        showinfo: 1
+        color: 'white',
+        showinfo: 1,
       },
       videoId: 'tDW2C6rcH6M',
       fullscreen: false,

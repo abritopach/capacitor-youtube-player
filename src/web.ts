@@ -85,10 +85,14 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
         videoId: options.videoId,
         events: {
           // The API will call this function when the video player is ready.
-          'onReady': () => {
+          'onReady': (event: any) => {
             this.playerLogger.log(`player "${options.playerId}" -> onPlayerReady`);
             const state: IPlayerState = {events: {onReady: {text: 'onReady', value: true}}};
             this.playersEventsState.set(options.playerId, state);
+            if (options?.playerVars?.autoplay === 1) {
+              event.target.mute();
+              event.target.playVideo();
+            }
             return resolve({ playerReady: true, player: this.players[options.playerId]});
           },
           'onStateChange': (event: any) => {

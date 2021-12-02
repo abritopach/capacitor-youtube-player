@@ -41,6 +41,46 @@ When initializing a youtube player you can enable debug mode to display the logs
 
 ## WEB
 
+**IMPORTANT NOTE**
+
+-----
+
+### Autoplay
+
+Currently most browsers **do not support autoplay unless the video is loaded without sound.**
+
+This is the behaviour of the web plugin if you pass a value of 1 in the autoplay parameter of playerVars.
+The video will start playing but without sound.
+
+``` bash
+  ...
+  playerVars: {
+      autoplay: 1,
+      rel: 0,
+      color: 'white',
+      showinfo: 1,
+    },
+  ...
+```
+
+
+You can read more about the autoplay policy in different browsers by clicking on the following links:
+
+[Google Chrome](https://developer.chrome.com/blog/autoplay/)
+
+[Firefox](https://blog.mozilla.org/en/products/firefox/block-autoplay/)
+
+### Fullscreen
+
+To display a video in full screen, **user interaction is required**... either by clicking on the play button, another button,...
+
+You can read more about the fullscreen policy in different browsers by clicking on the following links:
+
+[Google Chrome](https://developers.google.com/web/fundamentals/native-hardware/fullscreen)
+
+-----
+
+
 Functionality | Methods | Description | Expects | Returns
 ----------------|----------------|-------------|--------|--------
 Load player API & Create Player & Destroy Player | `initialize(options: {playerId: string, playerSize: IPlayerSize, playerVars?: IPlayerVars, videoId: string, debug?: boolean})` | Promise - Load player API & create player.  | JSON Object  | data
