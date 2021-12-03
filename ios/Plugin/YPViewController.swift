@@ -47,7 +47,13 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
 
                 self.view.addSubview(youtubePlayer)
 
-                youtubePlayer.loadVideoID(videoId, fullscreen: fullscreen)
+                if (fullscreen) {
+                    let playerVars = ["playsinline" : 0] as AnyObject?
+                    youtubePlayer.loadVideoID(videoId, playerVars)
+                }
+                else {
+                    youtubePlayer.loadVideoID(videoId)
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 PODS:
-  - Capacitor (3.3.1):
+  - Capacitor (3.3.2):
     - CapacitorCordova
-  - CapacitorCordova (3.3.1)
+  - CapacitorCordova (3.3.2)
   - SVProgressHUD (2.2.5)
   - YouTubePlayer (0.7.2)
 
@@ -9,7 +9,7 @@ DEPENDENCIES:
   - "Capacitor (from `../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../node_modules/@capacitor/ios`)"
   - SVProgressHUD
-  - YouTubePlayer (from `https://github.com/abritopach/Swift-YouTube-Player.git`, commit `4f9e13d19c4a2a952d28abb2149839730d55466e`)
+  - YouTubePlayer (from `https://github.com/abritopach/Swift-YouTube-Player.git`, commit `a6741a5f1b4173b1240ddecff5524fd0dcc0e229`)
 
 SPEC REPOS:
   trunk:
@@ -21,20 +21,20 @@ EXTERNAL SOURCES:
   CapacitorCordova:
     :path: "../node_modules/@capacitor/ios"
   YouTubePlayer:
-    :commit: 4f9e13d19c4a2a952d28abb2149839730d55466e
+    :commit: a6741a5f1b4173b1240ddecff5524fd0dcc0e229
     :git: https://github.com/abritopach/Swift-YouTube-Player.git
 
 CHECKOUT OPTIONS:
   YouTubePlayer:
-    :commit: 4f9e13d19c4a2a952d28abb2149839730d55466e
+    :commit: a6741a5f1b4173b1240ddecff5524fd0dcc0e229
     :git: https://github.com/abritopach/Swift-YouTube-Player.git
 
 SPEC CHECKSUMS:
-  Capacitor: 03a45821c64411719140ba9fb39a895d026e597c
-  CapacitorCordova: 6c6127c6ee31a7a808705bf4ac17fb5f80ed63f6
+  Capacitor: b8a7b81d33f3b7dcf934e2efc833feb6a1a8495f
+  CapacitorCordova: a971c79c2186c6291c839c855ef2c31d0ca26ede
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: 8b1706883a17fa21c961719af5ff265c17ffbd17
+PODFILE CHECKSUM: 6f579c0bc0c58ff98b0b18ca8ac9bb648422f4d6
 
 COCOAPODS: 1.10.1
