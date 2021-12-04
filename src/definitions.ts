@@ -13,6 +13,21 @@ export interface YoutubePlayerPlugin {
   cueVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string} }}>;
   /***********/
 
+  // Methods for playing playlist.
+  /***********/
+  cuePlaylist(
+    playlist: string | string[],
+    index: number,
+    startSeconds: number,
+    suggestedQuality: string): Promise<{result: { method: string, value: boolean }}>;
+  loadPlaylist(playlist: string | string[],
+      index: number,
+      startSeconds: number,
+      suggestedQuality: string): Promise<{result: { method: string, value: boolean }}>;
+  /***********/
+
+  /***********/
+
   // Methods changing the player volume.
   /***********/
   mute(playerId: string): Promise<{result: { method: string, value: boolean }}>;
