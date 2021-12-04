@@ -48,10 +48,11 @@ export interface IPlayerState {
 }
 
 export interface IPlaylistOptions {
-    playlist: string | string[],
-    index?: number,
-    startSeconds?: number,
-    suggestedQuality?: string
+    listType: 'playlist' | 'search' | 'user_uploads';
+    list: string;
+    index?: number;
+    startSeconds?: number;
+    suggestedQuality?: string;
 }
 
 export interface IPlayerLog {

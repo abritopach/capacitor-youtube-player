@@ -223,7 +223,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
 
   async cuePlaylist(playerId: string, playlistOptions: IPlaylistOptions)
   : Promise<{result: { method: string, value: boolean }}> {
-    this.playerLogger.log(`player "${playerId}" -> cuePlaylist with options ${playlistOptions}`);
+    this.playerLogger.log(`player "${playerId}" -> cuePlaylist with options ${JSON.stringify(playlistOptions)}`);
     this.players[playerId].cuePlaylist(playlistOptions);
     return Promise.resolve({result: { method: 'cuePlaylist', value: true }});
   }
@@ -231,6 +231,7 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
   async loadPlaylist(playerId: string, playlistOptions: IPlaylistOptions)
   : Promise<{result: { method: string, value: boolean }}> {
     this.playerLogger.log(`player "${playerId}" -> loadPlaylist with options ${playlistOptions}`);
+    this.players[playerId].loadPlaylist(playlistOptions);
     return Promise.resolve({result: { method: 'loadPlaylist', value: true }});
   }
 
