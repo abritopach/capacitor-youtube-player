@@ -1,4 +1,4 @@
-import type { IPlayerState, IPlayerOptions } from './web/models/models';
+import type { IPlayerState, IPlayerOptions, IPlaylistOptions } from './web/models/models';
 
 export interface YoutubePlayerPlugin {
   initialize(options: IPlayerOptions): Promise<{playerReady: boolean, player: string} | undefined>;
@@ -15,15 +15,8 @@ export interface YoutubePlayerPlugin {
 
   // Methods for playing playlist.
   /***********/
-  cuePlaylist(
-    playlist: string | string[],
-    index: number,
-    startSeconds: number,
-    suggestedQuality: string): Promise<{result: { method: string, value: boolean }}>;
-  loadPlaylist(playlist: string | string[],
-      index: number,
-      startSeconds: number,
-      suggestedQuality: string): Promise<{result: { method: string, value: boolean }}>;
+  cuePlaylist(playerId: string, playlistOptions: IPlaylistOptions): Promise<{result: { method: string, value: boolean }}>;
+  loadPlaylist(playerId: string, playlistOptions: IPlaylistOptions): Promise<{result: { method: string, value: boolean }}>;
   /***********/
 
   /***********/

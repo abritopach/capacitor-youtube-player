@@ -47,6 +47,13 @@ export interface IPlayerState {
     }
 }
 
+export interface IPlaylistOptions {
+    playlist: string | string[],
+    index?: number,
+    startSeconds?: number,
+    suggestedQuality?: string
+}
+
 export interface IPlayerLog {
     log(primaryMessage: string, ...supportingData: any[]): void;
     debug(primaryMessage: string, ...supportingData: any[]): void;
