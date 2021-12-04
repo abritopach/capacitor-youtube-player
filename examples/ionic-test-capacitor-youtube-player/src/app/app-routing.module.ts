@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'styled-video-list',
     loadChildren: () => import('./pages/styled-video-list/styled-video-list.module').then( m => m.StyledVideoListPageModule)
   },
+  {
+    path: 'video-playlist',
+    loadChildren: () => import('./pages/video-playlist/video-playlist.module').then( m => m.VideoPlaylistPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons buttons-start slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Test Capacitor Youtube Player Plugin
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- The <iframe> (and video player) will replace this <div> tag. -->
+    <p>Playlist using cuePlaylist</p>
+    <div id="youtube-player-playlist1"></div>
+    <p>Playlist using loadPlaylist</p>
+    <div id="youtube-player-playlist2"></div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title class="footer-title">© {{ currentYear }} Adrián Brito Pacheco</ion-title>
+      <ion-buttons slot="end">
+        <ntkme-github-button user="abritopach" repo="capacitor-youtube-player" style="margin-right: 5px;"></ntkme-github-button>
+        <ntkme-github-button user="abritopach" type="follow"></ntkme-github-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

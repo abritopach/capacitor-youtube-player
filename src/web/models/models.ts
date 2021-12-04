@@ -47,6 +47,14 @@ export interface IPlayerState {
     }
 }
 
+export interface IPlaylistOptions {
+    listType: 'playlist' | 'search' | 'user_uploads';
+    list: string;
+    index?: number;
+    startSeconds?: number;
+    suggestedQuality?: string;
+}
+
 export interface IPlayerLog {
     log(primaryMessage: string, ...supportingData: any[]): void;
     debug(primaryMessage: string, ...supportingData: any[]): void;

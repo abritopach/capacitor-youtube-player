@@ -1,4 +1,4 @@
-import type { IPlayerState, IPlayerOptions } from './web/models/models';
+import type { IPlayerState, IPlayerOptions, IPlaylistOptions } from './web/models/models';
 
 export interface YoutubePlayerPlugin {
   initialize(options: IPlayerOptions): Promise<{playerReady: boolean, player: string} | undefined>;
@@ -11,6 +11,14 @@ export interface YoutubePlayerPlugin {
   seekTo(playerId: string, seconds: number, allowSeekAhead: boolean): Promise<{result: { method: string, value: boolean, seconds: number, allowSeekAhead: boolean }}>;
   loadVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string} }}>;
   cueVideoById(playerId: string, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string}): Promise<{result: { method: string, value: boolean, options: {videoId: string, startSeconds?: number, endSeconds?: number, suggestedQuality?: string} }}>;
+  /***********/
+
+  // Methods for playing playlist.
+  /***********/
+  cuePlaylist(playerId: string, playlistOptions: IPlaylistOptions): Promise<{result: { method: string, value: boolean }}>;
+  loadPlaylist(playerId: string, playlistOptions: IPlaylistOptions): Promise<{result: { method: string, value: boolean }}>;
+  /***********/
+
   /***********/
 
   // Methods changing the player volume.
