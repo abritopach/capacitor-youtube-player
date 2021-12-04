@@ -2,7 +2,7 @@ import { WebPlugin } from '@capacitor/core';
 
 import type { YoutubePlayerPlugin } from './definitions';
 import { Log } from './log';
-import type { IPlayerSize, IPlayerState, IPlayerOptions, RequiredKeys } from './web/models/models';
+import type { IPlayerSize, IPlayerState, IPlayerOptions, RequiredKeys, IPlaylistOptions } from './web/models/models';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function YT() {
@@ -212,6 +212,27 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
     this.playerLogger.log(`player "${playerId}" -> cueVideoById with options ${options}`);
     this.players[playerId].cueVideoById(options);
     return Promise.resolve({result: { method: 'cueVideoById', value: true, options: options }});
+  }
+
+
+  /*********/
+
+  // Methods for playing playlist.
+
+  /*********/
+
+  async cuePlaylist(playerId: string, playlistOptions: IPlaylistOptions)
+  : Promise<{result: { method: string, value: boolean }}> {
+    this.playerLogger.log(`player "${playerId}" -> cuePlaylist with options ${JSON.stringify(playlistOptions)}`);
+    this.players[playerId].cuePlaylist(playlistOptions);
+    return Promise.resolve({result: { method: 'cuePlaylist', value: true }});
+  }
+
+  async loadPlaylist(playerId: string, playlistOptions: IPlaylistOptions)
+  : Promise<{result: { method: string, value: boolean }}> {
+    this.playerLogger.log(`player "${playerId}" -> loadPlaylist with options ${playlistOptions}`);
+    this.players[playerId].loadPlaylist(playlistOptions);
+    return Promise.resolve({result: { method: 'loadPlaylist', value: true }});
   }
 
   /*********/
