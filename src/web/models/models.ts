@@ -66,6 +66,20 @@ export interface IPlaylistOptions {
     suggestedQuality?: string;
 }
 
+export interface IVideoOptions {
+    startSeconds?: number;
+    endSeconds?: number;
+    suggestedQuality?: IPlaybackQuality;
+}
+
+export interface IVideoOptionsById extends IVideoOptions {
+    videoId: string;
+}
+
+export interface IVideoOptionsByUrl extends IVideoOptions {
+    mediaContentUrl: string;
+}
+
 export interface IPlayerLog {
     log(primaryMessage: string, ...supportingData: any[]): void;
     debug(primaryMessage: string, ...supportingData: any[]): void;
