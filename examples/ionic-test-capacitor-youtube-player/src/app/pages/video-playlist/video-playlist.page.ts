@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
-import { YoutubePlayer } from '../../../../../../dist/esm';
-import { IPlayerOptions, IPlaylistOptions } from '../../../../../../dist/esm/web/models/models';
+import { YoutubePlayer } from 'capacitor-youtube-player';
+import { IPlayerOptions, IPlaylistOptions } from 'capacitor-youtube-player/dist/esm/web/models/models';
 
 @Component({
   selector: 'app-video-playlist',
