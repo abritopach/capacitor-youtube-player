@@ -1,5 +1,15 @@
 export type RequiredKeys<T, K extends keyof T> = Exclude<T, K> & { [key in K]-?: Required<T[key]> }
 
+export enum IPlaybackQuality {
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    LARGE = 'large',
+    HD720 = 'hd720',
+    HD1080 = 'hd1080',
+    HIGH_RES = 'highres',
+    DEFAULT = 'default'
+}
+
 export interface IPlayerOptions {
     playerId?: string;
     playerSize: IPlayerSize;
@@ -49,10 +59,25 @@ export interface IPlayerState {
 
 export interface IPlaylistOptions {
     listType: 'playlist' | 'search' | 'user_uploads';
-    list: string;
+    list?: string;
+    playlist?: string[];
     index?: number;
     startSeconds?: number;
     suggestedQuality?: string;
+}
+
+export interface IVideoOptions {
+    startSeconds?: number;
+    endSeconds?: number;
+    suggestedQuality?: IPlaybackQuality;
+}
+
+export interface IVideoOptionsById extends IVideoOptions {
+    videoId: string;
+}
+
+export interface IVideoOptionsByUrl extends IVideoOptions {
+    mediaContentUrl: string;
 }
 
 export interface IPlayerLog {
