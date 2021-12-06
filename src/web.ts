@@ -2,7 +2,8 @@ import { WebPlugin } from '@capacitor/core';
 
 import type { YoutubePlayerPlugin } from './definitions';
 import { Log } from './log';
-import type { IPlayerSize, IPlayerState, IPlayerOptions, RequiredKeys, IPlaylistOptions, IPlaybackQuality, IVideoOptions, IVideoOptionsById, IVideoOptionsByUrl } from './web/models/models';
+import type { IPlayerSize, IPlayerState, IPlayerOptions, RequiredKeys, IPlaylistOptions, IPlaybackQuality,
+  IVideoOptionsById, IVideoOptionsByUrl, Events, PlayerEvent } from './web/models/models';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function YT() {
@@ -442,17 +443,17 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
 
   /*********/
 
-  getDuration(playerId: string): Promise<{result: { method: string, value: number }}> {
+  async getDuration(playerId: string): Promise<{result: { method: string, value: number }}> {
     this.playerLogger.log(`player "${playerId}" -> getDuration`);
     return Promise.resolve({result: { method: 'getDuration', value: this.players[playerId].getDuration() }});
   }
 
-  getVideoUrl(playerId: string): Promise<{result: { method: string, value: string }}> {
+  async getVideoUrl(playerId: string): Promise<{result: { method: string, value: string }}> {
     this.playerLogger.log(`player "${playerId}" -> getVideoUrl`);
     return Promise.resolve({result: { method: 'getVideoUrl', value: this.players[playerId].getVideoUrl() }});
   }
 
-  getVideoEmbedCode(playerId: string): Promise<{result: { method: string, value: string }}> {
+  async getVideoEmbedCode(playerId: string): Promise<{result: { method: string, value: string }}> {
     this.playerLogger.log(`player "${playerId}" -> getVideoEmbedCode`);
     return Promise.resolve({result: { method: 'getVideoEmbedCode', value: this.players[playerId].getVideoEmbedCode() }});
   }
@@ -463,12 +464,12 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
 
   /*********/
 
-  getPlaylist(playerId: string): Promise<{result: { method: string, value: string[] }}> {
+  async getPlaylist(playerId: string): Promise<{result: { method: string, value: string[] }}> {
     this.playerLogger.log(`player "${playerId}" -> getPlaylist`);
     return Promise.resolve({result: { method: 'getPlaylist', value: this.players[playerId].getPlaylist() }});
   }
 
-  getPlaylistIndex(playerId: string): Promise<{result: { method: string, value: number }}> {
+  async getPlaylistIndex(playerId: string): Promise<{result: { method: string, value: number }}> {
     this.playerLogger.log(`player "${playerId}" -> getPlaylistIndex`);
     return Promise.resolve({result: { method: 'getPlaylistIndex', value: this.players[playerId].getPlaylistIndex() }});
   }
@@ -479,9 +480,25 @@ export class YoutubePlayerPluginWeb extends WebPlugin implements YoutubePlayerPl
 
   /*********/
 
-  getIframe(playerId: string): Promise<{result: { method: string, value: HTMLIFrameElement }}> {
+  async getIframe(playerId: string): Promise<{result: { method: string, value: HTMLIFrameElement }}> {
     this.playerLogger.log(`player "${playerId}" -> getIframe`);
     return Promise.resolve({result: { method: 'getIframe', value: this.players[playerId].getIframe() }});
   }
+
+    /*********/
+
+    // Player event listeners.
+
+    addEventListener<TEvent extends PlayerEvent>(playerId: string, eventName: keyof Events, listener: (event: TEvent) => void): void {
+      this.playerLogger.log(`player "${playerId}" -> addEventListener "${eventName}"`);
+      this.players[playerId].addEventListener(eventName, listener)
+    }
+
+    removeEventListener<TEvent extends PlayerEvent>(playerId: string, eventName: keyof Events, listener: (event: TEvent) => void): void {
+      this.playerLogger.log(`player "${playerId}" -> removeEventListener "${eventName}"`);
+      this.players[playerId].removeEventListener(eventName, listener)
+    }
+
+    /*********/
 
 }

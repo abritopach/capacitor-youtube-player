@@ -1,15 +1,15 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Capacitor } from '@capacitor/core';
 import { YoutubePlayer } from 'capacitor-youtube-player';
-import { IPlayerOptions } from 'capacitor-youtube-player/dist/esm/web/models/models';
+import { IPlayerOptions, PlayerEvent } from 'capacitor-youtube-player/dist/esm/web/models/models';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, AfterViewInit {
+export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   currentYear = new Date().getFullYear();
 
@@ -27,6 +27,10 @@ export class HomePage implements OnInit, AfterViewInit {
     } else { // Native
       this.initializeYoutubePlayerPluginNative();
     }
+  }
+
+  ngOnDestroy() {
+    console.log('HomePage::ngOnDestroy() | method called');
   }
 
   async initializeYoutubePlayerPluginWeb() {
@@ -58,6 +62,10 @@ export class HomePage implements OnInit, AfterViewInit {
     const options1: IPlayerOptions = {playerId: 'youtube-player1', playerSize: {width: 640, height: 360}, videoId: 'M1F81V-NhP0'};
     const result1 = await YoutubePlayer.initialize(options1);
     console.log('playerReady', result1);
+
+    YoutubePlayer.addEventListener(options1.playerId, 'onStateChange', (event: PlayerEvent) => {
+      console.log(`Player ${options1.playerId} state is`, event);
+    });
   }
 
   async destroyYoutubePlayerPluginWeb() {

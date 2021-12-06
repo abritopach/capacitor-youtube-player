@@ -1,4 +1,5 @@
-import type { IPlayerState, IPlayerOptions, IPlaylistOptions, IVideoOptionsById, IVideoOptionsByUrl, IPlaybackQuality } from './web/models/models';
+import type { IPlayerState, IPlayerOptions, IPlaylistOptions, IVideoOptionsById, IVideoOptionsByUrl,
+  IPlaybackQuality, PlayerEvent, Events } from './web/models/models';
 
 export interface YoutubePlayerPlugin {
   initialize(options: IPlayerOptions): Promise<{playerReady: boolean, player: string} | undefined>;
@@ -87,4 +88,8 @@ export interface YoutubePlayerPlugin {
 
   // Methods for accessing and modifying DOM nodes.
   getIframe(playerId: string): Promise<{result: { method: string, value: HTMLIFrameElement}}>
+
+  // Player event listeners.
+  addEventListener<TEvent extends PlayerEvent>(playerId: string, eventName: keyof Events, listener: (event: TEvent) => void): void;
+  removeEventListener<TEvent extends PlayerEvent>(playerId: string, eventName: keyof Events, listener: (event: TEvent) => void): void;
 }
