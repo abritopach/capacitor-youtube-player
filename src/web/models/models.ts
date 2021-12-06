@@ -10,6 +10,45 @@ export enum IPlaybackQuality {
     DEFAULT = 'default'
 }
 
+export enum PlayerState {
+    UNSTARTED = -1,
+    ENDED = 0,
+    PLAYING = 1,
+    PAUSED = 2,
+    BUFFERING = 3,
+    CUED = 5
+}
+
+/**
+ * Known causes for player errors.
+*/
+export enum PlayerError {
+    /**
+     * The request contained an invalid parameter value.
+     */
+    InvalidParam = 2,
+
+    /**
+     * The requested content cannot be played in an HTML5 player.
+     */
+    Html5Error = 5,
+
+    /**
+     * The video requested was not found.
+     */
+    VideoNotFound = 100,
+
+    /**
+     * The owner of the requested video does not allow it to be played in embedded players.
+     */
+    EmbeddingNotAllowed = 101,
+
+    /**
+     * This error is the same as 101. It's just a 101 error in disguise!
+     */
+    EmbeddingNotAllowed2 = 150
+}
+
 export interface IPlayerOptions {
     playerId?: string;
     playerSize: IPlayerSize;
@@ -78,6 +117,107 @@ export interface IVideoOptionsById extends IVideoOptions {
 
 export interface IVideoOptionsByUrl extends IVideoOptions {
     mediaContentUrl: string;
+}
+
+
+/**
+* Base interface for events triggered by a player.
+*/
+export interface PlayerEvent {
+    /**
+     * Video player corresponding to the event.
+     */
+    target: Element;
+}
+
+/**
+ * Event for player state change.
+ */
+export interface OnStateChangeEvent extends PlayerEvent
+{
+    /**
+     * New player state.
+     */
+    data: PlayerState;
+}
+
+/**
+ * Event for playback quality change.
+ */
+export interface OnPlaybackQualityChangeEvent extends PlayerEvent
+{
+    /**
+     * New playback quality.
+     */
+    data: string;
+}
+
+/**
+ * Event for playback rate change.
+ */
+export interface OnPlaybackRateChangeEvent extends PlayerEvent
+{
+    /**
+     * New playback rate.
+     */
+    data: number;
+}
+
+/**
+ * Event for a player error.
+ */
+export interface OnErrorEvent extends PlayerEvent
+{
+    /**
+     * Which type of error occurred.
+     */
+    data: PlayerError;
+}
+
+/**
+ * Handles a player event.
+ *
+ * @param event   The triggering event.
+ */
+export interface PlayerEventHandler<TEvent extends PlayerEvent>
+{
+    (event: TEvent): void;
+}
+
+/**
+ * * Handlers for events fired by the player.
+*/
+export interface Events {
+    /**
+     * Event fired when a player has finished loading and is ready to begin receiving API calls.
+     */
+    onReady?: PlayerEventHandler<PlayerEvent> | undefined;
+
+    /**
+     * Event fired when the player's state changes.
+     */
+    onStateChange?: PlayerEventHandler<OnStateChangeEvent> | undefined;
+
+    /**
+     * Event fired when the playback quality of the player changes.
+     */
+    onPlaybackQualityChange?: PlayerEventHandler<OnPlaybackQualityChangeEvent> | undefined;
+
+    /**
+     * Event fired when the playback rate of the player changes.
+     */
+    onPlaybackRateChange?: PlayerEventHandler<OnPlaybackRateChangeEvent> | undefined;
+
+    /**
+     * Event fired when an error in the player occurs
+     */
+    onError?: PlayerEventHandler<OnErrorEvent> | undefined;
+
+    /**
+     * Event fired to indicate that the player has loaded, or unloaded, a module
+     * with exposed API methods. This currently only occurs for closed captioning.
+     */
+    onApiChange?: PlayerEventHandler<PlayerEvent> | undefined;
 }
 
 export interface IPlayerLog {
