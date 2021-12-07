@@ -73,11 +73,58 @@ public class YoutubePlayer extends Plugin {
     }
 
     @PluginMethod()
+    public void playVideo(final PluginCall call) {
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: playVideo");
+
+        if (youTubePlayer != null) {
+            youtubePlayerHandler.playVideo(youTubePlayer);
+        }
+
+    }
+
+    @PluginMethod()
     public void pauseVideo(final PluginCall call) {
         Log.e(TAG, "[Youtube Player Plugin Native Android]: pauseVideo");
 
         if (youTubePlayer != null) {
             youtubePlayerHandler.pauseVideo(youTubePlayer);
+        }
+
+    }
+
+    @PluginMethod()
+    public void seekTo(final PluginCall call) {
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: seekTo");
+
+        Integer seconds = call.getInt("seconds");
+
+        if (youTubePlayer != null) {
+            youtubePlayerHandler.seekTo(youTubePlayer, seconds);
+        }
+
+    }
+
+
+    @PluginMethod()
+    public void loadVideoById(final PluginCall call) {
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: loadVideoById");
+
+        String videoId = call.getString("videoId");
+
+        if (youTubePlayer != null) {
+            youtubePlayerHandler.loadVideoById(youTubePlayer, videoId);
+        }
+
+    }
+
+    @PluginMethod()
+    public void cueVideoById(final PluginCall call) {
+        Log.e(TAG, "[Youtube Player Plugin Native Android]: cueVideoById");
+
+        String videoId = call.getString("videoId");
+
+        if (youTubePlayer != null) {
+            youtubePlayerHandler.cueVideoById(youTubePlayer, videoId);
         }
 
     }

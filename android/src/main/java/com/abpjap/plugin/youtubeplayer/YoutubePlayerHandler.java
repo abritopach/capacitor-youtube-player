@@ -4,8 +4,11 @@ import com.google.android.youtube.player.YouTubePlayer;
 
 public class YoutubePlayerHandler {
 
-    // Methods playing video.
+    // Methods playback controls and player settings.
     /***********/
+
+    public void stopVideo(YouTubePlayer youTubePlayer) {
+    }
 
     public void playVideo(YouTubePlayer youTubePlayer) {
         youTubePlayer.play();
@@ -19,11 +22,12 @@ public class YoutubePlayerHandler {
         youTubePlayer.seekToMillis(millis);
     }
 
+    public void loadVideoById(YouTubePlayer youTubePlayer, String videoId) {
+        youTubePlayer.loadVideo(videoId);
+    }
+
     public void cueVideoById(YouTubePlayer youTubePlayer, String videoId) {
         youTubePlayer.cueVideo(videoId);
     }
 
-    public void loadVideoById(YouTubePlayer youTubePlayer, String videoId) {
-        youTubePlayer.loadVideo(videoId);
-    }
 }

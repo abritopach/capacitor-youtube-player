@@ -4,7 +4,7 @@ import type { IPlayerState, IPlayerOptions, IPlaylistOptions, IVideoOptionsById,
 export interface YoutubePlayerPlugin {
   initialize(options: IPlayerOptions): Promise<{playerReady: boolean, player: string} | undefined>;
   destroy(playerId: string): Promise<{result: { method: string, value: boolean }}>;
-  // Methods playback controls and player settings..
+  // Methods playback controls and player settings.
   /***********/
   stopVideo(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   playVideo(playerId: string): Promise<{result: { method: string, value: boolean }}>;
