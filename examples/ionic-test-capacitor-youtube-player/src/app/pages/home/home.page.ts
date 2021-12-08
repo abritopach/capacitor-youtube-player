@@ -82,8 +82,9 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   async initializeYoutubePlayerPluginNative() {
 
-    const options: IPlayerOptions = {playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', fullscreen: true};
+    const options: IPlayerOptions = {playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', fullscreen: false};
     const playerReady = await YoutubePlayer.initialize(options);
+    console.log('playerReady', playerReady);
   }
 
 }

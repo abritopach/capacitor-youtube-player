@@ -25,29 +25,20 @@ public class YoutubePlayer extends Plugin {
 
 
     public void load() {
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: load");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: load");
         context = getContext();
         youtubePlayerHandler = new YoutubePlayerHandler();
     }
 
     @PluginMethod()
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
-        JSObject ret = new JSObject();
-        ret.put("value", value);
-        call.resolve(ret);
-    }
-
-    @PluginMethod()
     public void initialize(final PluginCall call) {
 
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: initialize");
 
         String videoId = call.getString("videoId");
         Boolean fullscreen = call.getBoolean("fullscreen");
         JSObject playerSize = call.getObject("playerSize");
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId + " | fullscreen: " + fullscreen +
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: videoId " + videoId + " | fullscreen: " + fullscreen +
         " | playerSize: " + playerSize.toString());
 
         Intent intent= new Intent();
@@ -61,7 +52,7 @@ public class YoutubePlayer extends Plugin {
             public void accept(Object o) throws Exception {
                 if (o instanceof JSObject) {
                     String message = ((JSObject) o).getString("message");
-                    Log.e(TAG, "[Youtube Player Plugin Native Android]: initialize subscribe " + message);
+                    Log.d(TAG, "[Youtube Player Plugin Native Android]: initialize subscribe " + message);
 
                     JSObject ret = new JSObject();
                     ret.put("value", message);
@@ -74,7 +65,7 @@ public class YoutubePlayer extends Plugin {
 
     @PluginMethod()
     public void playVideo(final PluginCall call) {
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: playVideo");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: playVideo");
 
         if (youTubePlayer != null) {
             youtubePlayerHandler.playVideo(youTubePlayer);
@@ -84,7 +75,7 @@ public class YoutubePlayer extends Plugin {
 
     @PluginMethod()
     public void pauseVideo(final PluginCall call) {
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: pauseVideo");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: pauseVideo");
 
         if (youTubePlayer != null) {
             youtubePlayerHandler.pauseVideo(youTubePlayer);
@@ -94,7 +85,7 @@ public class YoutubePlayer extends Plugin {
 
     @PluginMethod()
     public void seekTo(final PluginCall call) {
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: seekTo");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: seekTo");
 
         Integer seconds = call.getInt("seconds");
 
@@ -107,7 +98,7 @@ public class YoutubePlayer extends Plugin {
 
     @PluginMethod()
     public void loadVideoById(final PluginCall call) {
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: loadVideoById");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: loadVideoById");
 
         String videoId = call.getString("videoId");
 
@@ -119,7 +110,7 @@ public class YoutubePlayer extends Plugin {
 
     @PluginMethod()
     public void cueVideoById(final PluginCall call) {
-        Log.e(TAG, "[Youtube Player Plugin Native Android]: cueVideoById");
+        Log.d(TAG, "[Youtube Player Plugin Native Android]: cueVideoById");
 
         String videoId = call.getString("videoId");
 

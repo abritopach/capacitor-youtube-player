@@ -1,110 +1,96 @@
 package com.abpjap.plugin.youtubeplayer;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import com.abpjap.plugin.youtubeplayer.capacitoryoutubeplayer.BuildConfig;
 import com.getcapacitor.JSObject;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 
 import com.abpjap.plugin.youtubeplayer.capacitoryoutubeplayer.R;
 
-public class YoutubePlayerFragment extends AppCompatActivity {
+public class YoutubePlayerFragment extends YouTubeFailureRecoveryActivity {
 
     private static final String TAG = YoutubePlayerFragment.class.getSimpleName();
-    // Youtube player fragment.
-    private YouTubePlayerSupportFragment youTubePlayerFragment;
-
-    // Youtube player to play video when new video selected.
-    private YouTubePlayer youTubePlayer;
 
     private MyPlayerStateChangeListener playerStateChangeListener;
 
+    private String videoId;
     private boolean fullscreen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "[Youtube Player Fragment]: onCreate");
-        setContentView(R.layout.activity_player);
+        Log.d(TAG, "[Youtube Player Fragment]: onCreate");
+        setContentView(R.layout.fragment_player);
 
-        String videoId = "";
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             videoId = extras.getString("videoId");
             fullscreen = extras.getBoolean("fullscreen");
-            initializeYoutubePlayer(videoId);
+            initializeYoutubePlayer();
         }
     }
 
     /**
      * Initialize youtube player via Fragment and get instance of YoutubePlayer.
      */
-    private void initializeYoutubePlayer(final String videoId) {
+    private void initializeYoutubePlayer() {
+        Log.d(TAG, "[Youtube Player Fragment]: initializeYoutubePlayer");
+        YouTubePlayerFragment youTubePlayerFragment = (YouTubePlayerFragment) getYouTubePlayerProvider();
+        youTubePlayerFragment.initialize(BuildConfig.YOUTUBE_API_KEY, this);
+        playerStateChangeListener = new MyPlayerStateChangeListener();
+    }
 
-        Log.e(TAG, "[Youtube Player Fragment]: initializeYoutubePlayer");
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
+                                        boolean wasRestored) {
+        if (!wasRestored) {
 
-        Object obj = getSupportFragmentManager().findFragmentById(R.id.youtube_player_fragment);
-        if (obj instanceof YouTubePlayerSupportFragment)
-            youTubePlayerFragment = (YouTubePlayerSupportFragment) obj;
+            // Set the player style default.
+            player.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
-        if (youTubePlayerFragment == null) {
-            return;
+            JSObject result = new JSObject();
+            result.put("message", "Youtube Player View initialized.");
+            result.put("value", player);
+            RxBus.publish(result);
+
+            // Specify that we want to handle fullscreen behavior ourselves.
+
+            /*
+            player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
+            player.setOnFullscreenListener(b -> {
+                Log.d(TAG, "Youtube Player View onFullscreen " + b);
+                fullscreen = b;
+            });
+
+            if (fullscreen) {
+                player.setFullscreen(fullscreen);
+            }
+
+             */
+
+            // Cue the video by videoId.
+            player.cueVideo(videoId);
+
         }
 
-        youTubePlayerFragment.initialize(BuildConfig.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+    }
 
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
-                                                boolean wasRestored) {
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult error) {
 
-                if (!wasRestored) {
+        // Print or show error if initialization failed.
+        Log.e(TAG, "Youtube Player View initialization failed -> error:" + error.toString());
 
-                    youTubePlayer = player;
+        RxBus.publish("Youtube Player View initialization failed");
+    }
 
-                    // Set the player style default.
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-
-                    JSObject result = new JSObject();
-                    result.put("message", "Youtube Player View initialized.");
-                    result.put("value", youTubePlayer);
-                    RxBus.publish(result);
-
-                    // Specify that we want to handle fullscreen behavior ourselves.
-
-                    youTubePlayer.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
-                    youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
-                        @Override
-                        public void onFullscreen(boolean b) {
-                            Log.e(TAG, "Youtube Player View onFullscreen " + b);
-                            fullscreen = b;
-                        }
-                    });
-
-                    if (fullscreen) {
-                        youTubePlayer.setFullscreen(fullscreen);
-                    }
-
-                    // Cue the video by videoId.
-                    youTubePlayer.cueVideo(videoId);
-
-                }
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult error) {
-
-                // Print or show error if initialization failed.
-                Log.e(TAG, "Youtube Player View initialization failed -> error:" + error.toString());
-
-                RxBus.publish("Youtube Player View initialization failed");
-            }
-        });
-
-        playerStateChangeListener = new MyPlayerStateChangeListener();
+    @Override
+    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+        return (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_player_fragment);
     }
 
     private final class MyPlayerStateChangeListener implements YouTubePlayer.PlayerStateChangeListener {
@@ -113,31 +99,31 @@ public class YoutubePlayerFragment extends AppCompatActivity {
         @Override
         public void onLoading() {
             playerState = "LOADING";
-            Log.e(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
+            Log.d(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
         }
 
         @Override
         public void onLoaded(String videoId) {
             playerState = String.format("LOADED %s", videoId);
-            Log.e(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
+            Log.d(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
         }
 
         @Override
         public void onAdStarted() {
             playerState = "AD_STARTED";
-            Log.e(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
+            Log.d(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
         }
 
         @Override
         public void onVideoStarted() {
             playerState = "VIDEO_STARTED";
-            Log.e(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
+            Log.d(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
         }
 
         @Override
         public void onVideoEnded() {
             playerState = "VIDEO_ENDED";
-            Log.e(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
+            Log.d(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
         }
 
         @Override
@@ -145,7 +131,6 @@ public class YoutubePlayerFragment extends AppCompatActivity {
             playerState = "ERROR (" + reason + ")";
             if (reason == YouTubePlayer.ErrorReason.UNEXPECTED_SERVICE_DISCONNECTION) {
                 // When this error occurs the player is released and can no longer be used.
-                youTubePlayer = null;
             }
             Log.e(TAG, "[Youtube Player Fragment]: MyPlayerStateChangeListener  " + playerState);
         }
