@@ -27,6 +27,11 @@ export class AppComponent {
       title: 'Video Playlist example',
       url: '/video-playlist',
       icon: 'play-circle'
+    },
+    {
+      title: 'Native simple video',
+      url: '/native-simple-video',
+      icon: 'logo-android'
     }
   ];
 

@@ -17,7 +17,7 @@ public class YoutubePlayerFragment extends YouTubeFailureRecoveryActivity {
 
     private MyPlayerStateChangeListener playerStateChangeListener;
 
-    private String videoId;
+    private String videoId = null;
     private boolean fullscreen = false;
 
     @Override
@@ -28,7 +28,9 @@ public class YoutubePlayerFragment extends YouTubeFailureRecoveryActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            videoId = extras.getString("videoId");
+            if (extras.getString("videoId") != null) {
+                videoId = extras.getString("videoId");
+            }
             fullscreen = extras.getBoolean("fullscreen");
             initializeYoutubePlayer();
         }
@@ -72,8 +74,10 @@ public class YoutubePlayerFragment extends YouTubeFailureRecoveryActivity {
 
              */
 
-            // Cue the video by videoId.
-            player.cueVideo(videoId);
+            if (videoId != null) {
+                // Cue the video by videoId.
+                player.cueVideo(videoId);
+            }
 
         }
 

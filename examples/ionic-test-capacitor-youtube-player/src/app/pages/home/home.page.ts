@@ -24,8 +24,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     if (Capacitor.getPlatform() === 'web') {
       this.initializeYoutubePlayerPluginWeb();
-    } else { // Native
-      this.initializeYoutubePlayerPluginNative();
     }
   }
 
@@ -78,13 +76,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     console.log('HomePage::getPlayersEventsStatePluginWeb() | method called');
     const result = await YoutubePlayer.getAllPlayersEventsState();
     console.log('allPlayersEventsState', result);
-  }
-
-  async initializeYoutubePlayerPluginNative() {
-
-    const options: IPlayerOptions = {playerSize: {width: 640, height: 360}, videoId: 'tDW2C6rcH6M', fullscreen: false};
-    const playerReady = await YoutubePlayer.initialize(options);
-    console.log('playerReady', playerReady);
   }
 
 }

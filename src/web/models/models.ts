@@ -58,6 +58,8 @@ export interface IPlayerOptions {
     debug?: boolean;
 }
 
+export type IPlayerNativeOptions = Pick<IPlayerOptions, "playerSize" | "fullscreen"> & { videoId?: string };
+
 export interface IPlayerSize {
     height: number;
     width: number;

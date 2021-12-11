@@ -1,8 +1,8 @@
 import type { IPlayerState, IPlayerOptions, IPlaylistOptions, IVideoOptionsById, IVideoOptionsByUrl,
-  IPlaybackQuality, PlayerEvent, Events } from './web/models/models';
+  IPlaybackQuality, PlayerEvent, Events, IPlayerNativeOptions } from './web/models/models';
 
 export interface YoutubePlayerPlugin {
-  initialize(options: IPlayerOptions): Promise<{playerReady: boolean, player: string} | undefined>;
+  initialize(options: IPlayerOptions | IPlayerNativeOptions): Promise<{playerReady: boolean, player: string} | undefined>;
   destroy(playerId: string): Promise<{result: { method: string, value: boolean }}>;
   // Methods playback controls and player settings.
   /***********/

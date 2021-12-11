@@ -43,7 +43,9 @@ public class YoutubePlayer extends Plugin {
 
         Intent intent= new Intent();
         intent.setClass(context, YoutubePlayerFragment.class);
-        intent.putExtra("videoId", videoId);
+        if (videoId != null) {
+            intent.putExtra("videoId", videoId);
+        }
         intent.putExtra("fullscreen", fullscreen);
         getActivity().startActivity(intent);
 

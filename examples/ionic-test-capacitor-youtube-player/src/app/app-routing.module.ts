@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'video-playlist',
     loadChildren: () => import('./pages/video-playlist/video-playlist.module').then( m => m.VideoPlaylistPageModule)
   },
+  {
+    path: 'native-simple-video',
+    loadChildren: () => import('./pages/native-simple-video/native-simple-video.module').then( m => m.NativeSimpleVideoPageModule)
+  },
 ];
 
 @NgModule({
