@@ -24,6 +24,13 @@ if (project.rootProject.file('local.properties').exists()) {
     props.load(project.rootProject.file('local.properties').newDataInputStream())
 }
 
+String getYoutubeApiKey() {
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+    return properties['YOUTUBE_API_KEY']
+}
+
 android {
     compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 30
     defaultConfig {
@@ -40,7 +47,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField "String", "YOUTUBE_API_KEY", props.getProperty('YOUTUBE_API_KEY')
+        it.buildConfigField "String", "YOUTUBE_API_KEY", getYoutubeApiKey()
     }
     lintOptions {
         abortOnError false
