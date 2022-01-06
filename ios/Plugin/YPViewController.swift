@@ -16,7 +16,7 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
     private var _defaultSizes: [String : Int] = [
         "height": 270,
         "width": 367
-    ];
+    ]
     public override func viewDidLoad() {
         super.viewDidLoad()
         print("[Youtube Player Plugin Native iOS]: YPViewController::viewDidLoad");
@@ -30,9 +30,9 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
         super.viewDidAppear(animated);
         print("[Youtube Player Plugin Native iOS]: YPViewController::viewDidAppear")
         // Do any additional setup after loading the view, typically from a nib.
-        if JSONSerialization.isValidJSONObject(self.options) {
+        if JSONSerialization.isValidJSONObject(self.options!) {
             print("[Youtube Player Plugin Native iOS]: JSONSerialization.isValidJSONObject");
-            if let dictionary = self.options as? [String: Any] {
+            if let dictionary = self.options {
                 SVProgressHUD.show()
                 // treat it as a string key dictionary.
                 let videoId = dictionary["videoId"] as! String
@@ -47,7 +47,7 @@ public class YPViewController: UIViewController, YouTubePlayerDelegate {
 
                 self.view.addSubview(youtubePlayer)
 
-                youtubePlayer.loadVideoID(videoId, fullscreen: fullscreen)
+                youtubePlayer.loadVideoID(videoId, fullscreen)
             }
         }
     }
