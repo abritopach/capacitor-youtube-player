@@ -57,9 +57,11 @@ jobs:
           path: ~/.npm
           key: ${{ runner.OS }}-dependency-cache-${{ hashFiles('**/package.json') }}
       - run: npm install
+      - run: touch local.properties
       - name: Read YOUTUBE_API_KEY
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: echo YOUTUBE_API_KEY=\"$YOUTUBE_API_KEY\" > ./local.properties
+        run: echo YOUTUBE_API_KEY=\"$YOUTUBE_API_KEY\" > local.properties
+      - run: cat local.properties
       - name: Run verify
         run: npm run verify
