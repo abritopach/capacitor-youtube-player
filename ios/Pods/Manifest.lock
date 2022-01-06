@@ -1,7 +1,7 @@
 PODS:
-  - Capacitor (3.3.1):
+  - Capacitor (3.3.4):
     - CapacitorCordova
-  - CapacitorCordova (3.3.1)
+  - CapacitorCordova (3.3.4)
   - SVProgressHUD (2.2.5)
   - YouTubePlayer (0.7.2)
 
@@ -30,8 +30,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/abritopach/Swift-YouTube-Player.git
 
 SPEC CHECKSUMS:
-  Capacitor: 03a45821c64411719140ba9fb39a895d026e597c
-  CapacitorCordova: 6c6127c6ee31a7a808705bf4ac17fb5f80ed63f6
+  Capacitor: beae76c4df77918d67246d4388477b2ed6c208f3
+  CapacitorCordova: be63a87c35c92223becd38cb500c9007dbd49496
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
