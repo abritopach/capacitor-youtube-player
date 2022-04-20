@@ -28,18 +28,18 @@
   "devDependencies": {
     "@capacitor/android": "^3.4.3",
     "@capacitor/core": "^3.4.3",
-    "@capacitor/docgen": "^0.1.1",
+    "@capacitor/docgen": "^0.2.0",
     "@capacitor/ios": "^3.4.3",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^2.0.0",
     "@ionic/swiftlint-config": "^1.1.2",
     "eslint": "^7.32.0",
-    "prettier": "^2.6.0",
+    "prettier": "^2.6.2",
     "prettier-plugin-java": "^1.6.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.70.1",
+    "rollup": "^2.70.2",
     "swiftlint": "^1.0.1",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.3"
   },
   "peerDependencies": {
     "@capacitor/core": "^3.4.3"
