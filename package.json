@@ -1,80 +1,80 @@
 {
-  "name": "capacitor-youtube-player",
-  "version": "1.0.10",
-  "description": "Capacitor Youtube Player",
-  "main": "dist/plugin.cjs.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
-  "unpkg": "dist/plugin.js",
-  "scripts": {
-    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin && cd ..",
-    "verify:android": "cd android && ./gradlew clean build test && cd ..",
-    "verify:web": "npm run build",
-    "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
-    "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- autocorrect --format",
-    "eslint": "eslint . --ext ts",
-    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
-    "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api ExamplePlugin --output-readme README.md --output-json dist/docs.json",
-    "build": "npm run clean && tsc && rollup -c rollup.config.js",
-    "clean": "rimraf ./dist",
-    "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
-  },
-  "author": "Adrián Brito Pacheco",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "@capacitor/android": "^3.5.0",
-    "@capacitor/core": "^3.5.0",
-    "@capacitor/docgen": "^0.2.0",
-    "@capacitor/ios": "^3.5.0",
-    "@ionic/eslint-config": "^0.3.0",
-    "@ionic/prettier-config": "^2.0.0",
-    "@ionic/swiftlint-config": "^1.1.2",
-    "eslint": "^7.32.0",
-    "prettier": "^2.6.2",
-    "prettier-plugin-java": "^1.6.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.70.2",
-    "swiftlint": "^1.0.1",
-    "typescript": "^4.6.3"
-  },
-  "peerDependencies": {
-    "@capacitor/core": "^3.5.0"
-  },
-  "prettier": "@ionic/prettier-config",
-  "swiftlint": "@ionic/swiftlint-config",
-  "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
-  },
-  "files": [
-    "android/src/main/",
-    "android/libs",
-    "android/build.gradle",
-    "dist/",
-    "ios/Plugin/",
-    "CapacitorYoutubePlayer.podspec"
-  ],
-  "keywords": [
-    "capacitor",
-    "plugin",
-    "native"
-  ],
-  "capacitor": {
-    "ios": {
-      "src": "ios"
+    "name": "capacitor-youtube-player",
+    "version": "1.0.10",
+    "description": "Capacitor Youtube Player",
+    "main": "dist/plugin.cjs.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/esm/index.d.ts",
+    "unpkg": "dist/plugin.js",
+    "scripts": {
+        "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
+        "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin && cd ..",
+        "verify:android": "cd android && ./gradlew clean build test && cd ..",
+        "verify:web": "npm run build",
+        "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
+        "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- autocorrect --format",
+        "eslint": "eslint . --ext ts",
+        "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
+        "swiftlint": "node-swiftlint",
+        "docgen": "docgen --api ExamplePlugin --output-readme README.md --output-json dist/docs.json",
+        "build": "npm run clean && tsc && rollup -c rollup.config.js",
+        "clean": "rimraf ./dist",
+        "watch": "tsc --watch",
+        "prepublishOnly": "npm run build"
     },
-    "android": {
-      "src": "android"
+    "author": "Adrián Brito Pacheco",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@capacitor/android": "latest",
+        "@capacitor/core": "latest",
+        "@capacitor/docgen": "^0.2.0",
+        "@capacitor/ios": "latest",
+        "@ionic/eslint-config": "^0.3.0",
+        "@ionic/prettier-config": "^2.0.0",
+        "@ionic/swiftlint-config": "^1.1.2",
+        "eslint": "^7.32.0",
+        "prettier": "^2.6.2",
+        "prettier-plugin-java": "^1.6.1",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.70.2",
+        "swiftlint": "^1.0.1",
+        "typescript": "^4.6.3"
+    },
+    "peerDependencies": {
+        "@capacitor/core": "latest"
+    },
+    "prettier": "@ionic/prettier-config",
+    "swiftlint": "@ionic/swiftlint-config",
+    "eslintConfig": {
+        "extends": "@ionic/eslint-config/recommended"
+    },
+    "files": [
+        "android/src/main/",
+        "android/libs",
+        "android/build.gradle",
+        "dist/",
+        "ios/Plugin/",
+        "CapacitorYoutubePlayer.podspec"
+    ],
+    "keywords": [
+        "capacitor",
+        "plugin",
+        "native"
+    ],
+    "capacitor": {
+        "ios": {
+            "src": "ios"
+        },
+        "android": {
+            "src": "android"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/abritopach/capacitor-youtube-player"
+    },
+    "bugs": {
+        "url": "https://github.com/abritopach/capacitor-youtube-player/issues"
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/abritopach/capacitor-youtube-player"
-  },
-  "bugs": {
-    "url": "https://github.com/abritopach/capacitor-youtube-player/issues"
-  }
 }
