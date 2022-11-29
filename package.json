@@ -17,7 +17,7 @@
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
     "swiftlint": "node-swiftlint",
     "docgen": "docgen --api ExamplePlugin --output-readme README.md --output-json dist/docs.json",
-    "build": "npm run clean && tsc && rollup -c rollup.config.js",
+    "build": "npm run clean && tsc && rollup -c --bundleConfigAsCjs rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
@@ -76,5 +76,8 @@
   },
   "bugs": {
     "url": "https://github.com/abritopach/capacitor-youtube-player/issues"
+  },
+  "dependencies": {
+    "@types/node": "^18.11.9"
   }
 }
