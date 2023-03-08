@@ -36,6 +36,7 @@
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
@@ -87,5 +88,15 @@
   },
   "dependencies": {
     "@types/node": "^18.11.9"
+  },
+  "release": {
+    "repositoryUrl": "https://auth@bitbucket.org/<BITBUCKET_REPO_OWNER>/<BITBUCKET_REPO_SLUG>.git",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ]
   }
 }
