@@ -2,6 +2,9 @@ name: Continuous Integration
 
 on: [push, pull_request]
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   scan:
     name: audit
@@ -69,3 +72,23 @@ jobs:
       - run: cat android/local.properties
       - name: Run verify
         run: npm run verify
+  semantic-release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+    timeout-minutes: 30
+    needs:
+      - scan
+      - lint
+      - verify
+    steps:
+      - uses: actions/checkout@v3
+      - name: Semantic release
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npx semantic-release
