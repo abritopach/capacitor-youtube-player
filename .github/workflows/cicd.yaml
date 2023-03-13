@@ -75,9 +75,6 @@ jobs:
   semantic-release:
     if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
     timeout-minutes: 30
     needs:
       - scan
@@ -88,7 +85,7 @@ jobs:
       - name: Semantic release
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '14'
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
