@@ -92,7 +92,7 @@
     "@types/node": "^18.11.9"
   },
   "release": {
-    "repositoryUrl": "https://auth@bitbucket.org/<BITBUCKET_REPO_OWNER>/<BITBUCKET_REPO_SLUG>.git",
+    "repositoryUrl": "https://auth@bitbucket.org/abritopach/capacitor-youtube-player.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
