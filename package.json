@@ -92,7 +92,6 @@
     "@types/node": "^18.11.9"
   },
   "release": {
-    "repositoryUrl": "https://auth@bitbucket.org/abritopach/capacitor-youtube-player.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
